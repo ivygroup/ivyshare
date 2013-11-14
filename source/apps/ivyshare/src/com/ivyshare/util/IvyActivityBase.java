@@ -1,6 +1,8 @@
 package com.ivyshare.util;
 
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.IvyService;
+import com.ivyshare.engin.connection.NetworkManager;
+import com.ivyshare.engin.control.ImManager;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -13,27 +15,30 @@ import android.util.Log;
 
 public class IvyActivityBase extends Activity implements ServiceConnection {
     private static final String TAG = "IvyActivityBase";
-    protected ImService mImService;
+
+    private IvyService mIvyService;
+    protected ImManager mImManager;
+    protected NetworkManager mNetworkManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bindService(new Intent(this, ImService.class), this, Context.BIND_AUTO_CREATE);
+        bindService(new Intent(this, IvyService.class), this, Context.BIND_AUTO_CREATE);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (mImService != null) {
-            mImService.onResumeMyActivity();
+        if (mImManager != null) {
+        	mImManager.onResumeMyActivity();
         }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (mImService != null) {
-            mImService.checkMyActive();
+        if (mImManager != null) {
+        	mImManager.checkMyActive();
         }
     }
 /*
@@ -53,11 +58,15 @@ public class IvyActivityBase extends Activity implements ServiceConnection {
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
-        mImService = ((ImService.LocalBinder)service).getService();
+    	mIvyService = ((IvyService.LocalBinder)service).getService();
+    	mImManager = mIvyService.getImManager();
+    	mNetworkManager = mIvyService.getNetworkManager();
     }
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
-        mImService = null;
+    	mImManager = null;
+    	mNetworkManager = null;
+    	mIvyService = null;
     }
 }

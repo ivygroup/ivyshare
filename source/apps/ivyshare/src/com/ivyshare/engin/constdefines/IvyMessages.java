@@ -1,10 +1,10 @@
-package com.ivyshare.constdefines;
+package com.ivyshare.engin.constdefines;
 
 import android.content.Intent;
 import android.util.Log;
 
 import com.ivyshare.MyApplication;
-import com.ivyshare.connection.ConnectionState;
+import com.ivyshare.engin.connection.ConnectionState;
 import com.ivyshare.engin.control.PersonManager;
 import com.ivyshare.engin.im.Person;
 

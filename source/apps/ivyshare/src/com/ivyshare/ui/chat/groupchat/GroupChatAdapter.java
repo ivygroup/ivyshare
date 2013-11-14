@@ -12,9 +12,9 @@ import android.widget.ListView;
 
 import com.ivyshare.engin.control.ChatMessage;
 import com.ivyshare.engin.control.GroupMessage;
-import com.ivyshare.engin.control.ImService;
-import com.ivyshare.engin.im.Person;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.engin.im.Im.FileType;
+import com.ivyshare.engin.im.Person;
 import com.ivyshare.ui.chat.abstractchat.AdapterHelper;
 import com.ivyshare.ui.chat.abstractchat.AdapterInterface;
 
@@ -25,16 +25,16 @@ public class GroupChatAdapter extends BaseAdapter {
     private boolean mIsBroadCast;
     private String mGroupName;
     private GroupChatAdapterHelper mAdapterHelper;
-    private ImService mImService;
+    private ImManager mImManager;
 
     public GroupChatAdapter(boolean isBroadCast, String groupName, List<GroupMessage> message, Context context,
-            ImService imService, Map<Integer, Integer> mapFileProcess, Set<Integer> setExpandMessage, ListView listView) {
+            ImManager imManager, Map<Integer, Integer> mapFileProcess, Set<Integer> setExpandMessage, ListView listView) {
         mMessages = message;
         mIsBroadCast = isBroadCast;
         mGroupName = groupName;
-        mImService = imService;
+        mImManager = imManager;
 
-        mAdapterHelper = new GroupChatAdapterHelper(context, imService, mapFileProcess, setExpandMessage, listView);
+        mAdapterHelper = new GroupChatAdapterHelper(context, imManager, mapFileProcess, setExpandMessage, listView);
     }
 
     @Override
@@ -86,8 +86,8 @@ public class GroupChatAdapter extends BaseAdapter {
 
     public class GroupChatAdapterHelper extends AdapterHelper {
         public GroupChatAdapterHelper (Context context,
-                ImService service, Map<Integer, Integer> process, Set<Integer> expand, ListView view) {
-            super(context, service, process, expand, view);
+                ImManager imManager, Map<Integer, Integer> process, Set<Integer> expand, ListView view) {
+            super(context, imManager, process, expand, view);
         }
 
         protected Person getRemotePerson(ChatMessage message) {
@@ -101,8 +101,8 @@ public class GroupChatAdapter extends BaseAdapter {
 
         @Override
         protected int deleteMessage(ChatMessage message) {
-            if (mImService != null) {
-                mImService.deleteGroupMessage(mIsBroadCast, mGroupName, message.mId);
+            if (mImManager != null) {
+                mImManager.deleteGroupMessage(mIsBroadCast, mGroupName, message.mId);
                 return 0;
             }
             return -1;
@@ -110,12 +110,12 @@ public class GroupChatAdapter extends BaseAdapter {
 
         @Override
         protected int resendMesssage(ChatMessage message) {
-            if (mImService != null) {
+            if (mImManager != null) {
                 deleteMessage(message);
                 if (message.mType == FileType.FileType_CommonMsg) {
-                    mImService.sendGroupMessage(mIsBroadCast, mGroupName, message.mContent);
+                    mImManager.sendGroupMessage(mIsBroadCast, mGroupName, message.mContent);
                 } else {
-                    mImService.sendGroupFile(mIsBroadCast, mGroupName, "", message.mContent, message.mType);
+                    mImManager.sendGroupFile(mIsBroadCast, mGroupName, "", message.mContent, message.mType);
                 }
                 return 0;
             }

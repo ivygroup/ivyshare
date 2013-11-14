@@ -87,7 +87,7 @@ public abstract class AbstractChatActivity extends IvyActivityBase implements On
     private EditText mInputText;
     private Button mRecordButton;
     private RecorderPlayer mRecorderPlayer;
-    private InputMethodManager mImManager;
+    private InputMethodManager mInputMethodManager;
     protected TextView mTitle;
     protected ImageView mImageLeft;
     private ImageView mImageRight;
@@ -135,7 +135,7 @@ public abstract class AbstractChatActivity extends IvyActivityBase implements On
 
         setContentView(R.layout.activity_chat);
 
-        mImManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         mTabTitles = this.getResources().getStringArray(R.array.mTabTitles_string);
         mTabIcons = this.getResources().obtainTypedArray(R.array.mTabIcon_list);
@@ -247,7 +247,7 @@ public abstract class AbstractChatActivity extends IvyActivityBase implements On
             	if (mAdapterInterface != null) {
             		mAdapterInterface.onTouchEvent(v, event);
             	}
-                mImManager.hideSoftInputFromWindow(
+            	mInputMethodManager.hideSoftInputFromWindow(
                     ((EditText)findViewById(R.id.chat_input_text_input)).getWindowToken(), 0);
                 if (mGridView.getVisibility() == View.VISIBLE) {
                     mGridView.setVisibility(View.GONE);
@@ -326,11 +326,11 @@ public abstract class AbstractChatActivity extends IvyActivityBase implements On
     }
 
     private void doOnResume() {
-        if (mImService != null) {
+        if (mImManager != null) {
             clearUnReadMessage();
 
             if(!mMessageReceiverRegister) {
-                mImService.getImListener().getTranslateFileControl().RegisterTransProcess(this);
+                mImManager.getImListener().getTranslateFileControl().RegisterTransProcess(this);
 
                 mAdapterInterface = createAdapter();
                 mListView.setListViewCallBack(new ChatListView.ListViewCallBack() {
@@ -371,7 +371,7 @@ public abstract class AbstractChatActivity extends IvyActivityBase implements On
 
     private void doOnPause() {
         if (mMessageReceiverRegister) {
-            mImService.getImListener().getTranslateFileControl().UnRegisterTransProcess(this);
+            mImManager.getImListener().getTranslateFileControl().UnRegisterTransProcess(this);
 
             unregisterReceiver(mMessageReceiver);
             mMessageReceiverRegister = false;
@@ -454,7 +454,7 @@ public abstract class AbstractChatActivity extends IvyActivityBase implements On
 
         switch (Id) {
             case R.id.chat_input_text_converttosay:
-                mImManager.hideSoftInputFromWindow(((EditText)findViewById(R.id.chat_input_text_input)).getWindowToken(), 0);
+                mInputMethodManager.hideSoftInputFromWindow(((EditText)findViewById(R.id.chat_input_text_input)).getWindowToken(), 0);
                 mChatInputTextView.setVisibility(View.GONE);
                 mChatInputSayView.setVisibility(View.VISIBLE);
                 mGridView.setVisibility(View.GONE);
@@ -466,11 +466,11 @@ public abstract class AbstractChatActivity extends IvyActivityBase implements On
                 mGridView.setVisibility(View.GONE);
                 isDisplayed = false;
                 ((EditText)findViewById(R.id.chat_input_text_input)).requestFocus();
-                mImManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+                mInputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 break;
             case R.id.chat_input_text_type_select:
             case R.id.chat_input_say_type_select:
-                mImManager.hideSoftInputFromWindow(((EditText)findViewById(R.id.chat_input_text_input)).getWindowToken(), 0);
+                mInputMethodManager.hideSoftInputFromWindow(((EditText)findViewById(R.id.chat_input_text_input)).getWindowToken(), 0);
                 isDisplayed = !isDisplayed;
                 if (isDisplayed) {
                     mGridView.setVisibility(View.VISIBLE);
@@ -604,7 +604,7 @@ public abstract class AbstractChatActivity extends IvyActivityBase implements On
     }
 
     private void askDeletePersonMessage() {
-        if (mImService != null) {
+        if (mImManager != null) {
             Dialog alertDialog = CommonUtils.getMyAlertDialogBuilder(this).
                     setTitle(R.string.clear_title).
                     setMessage(R.string.makesure_clear).

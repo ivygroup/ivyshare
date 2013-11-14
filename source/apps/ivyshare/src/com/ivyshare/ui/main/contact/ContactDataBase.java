@@ -3,8 +3,6 @@ package com.ivyshare.ui.main.contact;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.w3c.dom.Text;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,7 +19,8 @@ import android.widget.TextView;
 
 import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.connection.NetworkManager;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
 import com.ivyshare.engin.control.PersonManager;
@@ -31,7 +30,6 @@ import com.ivyshare.ui.chat.groupchat.GroupChatActivity;
 import com.ivyshare.ui.main.QuickPersonInfoActivity;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.widget.SimplePopMenu;
-import com.ivyshare.widget.SimplePopMenu.OnPopMenuItemClickListener;
 
 
 public abstract class ContactDataBase extends BaseAdapter implements AdapterState, OnClickListener {
@@ -39,7 +37,8 @@ public abstract class ContactDataBase extends BaseAdapter implements AdapterStat
     protected Context mContext;
     private int mAdapterState;
     protected List<Person> mListPersons;
-    protected ImService mImService;
+    protected ImManager mImManager;
+    protected NetworkManager mNetworkManager;
     
     SimplePopMenu mPopMenu;
     
@@ -56,10 +55,11 @@ public abstract class ContactDataBase extends BaseAdapter implements AdapterStat
     public static final int VIEWTYPE_COUNT = 10;
 
 
-    public ContactDataBase(Context context, ImService imService) {
+    public ContactDataBase(Context context, ImManager imManager, NetworkManager networkManager) {
         mContext = context;
         mListPersons = new ArrayList<Person>();
-        mImService = imService;
+        mImManager = imManager;
+        mNetworkManager = networkManager;
         mAdapterState = AdapterState.STATE_DEACTIVE;
         
     }

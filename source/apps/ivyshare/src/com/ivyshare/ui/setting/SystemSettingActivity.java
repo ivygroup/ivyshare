@@ -1,13 +1,11 @@
 package com.ivyshare.ui.setting;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -16,11 +14,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ivyshare.MyApplication;
 import com.ivyshare.R;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.trace.UserTrace;
-import com.ivyshare.updatemanager.UpdateManager;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.util.IvyActivityBase;
 
@@ -166,8 +162,8 @@ public class SystemSettingActivity extends IvyActivityBase implements
 	                    setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 	                        @Override 
 	                        public void onClick(DialogInterface dialog, int which) {
-	                            if (mImService != null) {
-	                                mImService.deleteAllMessage();
+	                            if (mImManager != null) {
+	                                mImManager.deleteAllMessage();
 	                                UserTrace.addTrace(UserTrace.ACTION_DELETE_ALL);
 	                            }
 	                        }

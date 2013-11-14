@@ -36,10 +36,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ivyshare.R;
-import com.ivyshare.connection.ConnectionState;
-import com.ivyshare.connection.IvyNetService;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.constdefines.IvyMessages;
+import com.ivyshare.engin.connection.ConnectionState;
+import com.ivyshare.engin.constdefines.IvyMessages;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.engin.data.Table_Message;
 import com.ivyshare.trace.UserTrace;
@@ -54,7 +52,6 @@ import com.ivyshare.ui.setting.SystemSettingActivity;
 import com.ivyshare.ui.setting.UserEditActivity;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.util.IvyFragmentActivityBase;
-import com.ivyshare.updatemanager.UpdateManager;
 import com.ivyshare.widget.SimplePopMenu;
 import com.ivyshare.widget.SimplePopMenu.OnPopMenuItemClickListener;
 
@@ -152,8 +149,6 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
 		mHandler = new Handler(this.getMainLooper()) {
 			@Override
 			public void handleMessage(Message msg) {
-			    IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-
 				switch (msg.what) {
 					case MESSAGE_SERVICE_CONNECTED:
 						Log.d(TAG, "Service connect, Do onCreate and onResume");
@@ -201,8 +196,8 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
 
                     case MESSAGE_NETWORK_SCAN_FINISH:
                         Log.d(TAG, "Service connect, Do onCreate and onResume");
-                        if (mContactAdapter != null && ivyNetService!= null) {
-                            mContactAdapter.setPointList(ivyNetService.getScanResult());
+                        if (mContactAdapter != null && mNetworkManager!= null) {
+                            mContactAdapter.setPointList(mNetworkManager.getScanResult());
                             mContactAdapter.notifyDataSetChanged();
                         }
                         break;
@@ -218,8 +213,8 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
 
                     case MESSAGE_NETWORK_DISCOVERYWIFIP2P:
                     {
-                        if (mContactAdapter != null && ivyNetService != null) {
-                            mContactAdapter.setWifiP2pPeers(ivyNetService.getWifiP2pPeers());
+                        if (mContactAdapter != null && mNetworkManager != null) {
+                            mContactAdapter.setWifiP2pPeers(mNetworkManager.getWifiP2pPeers());
                             mContactAdapter.notifyDataSetChanged();
                         }
                     }
@@ -230,7 +225,7 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
 		};
 
 
-		startService(new Intent("com.ivyshare.IMSERVICE_START"));
+		startService(new Intent("com.ivyshare.IVYSERVICE_START"));
 
 		// initPopMenu();
 		initNetworkSetting();
@@ -555,11 +550,11 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
 	}
 
 	private void doOnCreate() {
-    	if (mImService != null) {
+    	if (mImManager != null) {
     		if(!mPersonReceiverRegister) {
 				Log.d(TAG, "Register PersonReceiver and Init ContactFragment");
 
-				mContactAdapter = new ContactAdapter(this, mImService);
+				mContactAdapter = new ContactAdapter(this, mImManager, mNetworkManager);
 				if (mContactFragment != null) {
 					mContactFragment.setAdapter(mContactAdapter);
         			mContactFragment.adjustHeadPosition();
@@ -576,18 +571,17 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
     		Log.d(TAG, "doOnCreate Service is null");
     	}
 
-        IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-        if (ivyNetService != null) {
+        if (mNetworkManager != null) {
             if (mContactAdapter != null
-                    && ivyNetService.getConnectionState().getHotspotState()
+                    && mNetworkManager.getConnectionState().getHotspotState()
                     	!= ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLED) {
-                mContactAdapter.setPointList(ivyNetService.getScanResult());
+                mContactAdapter.setPointList(mNetworkManager.getScanResult());
             }
-            int state = ivyNetService.getConnectionState().getLastStateByFast();
-            int type = ivyNetService.getConnectionState().getLastType();
+            int state = mNetworkManager.getConnectionState().getLastStateByFast();
+            int type = mNetworkManager.getConnectionState().getLastType();
             mNetworkState = state;
             if (mNetworkState != ConnectionState.CONNECTION_UNKNOWN) {
-            	mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_NETWORK_STATE_CHANGED, type, state, ivyNetService.getConnectionInfo().getSSID()));
+            	mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_NETWORK_STATE_CHANGED, type, state, mNetworkManager.getConnectionInfo().getSSID()));
             }
         }
 	}
@@ -603,35 +597,34 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
 	}
 
     private void doOnResume() {
-        IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-        if (ivyNetService != null) {
+        if (mNetworkManager != null) {
             if (mContactAdapter != null
-                    && ivyNetService.getConnectionState().getHotspotState() != ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLED) {
-                mContactAdapter.setPointList(ivyNetService.getScanResult());
+                    && mNetworkManager.getConnectionState().getHotspotState() != ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLED) {
+                mContactAdapter.setPointList(mNetworkManager.getScanResult());
                 mContactAdapter.notifyDataSetChanged();
             }
 
-        	int state = ivyNetService.getConnectionState().getLastStateByFast();
-            int type = ivyNetService.getConnectionState().getLastType();
+        	int state = mNetworkManager.getConnectionState().getLastStateByFast();
+            int type = mNetworkManager.getConnectionState().getLastType();
             
             if ((mNetworkState != ConnectionState.CONNECTION_UNKNOWN) && (state != mNetworkState)) {
-            	mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_NETWORK_STATE_CHANGED, type, state, ivyNetService.getConnectionInfo().getSSID()));
+            	mHandler.sendMessage(mHandler.obtainMessage(MESSAGE_NETWORK_STATE_CHANGED, type, state, mNetworkManager.getConnectionInfo().getSSID()));
             }
         }
 
-    	if (mImService != null) {
-    		int state = mImService.getDaemonNotifaction().getNotificationState();
+    	if (mImManager != null) {
+    		int state = mImManager.getDaemonNotifaction().getNotificationState();
     		if (state == IvyMessages.NOTIFICATION_STATE_MESSAGE_ONE ||
     			state == IvyMessages.NOTIFICATION_STATE_MESSAGE_GROUP ||
     			state == IvyMessages.NOTIFICATION_STATE_MESSAGE_SOME ||
     			state == IvyMessages.NOTIFICATION_STATE_NONE) {
-    			mImService.getDaemonNotifaction().startBackgroundNotification();
+    			mImManager.getDaemonNotifaction().startBackgroundNotification();
     		}
 
 	    	if(!mMessageReceiverRegister) {
 				Log.d(TAG, "Register MessageReceiver and Init SessionFragment and FreeShareFragment");
 
-	    		mSessionAdapter = new SessionAdapter(MainPagerActivity.this, mImService.getSessionMessageListClone(), mImService);
+	    		mSessionAdapter = new SessionAdapter(MainPagerActivity.this, mImManager.getSessionMessageListClone(), mImManager);
 	    		if (mSessionFragment != null) {
 	    			mSessionFragment.setAdapter(mSessionAdapter);
 	    		}
@@ -647,7 +640,7 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
 	
 				mMessageReceiverRegister = true;
 
-				mFreeShareAdapter = new FreeShareAdapter(MainPagerActivity.this, mImService.getFreeShareHistory());
+				mFreeShareAdapter = new FreeShareAdapter(MainPagerActivity.this, mImManager.getFreeShareHistory());
 				if (mFreeShareFragment != null) {
 					mFreeShareFragment.setAdapter(mFreeShareAdapter);
 				}
@@ -669,19 +662,19 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
     }
 
 	private void doUpLine() {
-		if (mImService == null) {
+		if (mImManager == null) {
 		    return;
 		}
 
-		mImService.upLine();
+		mImManager.upLine();
 	}
 
 	private void doDownLine() {
-	    if (mImService == null) {
+	    if (mImManager == null) {
             return;
         }
 
-        mImService.downLine();
+        mImManager.downLine();
 	}
 
 	private void changePagerByIntent(Intent intent) {
@@ -771,14 +764,13 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
         }
         break;*/
         case R.id.layout_exit:
-            if (mImService != null) {
+            if (mImManager != null) {
                 Log.d(TAG, "Call quit, and we will downline");
-                mImService.downLine();
+                mImManager.downLine();
             }
             finish();
 
-            stopService(new Intent("com.ivyshare.IMSERVICE_START"));
-            stopService(new Intent("com.ivyshare.IVYNETWORKSERVICE_START"));
+            stopService(new Intent("com.ivyshare.IVYSERVICE_START"));
 
     		System.exit(0);
         break;
@@ -826,9 +818,9 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
         public void onReceive(Context context, Intent intent)
         {
         	int type = intent.getIntExtra(IvyMessages.PARAMETER_PERSON_TYPE, 0);
-        	if (mImService != null) {
+        	if (mImManager != null) {
             	if (mContactAdapter != null) {
-            		mContactAdapter.changeList(mImService.getPersonListClone());
+            		mContactAdapter.changeList(mImManager.getPersonListClone());
             		mContactAdapter.notifyDataSetChanged();
             		if (mContactFragment != null) {
             			mContactFragment.showNoContentOrList();
@@ -852,12 +844,12 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
         	//int messageType = intent.getIntExtra(ImService.INTENT_MESSAGE_TYPE, 0);
         	int messageState = intent.getIntExtra(IvyMessages.PARAMETER_MESSGAE_STATE, 0);
         	boolean blnLocalUser = intent.getBooleanExtra(IvyMessages.PARAMETER_MESSAGE_SELF, true);
-        	if (!blnLocalUser && messageState == Table_Message.STATE_OK && mImService != null) {
-        		mImService.getDaemonNotifaction().addAndNotify(intent);
+        	if (!blnLocalUser && messageState == Table_Message.STATE_OK && mImManager != null) {
+        		mImManager.getDaemonNotifaction().addAndNotify(intent);
         	}
 
-        	if (mImService != null && mSessionAdapter != null) {
-        		mSessionAdapter.ChangeList(mImService.getSessionMessageListClone());
+        	if (mImManager != null && mSessionAdapter != null) {
+        		mSessionAdapter.ChangeList(mImManager.getSessionMessageListClone());
         		mSessionAdapter.notifyDataSetChanged();
         		if (mSessionFragment != null) {
         			mSessionFragment.showNoContentOrList();
@@ -874,12 +866,12 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
         {
         	int messageState = intent.getIntExtra(IvyMessages.PARAMETER_GROUP_MESSAGE_STATE, 0);
         	boolean blnLocalUser = intent.getBooleanExtra(IvyMessages.PARAMETER_GROUP_MESSAGE_SELF, true);
-        	if (!blnLocalUser && messageState == Table_Message.STATE_OK && mImService != null) {
-        		mImService.getDaemonNotifaction().addGroupAndNotify(intent);
+        	if (!blnLocalUser && messageState == Table_Message.STATE_OK && mImManager != null) {
+        		mImManager.getDaemonNotifaction().addGroupAndNotify(intent);
         	}
 
-        	if (mImService != null && mSessionAdapter != null) {
-        		mSessionAdapter.ChangeList(mImService.getSessionMessageListClone());
+        	if (mImManager != null && mSessionAdapter != null) {
+        		mSessionAdapter.ChangeList(mImManager.getSessionMessageListClone());
         		mSessionAdapter.notifyDataSetChanged();
         		if (mSessionFragment != null) {
         			mSessionFragment.showNoContentOrList();
@@ -917,13 +909,12 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
 			UpdateManager.getInstance(this).checkUpdate();
 			return true;*/
 		case R.id.action_quit: {
-			if (mImService != null) {
+			if (mImManager != null) {
 				Log.d(TAG, "Call quit, and we will downline");
-				mImService.downLine();
+				mImManager.downLine();
 			}
 			finish();
-			stopService(new Intent("com.ivyshare.IMSERVICE_START"));
-			stopService(new Intent("com.ivyshare.IVYNETWORKSERVICE_START"));
+			stopService(new Intent("com.ivyshare.IVYSERVICE_START"));
 			return true;
 		}
 		default:

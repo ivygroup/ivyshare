@@ -2,7 +2,7 @@ package com.ivyshare.engin.control;
 
 import android.util.Log;
 
-import com.ivyshare.constdefines.IvyMessages;
+import com.ivyshare.engin.constdefines.IvyMessages;
 import com.ivyshare.engin.data.ImData;
 import com.ivyshare.engin.data.Table_Message;
 import com.ivyshare.engin.im.Im;

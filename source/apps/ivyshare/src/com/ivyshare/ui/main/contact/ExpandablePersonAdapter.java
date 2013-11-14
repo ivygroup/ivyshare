@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
 import com.ivyshare.engin.control.PersonManager;
@@ -42,7 +42,7 @@ public class ExpandablePersonAdapter extends BaseExpandableListAdapter
 	private List<Person> mListOfflinePersons;
 	private List<Person> mListOnlinePersons;
 	private List<Person> mListGroupPersons;
-	private ImService mImService = null;
+	private ImManager mImManager = null;
 
 	// private static final int TYPE_DIVIDER_ONLINE = 0;
 	private static final int TYPE_LIST_ONLINE = 1;
@@ -54,13 +54,13 @@ public class ExpandablePersonAdapter extends BaseExpandableListAdapter
 	private List<List<Person>> mChildData = new ArrayList<List<Person>>();
 
 	public ExpandablePersonAdapter(Context context, List<Person> listPersons,
-			ImService imService) {
+			ImManager imManager) {
 		Log.d(TAG, "ExpandablePersionAdapter construct");
 		mContext = context;
 		mListOnlinePersons = new ArrayList<Person>();
 		mListOfflinePersons = new ArrayList<Person>();
 		mListGroupPersons = new ArrayList<Person>();
-		mImService = imService;
+		mImManager = imManager;
 
 		mListPersons = listPersons;
 		getOnOfflinePersonList();
@@ -357,8 +357,8 @@ public class ExpandablePersonAdapter extends BaseExpandableListAdapter
 			        Intent intent = new Intent();
 	                intent.setClass(mContext, ChatActivity.class);
 	                String key = getKey(myClass);
-	                if (key != null && mImService != null
-	                        && mImService.getPerson(key) != null) {
+	                if (key != null && mImManager != null
+	                        && mImManager.getPerson(key) != null) {
 	                    intent.putExtra("chatpersonKey", key);
 	                    mContext.startActivity(intent);
 	                }    
@@ -372,8 +372,8 @@ public class ExpandablePersonAdapter extends BaseExpandableListAdapter
 			    } else {
 			        Intent intent = new Intent();
 			        String key = getKey(myClass);
-			        if (key != null && mImService != null
-			                && mImService.getPerson(key) != null) {
+			        if (key != null && mImManager != null
+			                && mImManager.getPerson(key) != null) {
 			            intent.putExtra("chatpersonKey", key);
 			            intent.setClass(mContext, QuickPersonInfoActivity.class);
 			            mContext.startActivity(intent);

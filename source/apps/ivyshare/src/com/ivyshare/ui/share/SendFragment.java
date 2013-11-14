@@ -9,15 +9,16 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.engin.im.Person;
 import com.ivyshare.trace.UserTrace;
 
@@ -31,7 +32,7 @@ public class SendFragment extends Fragment implements OnClickListener{
 
     private BaseAdapter mAdapter = null;
     private ListView mListView = null;
-    private ImService mImService = null;
+    private ImManager mImManager = null;
     
     private int mFileCount = 0;
     private Integer mListType;
@@ -74,8 +75,8 @@ public class SendFragment extends Fragment implements OnClickListener{
         }
     }
     
-    public void setService(ImService service) {
-        mImService = service;
+    public void setService(ImManager imManager) {
+        mImManager = imManager;
     }
     
     public void setShareContent( String path, String name, int type){
@@ -92,12 +93,12 @@ public class SendFragment extends Fragment implements OnClickListener{
 
     
     private void sendFile(Person person){
-        mImService.sendFile(person, "", mShareFilePath, ShareType.getFileType(mShareFileType));
+        mImManager.sendFile(person, "", mShareFilePath, ShareType.getFileType(mShareFileType));
     }
     @Override
     public void onClick(View arg0) {
         if (arg0.getId() == R.id.PushPull) {
-            if (mImService == null) {
+            if (mImManager == null) {
                 return;
             }
             if (mListPath == null || mListType == null || mFileCount == 0) {
@@ -109,7 +110,7 @@ public class SendFragment extends Fragment implements OnClickListener{
             
             List<Person> list = ((SharePersonAdapter)mListView.getAdapter()).getSelectItem();
             if (list.size() <= 0 ) {
-				Toast.makeText(mImService, R.string.share_to,Toast.LENGTH_SHORT).show();
+				Toast.makeText(MyApplication.getInstance(), R.string.share_to,Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -124,7 +125,7 @@ public class SendFragment extends Fragment implements OnClickListener{
 					UserTrace.addShareTrace(UserTrace.ACTION_SHARE_MULTISEND,
 							mListType, SendSelectActivity.mLoadSource);
 					for (Person person : list) {
-						mImService.sendFile(person, "", mListPath.get(i),
+						mImManager.sendFile(person, "", mListPath.get(i),
 								ShareType.getFileType(mListType));
 					}
 				}

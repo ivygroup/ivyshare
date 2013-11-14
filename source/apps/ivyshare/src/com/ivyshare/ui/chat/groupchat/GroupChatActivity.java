@@ -8,7 +8,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 
 import com.ivyshare.R;
-import com.ivyshare.constdefines.IvyMessages;
+import com.ivyshare.engin.constdefines.IvyMessages;
 import com.ivyshare.engin.control.GroupMessage;
 import com.ivyshare.engin.data.Table_Message;
 import com.ivyshare.engin.im.Im.FileType;
@@ -48,9 +48,9 @@ public class GroupChatActivity extends AbstractChatActivity {
 
     @Override
     protected AdapterInterface createAdapter() {
-        mListMessage = mImService.getGroupMessageListClone(mIsBroadCast, mGroupName);
+        mListMessage = mImManager.getGroupMessageListClone(mIsBroadCast, mGroupName);
         mListViewAdapter = new GroupChatAdapter(mIsBroadCast, mGroupName, mListMessage, GroupChatActivity.this, 
-                mImService, mMapFileProcess, mSetExpandMessage, mListView);
+                mImManager, mMapFileProcess, mSetExpandMessage, mListView);
         mListView.setAdapter(mListViewAdapter);
         return mListViewAdapter.getAdapterInterface();
     }
@@ -65,35 +65,35 @@ public class GroupChatActivity extends AbstractChatActivity {
 
     @Override
     protected void clearUnReadMessage() {
-        if (mImService != null) {
-            mImService.clearGroupUnReadMessage(mIsBroadCast, mGroupName);
+        if (mImManager != null) {
+            mImManager.clearGroupUnReadMessage(mIsBroadCast, mGroupName);
         }
     }
 
     @Override
     protected int SendMessage(FileType type, String content) {
-        if (mImService == null) {
+        if (mImManager == null) {
             return -1;
         }
 
         UserTrace.addSendTrace(UserTrace.ACTION_SENDMESSAGE, type.ordinal(), UserTrace.BROADCAST_CHAT);
         if (type == FileType.FileType_CommonMsg) {
-            mImService.sendGroupMessage(mIsBroadCast, mGroupName, content);
+            mImManager.sendGroupMessage(mIsBroadCast, mGroupName, content);
         } else {
-            mImService.sendGroupFile(mIsBroadCast, mGroupName, "", content, type);
+            mImManager.sendGroupFile(mIsBroadCast, mGroupName, "", content, type);
         }
         return 0;
     }
 
     @Override
     protected int SendMessage(FileType type, ArrayList<String> content) {
-        if (mImService == null) {
+        if (mImManager == null) {
             return -1;
         }
 
 		for (int i = 0; i < content.size(); i++) {
 			UserTrace.addSendTrace(UserTrace.ACTION_SENDMESSAGE, type.ordinal(), UserTrace.BROADCAST_CHAT);
-			mImService.sendGroupFile(mIsBroadCast, mGroupName, "", content.get(i), type);
+			mImManager.sendGroupFile(mIsBroadCast, mGroupName, "", content.get(i), type);
 		}
         return 0;
     }
@@ -122,7 +122,7 @@ public class GroupChatActivity extends AbstractChatActivity {
 
     @Override
     protected void changeData() {
-        mListMessage = mImService.getGroupMessageListClone(mIsBroadCast, mGroupName);
+        mListMessage = mImManager.getGroupMessageListClone(mIsBroadCast, mGroupName);
         mListViewAdapter.changList(mListMessage);
         mListViewAdapter.notifyDataSetChanged();
     }
@@ -134,17 +134,17 @@ public class GroupChatActivity extends AbstractChatActivity {
 
     @Override
     protected void recoverMessage() {
-        if (mImService != null) {
+        if (mImManager != null) {
             GroupMessage message = (GroupMessage)mMessage;
-            mImService.recoverGroupMessage(mIsBroadCast, mGroupName, message.mFromPerson, mMessage.mType, 
+            mImManager.recoverGroupMessage(mIsBroadCast, mGroupName, message.mFromPerson, mMessage.mType, 
                     mMessage.mContent, mMessage.mDirect == Table_Message.DIRECT_LOCALUSER, mMessage.mTime, mMessage.mState);
         }
     }
 
     @Override
     protected void deleteMesssages() {
-        if (mImService != null) {
-            mImService.deleteGroupMessage(mIsBroadCast, mGroupName);
+        if (mImManager != null) {
+            mImManager.deleteGroupMessage(mIsBroadCast, mGroupName);
             UserTrace.addTrace(UserTrace.ACTION_DELETE_CHAT);
         }
     }

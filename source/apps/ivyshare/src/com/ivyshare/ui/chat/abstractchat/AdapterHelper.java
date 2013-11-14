@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Set;
 
 import android.annotation.SuppressLint;
-import android.text.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -16,19 +15,15 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.text.ClipboardManager;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -39,13 +34,13 @@ import android.widget.Toast;
 
 import com.ivyshare.R;
 import com.ivyshare.engin.control.ChatMessage;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
 import com.ivyshare.engin.control.PersonManager;
 import com.ivyshare.engin.data.Table_Message;
-import com.ivyshare.engin.im.Person;
 import com.ivyshare.engin.im.Im.FileType;
+import com.ivyshare.engin.im.Person;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.ui.main.QuickPersonInfoActivity;
 import com.ivyshare.util.APKCheck;
@@ -58,7 +53,7 @@ public abstract class AdapterHelper implements View.OnClickListener,
     private static final String TAG = AdapterHelper.class.getSimpleName();
 
     private Context mContext;
-    private ImService mImService;
+    private ImManager mImManager;
     private Map<Integer, Integer> mMapFileProcess;
     private Set<Integer> mSetExpandMessage;
     private ImageLoader mImageLoader;
@@ -88,10 +83,10 @@ public abstract class AdapterHelper implements View.OnClickListener,
     protected abstract int resendMesssage(ChatMessage message);
 
     public AdapterHelper(Context context,
-            ImService service, Map<Integer, Integer> process, Set<Integer> expand, ListView view) {
+            ImManager imManager, Map<Integer, Integer> process, Set<Integer> expand, ListView view) {
 
         mContext = context;
-        mImService = service;
+        mImManager = imManager;
         mMapFileProcess = process;
         mSetExpandMessage = expand;
         mListView = view;

@@ -1,4 +1,4 @@
-package com.ivyshare.connection.implement;
+package com.ivyshare.engin.connection.implement;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -29,7 +29,7 @@ import android.os.Message;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.ivyshare.connection.ConnectionState;
+import com.ivyshare.engin.connection.ConnectionState;
 import com.ivyshare.engin.control.LocalSetting;
 
 

@@ -77,10 +77,10 @@ public class FreeShareHistoryActivity extends IvyActivityBase {
 	}
 
 	private void updateHisotryList() {
-		if (mImService == null) {
+		if (mImManager == null) {
 			return;
 		}
-		mAdapter = new FreeShareAdapter(FreeShareHistoryActivity.this, mImService.getFreeShareHistory());
+		mAdapter = new FreeShareAdapter(FreeShareHistoryActivity.this, mImManager.getFreeShareHistory());
 		mListView.setAdapter(mAdapter);
 		if (mAdapter.getCount() > 0) {
 			mNoContentLayout.setVisibility(View.GONE);
@@ -99,7 +99,7 @@ public class FreeShareHistoryActivity extends IvyActivityBase {
     }
 
     private void askDeletePersonMessage() {
-        if (mImService != null) {
+        if (mImManager != null) {
             Dialog alertDialog = CommonUtils.getMyAlertDialogBuilder(this).
                 setTitle(R.string.clear_title).
                 setMessage(R.string.makesure_clearhistory).
@@ -115,8 +115,8 @@ public class FreeShareHistoryActivity extends IvyActivityBase {
     }
 
     protected void deleteMesssages() {
-        if (mImService != null) {
-            mImService.clearFreeShareHistory();
+        if (mImManager != null) {
+            mImManager.clearFreeShareHistory();
             UserTrace.addTrace(UserTrace.ACTION_DELETE_FREESHARE);
             updateHisotryList();
         }

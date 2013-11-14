@@ -40,10 +40,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.connection.ConnectionState;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.constdefines.IvyMessages;
+import com.ivyshare.engin.constdefines.IvyMessages;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.engin.im.Person;
 import com.ivyshare.trace.UserTrace;
@@ -117,7 +116,7 @@ public class SendSelectActivity extends IvyFragmentActivityBase {
 
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(mImService, mShareFileDisplayName, Toast.LENGTH_SHORT).show();
+				Toast.makeText(MyApplication.getInstance(), mShareFileDisplayName, Toast.LENGTH_SHORT).show();
 			}
         });
 
@@ -286,7 +285,7 @@ public class SendSelectActivity extends IvyFragmentActivityBase {
 	private class PersonBroadCastReceiver extends BroadcastReceiver {
         public void onReceive(Context context, Intent intent)
         {
-        	mAdapter.ChangeList(getOnlinePersonList(mImService.getPersonListClone()));
+        	mAdapter.ChangeList(getOnlinePersonList(mImManager.getPersonListClone()));
         	mAdapter.notifyDataSetChanged();
         }
 	}
@@ -304,18 +303,19 @@ public class SendSelectActivity extends IvyFragmentActivityBase {
     }	
 	
 	private void doOnCreate() {
-    	if (mImService != null) {
+    	if (mImManager != null) {
     		if(!mPersonReceiverRegister) {
 
     			mAdapter = new SharePersonAdapter(SendSelectActivity.this, 
-						getOnlinePersonList(mImService.getPersonListClone()),mImService);
+						getOnlinePersonList(mImManager.getPersonListClone()),mImManager);
     			if (mSendFragment != null) {
     				mSendFragment.setAdapter(mAdapter);
-    				mSendFragment.setService(mImService);
+    				mSendFragment.setService(mImManager);
     			}
 
-        		if (mShareFragment != null && mImService != null) {
-     			    mShareFragment.setService(mImService);
+        		if (mShareFragment != null && mImManager != null) {
+     			    mShareFragment.setImManager(mImManager);
+     			    mShareFragment.setNetworkManager(mNetworkManager);
         			doShareFile();
         		}
 
@@ -329,21 +329,21 @@ public class SendSelectActivity extends IvyFragmentActivityBase {
 	}
 
 	private void doUpLine() {
-	    if (mImService == null) {
+	    if (mImManager == null) {
 	        return;
 	    }
-	    if (!IvyNetwork.getInstance().getIvyNetService().getConnectionState().isConnected()) {
+	    if (!mNetworkManager.getConnectionState().isConnected()) {
 	        return;
 	    }
 
-	    mImService.upLine();
+	    mImManager.upLine();
 	}
 
 	private void doSetNetworkState() {
 		if (mSendFragment == null) {
 		    return;
 		}
-		if (!IvyNetwork.getInstance().getIvyNetService().getConnectionState().isConnected()) {
+		if (!mNetworkManager.getConnectionState().isConnected()) {
             mShareFragment.configNetworkDisplay();
 			return;
         }
@@ -386,8 +386,8 @@ public class SendSelectActivity extends IvyFragmentActivityBase {
 		switch(pos) {
 			case POS_SHARE:
 				mShareFragment = (ShareFragment)fragment;
-				/*if (mImService != null) {
-	    			mShareFragment.setService(mImService);
+				/*if (mImManager != null) {
+	    			mShareFragment.setService(mImManager);
 				}*/
 				doSetShareContent();
                 doSetNetworkState();
@@ -398,8 +398,8 @@ public class SendSelectActivity extends IvyFragmentActivityBase {
 				if (mAdapter != null) {
 					mSendFragment.setAdapter(mAdapter);
 				}
-				if (mImService != null) {
-					mSendFragment.setService(mImService);
+				if (mImManager != null) {
+					mSendFragment.setService(mImManager);
 				}
 				doSetShareContent();
 				doSetSendContent();

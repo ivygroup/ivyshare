@@ -38,7 +38,7 @@ public class QuickPersonInfoActivity extends IvyActivityBase {
 							mPerson = LocalSetting.getInstance().getMySelf();
 						} else {
 							String keyString = (String) getIntent().getExtras().get("chatpersonKey");
-							mPerson = mImService.getPerson(keyString);
+							mPerson = mImManager.getPerson(keyString);
 						}
 
 						if (mPerson == null) {

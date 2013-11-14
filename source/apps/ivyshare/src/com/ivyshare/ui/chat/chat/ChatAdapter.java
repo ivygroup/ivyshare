@@ -3,15 +3,6 @@ package com.ivyshare.ui.chat.chat;
 import java.util.Map;
 import java.util.Set;
 
-import com.ivyshare.R;
-import com.ivyshare.engin.control.ChatMessage;
-import com.ivyshare.engin.control.ImService;
-import com.ivyshare.engin.data.Table_Message;
-import com.ivyshare.engin.im.Person;
-import com.ivyshare.ui.chat.abstractchat.AdapterHelper;
-import com.ivyshare.ui.chat.abstractchat.AdapterInterface;
-import com.ivyshare.engin.im.Im.FileType;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
@@ -21,19 +12,28 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ivyshare.R;
+import com.ivyshare.engin.control.ChatMessage;
+import com.ivyshare.engin.control.ImManager;
+import com.ivyshare.engin.data.Table_Message;
+import com.ivyshare.engin.im.Im.FileType;
+import com.ivyshare.engin.im.Person;
+import com.ivyshare.ui.chat.abstractchat.AdapterHelper;
+import com.ivyshare.ui.chat.abstractchat.AdapterInterface;
+
 public class ChatAdapter extends CursorAdapter {
     private static final String TAG = ChatAdapter.class.getSimpleName();
     private Person mPerson;
     private ChatAdapterHelper mAdapterHelper;
-    private ImService mImService;
+    private ImManager mImManager;
 
     public ChatAdapter(Person person, Context context, Cursor cursor,
-            ImService service, Map<Integer, Integer> process, Set<Integer> expand, ListView view) {
+            ImManager imManager, Map<Integer, Integer> process, Set<Integer> expand, ListView view) {
         super(context, cursor, false);
 
         mPerson = person;
-        mImService = service;
-        mAdapterHelper = new ChatAdapterHelper(context, service, process, expand, view);
+        mImManager = imManager;
+        mAdapterHelper = new ChatAdapterHelper(context, imManager, process, expand, view);
     }
 
     @Override
@@ -82,8 +82,8 @@ public class ChatAdapter extends CursorAdapter {
 
     public class ChatAdapterHelper extends AdapterHelper {
         public ChatAdapterHelper (Context context,
-                ImService service, Map<Integer, Integer> process, Set<Integer> expand, ListView view) {
-            super(context, service, process, expand, view);
+                ImManager imManager, Map<Integer, Integer> process, Set<Integer> expand, ListView view) {
+            super(context, imManager, process, expand, view);
         }
 
         protected Person getRemotePerson(ChatMessage message) {
@@ -96,8 +96,8 @@ public class ChatAdapter extends CursorAdapter {
 
         @Override
         protected int deleteMessage(ChatMessage message) {
-            if (mImService != null && mPerson != null) {
-                mImService.deleteMessage(mPerson, message.mId);
+            if (mImManager != null && mPerson != null) {
+                mImManager.deleteMessage(mPerson, message.mId);
                 return 0;
             }
             return -1;
@@ -106,7 +106,7 @@ public class ChatAdapter extends CursorAdapter {
         @Override
         protected int resendMesssage(ChatMessage message) {
 
-			if (mImService == null || mPerson == null) {
+			if (mImManager == null || mPerson == null) {
 				return -1;
 			}
 			if (!mPerson.isOnline()) {
@@ -117,12 +117,12 @@ public class ChatAdapter extends CursorAdapter {
 				return -2;
 			}
 
-            if (mImService != null && mPerson != null && mPerson.isOnline()) {
+            if (mImManager != null && mPerson != null && mPerson.isOnline()) {
                 deleteMessage(message);
                 if (message.mType == FileType.FileType_CommonMsg) {
-                    mImService.sendMessage(mPerson, message.mContent);
+                    mImManager.sendMessage(mPerson, message.mContent);
                 } else {
-                    mImService.sendFile(mPerson, "", message.mContent, message.mType);
+                    mImManager.sendFile(mPerson, "", message.mContent, message.mType);
                 }
                 return 0;
             }

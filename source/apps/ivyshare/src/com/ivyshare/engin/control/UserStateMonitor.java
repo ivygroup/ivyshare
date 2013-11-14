@@ -17,12 +17,12 @@ import com.ivyshare.engin.im.Person;
 public class UserStateMonitor {
     private static final String TAG = "UserStateMonitor";
 
-    private ImService mImService;
+    private ImManager mImManager;
     private String mPackageName;
     private BroadcastReceiver mScreenActionReceiver;
 
-    public UserStateMonitor(ImService imService) {
-        mImService = imService;
+    public UserStateMonitor(ImManager imManager) {
+        mImManager = imManager;
 
         mPackageName = MyApplication.getInstance().getPackageName();
         if (mPackageName == null) {
@@ -34,14 +34,14 @@ public class UserStateMonitor {
             public void onReceive(Context context, Intent intent) {
                 String action = intent.getAction();
                 if (action.equals(Intent.ACTION_SCREEN_OFF)) {
-                    mImService.changeUserState(Im.State_Screen_Off);
+                    mImManager.changeUserState(Im.State_Screen_Off);
                 } else if (action.equals(Intent.ACTION_SCREEN_ON)) {
-                    mImService.changeUserState(Im.State_Idle);
+                    mImManager.changeUserState(Im.State_Idle);
                 } else if (action.equals(Intent.ACTION_USER_PRESENT)) {
                     if (isTopActivity()) {
-                        mImService.changeUserState(Im.State_Active);
+                        mImManager.changeUserState(Im.State_Active);
                     } else {
-                        mImService.changeUserState(Im.State_Idle);
+                        mImManager.changeUserState(Im.State_Idle);
                     }
                 }
             }
@@ -72,7 +72,7 @@ public class UserStateMonitor {
     public void onResumeMyActivity() {
         Person myself = LocalSetting.getInstance().getMySelf();
         if (myself.mState != Im.State_Active) {
-            mImService.changeUserState(Im.State_Active);
+            mImManager.changeUserState(Im.State_Active);
         }
     }
 
@@ -81,9 +81,9 @@ public class UserStateMonitor {
         boolean isTopActivity = isTopActivity();
 
         if (isTopActivity && myself.mState != Im.State_Active) {
-            mImService.changeUserState(Im.State_Active);
+            mImManager.changeUserState(Im.State_Active);
         } else if (!isTopActivity && myself.mState != Im.State_Idle) {
-            mImService.changeUserState(Im.State_Idle);
+            mImManager.changeUserState(Im.State_Idle);
         }
     }
 

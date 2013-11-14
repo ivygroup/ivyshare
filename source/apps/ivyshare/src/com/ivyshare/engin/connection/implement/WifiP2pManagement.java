@@ -1,4 +1,4 @@
-package com.ivyshare.connection.implement;
+package com.ivyshare.engin.connection.implement;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import com.ivyshare.connection.ConnectionState;
-import com.ivyshare.connection.implement.WifiP2pManagerHiddenAPI.WifiP2pHiddenAPI;
+import com.ivyshare.engin.connection.ConnectionState;
+import com.ivyshare.engin.connection.implement.WifiP2pManagerHiddenAPI.WifiP2pHiddenAPI;
 import com.ivyshare.engin.control.LocalSetting;
 
 import android.annotation.TargetApi;

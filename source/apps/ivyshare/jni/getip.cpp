@@ -167,7 +167,7 @@ static JNINativeMethod nativeMethods[] = {
 
 static int registerNativeMethods_GetIP(JNIEnv* env) {
     int result = -1;
-    jclass clazz = env->FindClass("com/ivyshare/connection/implement/ConnectionManagement");
+    jclass clazz = env->FindClass("com/ivyshare/engin/connection/implement/ConnectionManagement");
 
     if (NULL != clazz) {
         if (env->RegisterNatives(clazz, nativeMethods, sizeof(nativeMethods)

@@ -17,12 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ivyshare.R;
-import com.ivyshare.connection.ConnectionState;
-import com.ivyshare.connection.IvyNetService;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.connection.implement.AccessPointInfo;
-import com.ivyshare.constdefines.IvyMessages;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.connection.NetworkManager;
+import com.ivyshare.engin.connection.implement.AccessPointInfo;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.widget.SimpleImageButton;
 
 
@@ -45,8 +42,8 @@ public class IvyRoomData extends ContactDataBase {
     private int mActiveAccessPointIndex;
 
 
-    public IvyRoomData(Context context, ImService imService) {
-        super(context, imService);
+    public IvyRoomData(Context context, ImManager imManager, NetworkManager networkManager) {
+        super(context, imManager, networkManager);
         mAccessPointInfos = new LinkedList<AccessPointInfo>();
         mActiveAccessPointIndex = -1;
     }

@@ -2,23 +2,19 @@ package com.ivyshare.ui.main.contact;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.ivyshare.connection.APInfo;
-import com.ivyshare.connection.ConnectionState;
-import com.ivyshare.connection.IvyNetService;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.connection.PeerInfo;
-import com.ivyshare.connection.implement.AccessPointInfo;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.connection.APInfo;
+import com.ivyshare.engin.connection.ConnectionState;
+import com.ivyshare.engin.connection.NetworkManager;
+import com.ivyshare.engin.connection.PeerInfo;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.engin.im.Person;
 
 public class ContactAdapter extends BaseAdapter {
@@ -39,17 +35,19 @@ public class ContactAdapter extends BaseAdapter {
     }
     private HashMap<Integer, AdapterData> mMapPositionToData;   //
 
-    private ImService mImService = null;
+    private ImManager mImManager = null;
+    private NetworkManager mNetworkManager;
 
 
-    public ContactAdapter(Context context, ImService imService) {
+    public ContactAdapter(Context context, ImManager imManager, NetworkManager networkManager) {
         mContext = context;
-        mHotsPotData = new HotsPotData(context, imService);
+        mHotsPotData = new HotsPotData(context, imManager, networkManager);
         mIvyRoomData2s = new ArrayList<IvyRoomData2>();
-        mWifiP2pDatas = new WifiP2pData(context, imService);
-        mHallData = new HallData(context, imService);
+        mWifiP2pDatas = new WifiP2pData(context, imManager, networkManager);
+        mHallData = new HallData(context, imManager, networkManager);
         mMapPositionToData = new HashMap<Integer, AdapterData>();
-        mImService = imService;
+        mImManager = imManager;
+        mNetworkManager = networkManager;
     }
 
 
@@ -153,7 +151,7 @@ public class ContactAdapter extends BaseAdapter {
                 for (IvyRoomData2 room : mIvyRoomData2s) {
                     room.deactive();
                 }
-                mHallData.active(mImService.getPersonListClone());
+                mHallData.active(mImManager.getPersonListClone());
                 break;
 
         	case ConnectionState.CONNECTION_STATE_WIFI_PUBLIC_DISCONNECTING:
@@ -180,14 +178,13 @@ public class ContactAdapter extends BaseAdapter {
                 mHotsPotData.deactive();
                 mHallData.deactive();
                 if (ssid != null) {
-                    IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-                    if (ivyNetService != null) {
-                        setPointList(ivyNetService.getScanResult());
+                    if (mNetworkManager != null) {
+                        setPointList(mNetworkManager.getScanResult());
                     }
 
                     ContactDataBase room = getIvyRoomBySSID(ssid);
                     if (room != null) {
-                        room.active(mImService.getPersonListClone());
+                        room.active(mImManager.getPersonListClone());
                     }
                 }
             }
@@ -197,7 +194,7 @@ public class ContactAdapter extends BaseAdapter {
 
         		// hotspot
         	case ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLING:
-                mHotsPotData.active(mImService.getPersonListClone());
+                mHotsPotData.active(mImManager.getPersonListClone());
                 for (IvyRoomData2 room : mIvyRoomData2s) {
                     room.deactive();
                 }
@@ -215,7 +212,7 @@ public class ContactAdapter extends BaseAdapter {
                     room.deactive();
                 }
                 mHallData.deactive();
-                mHotsPotData.active(mImService.getPersonListClone());
+                mHotsPotData.active(mImManager.getPersonListClone());
                 break;
 
         	case ConnectionState.CONNECTION_STATE_HOTSPOT_DISABLED:
@@ -235,7 +232,7 @@ public class ContactAdapter extends BaseAdapter {
 
         	case ConnectionState.CONNECTION_STATE_WIFIP2P_CONNECTED:
         	{
-        	    mWifiP2pDatas.active(mImService.getPersonListClone(), ssid);
+        	    mWifiP2pDatas.active(mImManager.getPersonListClone(), ssid);
         	}
         	break;
         	
@@ -274,14 +271,14 @@ public class ContactAdapter extends BaseAdapter {
 
         // 2 build new ivyrooms.
         for (APInfo info: list) {
-            mIvyRoomData2s.add(new IvyRoomData2(mContext, mImService, info));
+            mIvyRoomData2s.add(new IvyRoomData2(mContext, mImManager, mNetworkManager, info));
         }
 
         // 3 find active point.
         if (activeIvyRoomSSID != null) {
             for (IvyRoomData2 ivyRoomData2 : mIvyRoomData2s) {
                 if (ivyRoomData2.getApInfo().getSSID().equals(activeIvyRoomSSID)) {
-                    ivyRoomData2.active(mImService.getPersonListClone());
+                    ivyRoomData2.active(mImManager.getPersonListClone());
                 }
             }
         }

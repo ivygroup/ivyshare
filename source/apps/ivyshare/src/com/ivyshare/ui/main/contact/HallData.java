@@ -1,6 +1,5 @@
 package com.ivyshare.ui.main.contact;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -9,20 +8,17 @@ import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.connection.ConnectionState;
-import com.ivyshare.connection.IvyNetService;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.connection.ConnectionState;
+import com.ivyshare.engin.connection.NetworkManager;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.widget.SimpleImageButton;
@@ -30,8 +26,8 @@ import com.ivyshare.widget.SimpleImageButton;
 public class HallData extends ContactDataBase {
     private static final String TAG = "HallAdapter";
 
-    public HallData(Context context, ImService imService) {
-        super(context, imService);
+    public HallData(Context context, ImManager imManager, NetworkManager networkManager) {
+        super(context, imManager, networkManager);
     }
     
     @Override
@@ -119,8 +115,7 @@ public class HallData extends ContactDataBase {
             }
 
             if (isActive()) {
-                IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-                if (ivyNetService != null) {
+                if (mNetworkManager != null) {
                     // title.mTitle.setText(ivyNetService.getConnectionInfo().getFriendlyName());
                     title.mTitle.setText(R.string.contact_listitem_hall_title);
                 } else {
@@ -260,11 +255,10 @@ public class HallData extends ContactDataBase {
         int wifistate = ConnectionState.CONNECTION_UNKNOWN;
 
         //      2
-        IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-        if (ivyNetService != null) {
-            bIsWifiEnabled = ivyNetService.isWifiEnabled();
-            hotspotstate = ivyNetService.getConnectionState().getHotspotState();
-            wifistate = ivyNetService.getConnectionState().getWifiState();
+        if (mNetworkManager != null) {
+            bIsWifiEnabled = mNetworkManager.isWifiEnabled();
+            hotspotstate = mNetworkManager.getConnectionState().getHotspotState();
+            wifistate = mNetworkManager.getConnectionState().getWifiState();
         }
 
         //      3
@@ -291,24 +285,23 @@ public class HallData extends ContactDataBase {
     }
 
     private void downLineAndCloseOldNetwork() {
-        IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-        if (ivyNetService != null) {
+        if (mNetworkManager != null) {
 
-            if (mImService != null) {
-                mImService.downLine();
+            if (mImManager != null) {
+                mImManager.downLine();
             }
 
-            int hotspotstate = ivyNetService.getConnectionState().getHotspotState();
+            int hotspotstate = mNetworkManager.getConnectionState().getHotspotState();
             if (hotspotstate == ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLED
                     || hotspotstate == ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLING) {
-                ivyNetService.disableHotspot();
+                mNetworkManager.disableHotspot();
                 UserTrace.addTrace(UserTrace.ACTION_DESTROY_ROOM);
             }
 
-            int wifistate = ivyNetService.getConnectionState().getWifiState();
+            int wifistate = mNetworkManager.getConnectionState().getWifiState();
             if (wifistate == ConnectionState.CONNECTION_STATE_WIFI_IVY_CONNECTED
             		|| wifistate == ConnectionState.CONNECTION_STATE_WIFI_IVY_CONNECTING) {
-                ivyNetService.disconnectFromIvyNetwork();
+                mNetworkManager.disconnectFromIvyNetwork();
                 UserTrace.addTrace(UserTrace.ACTION_EXIT_ROOM);
             }
         }

@@ -17,9 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ivyshare.R;
-import com.ivyshare.connection.ConnectionState;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.constdefines.IvyMessages;
+import com.ivyshare.engin.connection.ConnectionState;
+import com.ivyshare.engin.constdefines.IvyMessages;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.util.IvyActivityBase;
 
@@ -40,8 +39,8 @@ public class NetworkSettingActivity extends IvyActivityBase implements OnClickLi
 
 		init();
 		
-		int networkType = IvyNetwork.getInstance().getIvyNetService().getConnectionState().getLastType();
-		int networkStatus = IvyNetwork.getInstance().getIvyNetService().getConnectionState().getLastStateByFast();
+		int networkType = mNetworkManager.getConnectionState().getLastType();
+		int networkStatus = mNetworkManager.getConnectionState().getLastStateByFast();
 		onNetworkChanged(networkType, networkStatus);
     }
 
@@ -55,8 +54,8 @@ public class NetworkSettingActivity extends IvyActivityBase implements OnClickLi
 	@Override
 	public void onResume() {
 		super.onResume();
-		int networkType = IvyNetwork.getInstance().getIvyNetService().getConnectionState().getLastType();
-		int networkStatus = IvyNetwork.getInstance().getIvyNetService().getConnectionState().getLastStateByFast();
+		int networkType = mNetworkManager.getConnectionState().getLastType();
+		int networkStatus = mNetworkManager.getConnectionState().getLastStateByFast();
 		onNetworkChanged(networkType, networkStatus);
 	}
 
@@ -139,8 +138,8 @@ public class NetworkSettingActivity extends IvyActivityBase implements OnClickLi
 				|| state == ConnectionState.CONNECTION_STATE_WIFI_PUBLIC_CONNECTED
 				|| state == ConnectionState.CONNECTION_STATE_WIFI_IVY_CONNECTED
 				) {
-			if (IvyNetwork.getInstance().getIvyNetService() != null) {
-				ssid = IvyNetwork.getInstance().getIvyNetService().getConnectionInfo().getSSID();
+			if (mNetworkManager != null) {
+				ssid = mNetworkManager.getConnectionInfo().getSSID();
 			}
 			if (LocalSetting.getInstance().getMySelf().mIP != null) {
 				ip = LocalSetting.getInstance().getMySelf().mIP.getHostAddress();
@@ -169,7 +168,7 @@ public class NetworkSettingActivity extends IvyActivityBase implements OnClickLi
 				&& state == ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLED) {
 			findViewById(R.id.layoutwifipassword).setVisibility(View.VISIBLE);
 			findViewById(R.id.wifi_password_divider).setVisibility(View.VISIBLE);
-			String password = IvyNetwork.getInstance().getIvyNetService().getConnectionInfo().getIvyHotspotPassword();
+			String password = mNetworkManager.getConnectionInfo().getIvyHotspotPassword();
 			if (null != password) {
 				((TextView)findViewById(R.id.wifi_password)).setText(password);
 			}

@@ -2,14 +2,11 @@ package com.ivyshare.engin.control;
 
 import java.util.List;
 
-import android.app.Service;
-import android.content.Intent;
 import android.database.Cursor;
-import android.os.Binder;
-import android.os.IBinder;
 import android.util.Log;
 
-import com.ivyshare.constdefines.IvyMessages;
+import com.ivyshare.MyApplication;
+import com.ivyshare.engin.constdefines.IvyMessages;
 import com.ivyshare.engin.control.SessionMessages.SessionMessage;
 import com.ivyshare.engin.data.ImData;
 import com.ivyshare.engin.data.Table_Message;
@@ -19,8 +16,8 @@ import com.ivyshare.engin.im.ImFactory;
 import com.ivyshare.engin.im.Person;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.trace.UserTraceManager;
-public class ImService extends Service {
-    private static final String TAG = "ImService";
+public class ImManager {
+    private static final String TAG = "ImManager";
 
     private Im mIm;
     private ImData mImData;
@@ -30,26 +27,10 @@ public class ImService extends Service {
     private SessionMessages mSessionMessages;
     private ImListener mImListener;
     private DaemonNotifaction mDaemonNotifaction;
-
-    // This is the object that receives interactions from clients.    See
-    // RemoteService for a more complete example.
-    private final IBinder mBinder = new LocalBinder();
-
     private UserStateMonitor mUserStateMonitor;
 
-    public class LocalBinder extends Binder {
-        public LocalBinder() {
-            Log.d(TAG, "LocalBinder construct");
-        }
 
-        public ImService getService() {
-            Log.d(TAG, "get Service called.");
-            return ImService.this;
-        }
-    }
-
-    @Override 
-    public void onCreate() { 
+    public ImManager() { 
         Log.d(TAG, "onCreate");
         UserTrace.addTrace(UserTrace.ACTION_ENTER_APP);
 
@@ -75,12 +56,11 @@ public class ImService extends Service {
 
         mUserStateMonitor = new UserStateMonitor(this);
 
-        UserTraceManager.getInstance().init(getBaseContext());
+        UserTraceManager.getInstance().init(MyApplication.getInstance());
     }
 
-    @Override 
-    public void onDestroy() {
-        Log.d(TAG, "onDestroy");
+    public void release() {
+        Log.d(TAG, "release");
         UserTrace.addTrace(UserTrace.ACTION_EXIT_APP);
         mDaemonNotifaction.release();
         mDaemonNotifaction = null;
@@ -94,25 +74,6 @@ public class ImService extends Service {
 
         UserTraceManager.getInstance().unInit();
     }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "onStartCommand");
-        return 0;
-    }
-
-    @Override 
-    public IBinder onBind(Intent intent) {
-        Log.d(TAG, "onBind");
-        return mBinder; 
-    }
-
-    @Override
-    public boolean onUnbind(Intent intent) {
-        Log.d(TAG, "onUnBind");
-        return true;
-    }
-
 
     // interface for Im
     public void upLine() {
@@ -244,7 +205,11 @@ public class ImService extends Service {
             mUserStateMonitor.checkMyActive();
         }
     }
-    
+
+    public void destroyUserStateMonitor() {
+        mUserStateMonitor = null;
+    }
+
     //
     public ImListener getImListener() {
         return mImListener;

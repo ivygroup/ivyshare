@@ -13,8 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ivyshare.R;
-import com.ivyshare.connection.PeerInfo;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.connection.NetworkManager;
+import com.ivyshare.engin.connection.PeerInfo;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.engin.im.Person;
 import com.ivyshare.widget.SimpleImageButton;
 
@@ -24,8 +25,8 @@ public class WifiP2pData extends ContactDataBase {
     private List<WifiP2pItem> mItems;
     private Map<Integer, MyItem> mMapItemPosition;
 
-    public WifiP2pData(Context context, ImService imService) {
-        super(context, imService);
+    public WifiP2pData(Context context, ImManager imManager, NetworkManager networkManager) {
+        super(context, imManager, networkManager);
         mItems = new LinkedList<WifiP2pItem>();
         mMapItemPosition = new HashMap<Integer, WifiP2pData.MyItem>();
     }
@@ -70,7 +71,7 @@ public class WifiP2pData extends ContactDataBase {
 
         for (int i = 0; i < newInfoExist.size(); ++i) {
             if (newInfoExist.get(i).equals(false)) {
-                WifiP2pItem item = new WifiP2pItem(mContext, mImService, list.get(i));
+                WifiP2pItem item = new WifiP2pItem(mContext, mImManager, mNetworkManager, list.get(i));
                 mItems.add(item);
             }
         }

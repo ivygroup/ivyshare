@@ -11,21 +11,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ivyshare.R;
-import com.ivyshare.connection.APInfo;
-import com.ivyshare.connection.ConnectionState;
-import com.ivyshare.connection.IvyNetService;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.connection.implement.AccessPointInfo;
-import com.ivyshare.constdefines.IvyMessages;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.connection.APInfo;
+import com.ivyshare.engin.connection.ConnectionState;
+import com.ivyshare.engin.connection.NetworkManager;
+import com.ivyshare.engin.constdefines.IvyMessages;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.widget.SimpleImageButton;
 
 public class IvyRoomData2 extends ContactDataBase {
     private APInfo mApInfo;
 
-    public IvyRoomData2(Context context, ImService imService, APInfo apinfo) {
-        super(context, imService);
+    public IvyRoomData2(Context context, ImManager imManager, NetworkManager networkManager, APInfo apinfo) {
+        super(context, imManager, networkManager);
         mApInfo = apinfo;
     }
 
@@ -191,28 +189,27 @@ public class IvyRoomData2 extends ContactDataBase {
                         return;
                     }
 
-                    IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-                    if (ivyNetService != null) {
+                    if (mNetworkManager != null) {
                         /*if (ivyNetService.getConnectionInfo().isBusying()) {
                             return;
                         }*/
 
-                        if (mImService != null) {
-                            mImService.downLine();
+                        if (mImManager != null) {
+                            mImManager.downLine();
                         }
-                        int state = ivyNetService.getConnectionState().getHotspotState();
+                        int state = mNetworkManager.getConnectionState().getHotspotState();
                         if (state == ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLED
                                 || state == ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLING) {
-                            ivyNetService.disableHotspot();
+                            mNetworkManager.disableHotspot();
                         }
 
-                        state = ivyNetService.getConnectionState().getWifiState();
+                        state = mNetworkManager.getConnectionState().getWifiState();
                         if (state == ConnectionState.CONNECTION_STATE_WIFI_IVY_CONNECTED
                                 || state == ConnectionState.CONNECTION_STATE_WIFI_IVY_CONNECTING) {
-                            ivyNetService.disconnectFromIvyNetwork();
+                            mNetworkManager.disconnectFromIvyNetwork();
                         }
 
-                        ivyNetService.connectIvyNetwork(myClass.mApInfo.getSSID());
+                        mNetworkManager.connectIvyNetwork(myClass.mApInfo.getSSID());
                         IvyMessages.sendNetworkStateChange(ConnectionState.CONNECTION_TYPE_WIFI,
                         		ConnectionState.CONNECTION_STATE_WIFI_IVY_CONNECTING,
                         		myClass.mApInfo.getSSID());

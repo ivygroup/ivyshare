@@ -1,26 +1,22 @@
 package com.ivyshare.ui.main.contact;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.connection.ConnectionState;
-import com.ivyshare.connection.IvyNetService;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.constdefines.IvyMessages;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.connection.ConnectionState;
+import com.ivyshare.engin.connection.NetworkManager;
+import com.ivyshare.engin.constdefines.IvyMessages;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.widget.SimpleImageButton;
@@ -28,8 +24,8 @@ import com.ivyshare.widget.SimpleImageButton;
 public class HotsPotData extends ContactDataBase {
     private static final String TAG = "HotsPotAdapter";
 
-    public HotsPotData(Context context, ImService imService) {
-        super(context, imService);
+    public HotsPotData(Context context, ImManager imManager, NetworkManager networkManager) {
+        super(context, imManager, networkManager);
     }
 
     @Override
@@ -188,24 +184,23 @@ public class HotsPotData extends ContactDataBase {
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog,int which) {
-								IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-					            if (ivyNetService != null) {
+					            if (mNetworkManager != null) {
 					                /*if (ivyNetService.getConnectionInfo().isBusying()) {
 					                    return;
 					                }*/
 
-					                if (mImService != null) {
-					                    mImService.downLine();
+					                if (mImManager != null) {
+					                    mImManager.downLine();
 					                }
-					                int state = ivyNetService.getConnectionState().getWifiState();
+					                int state = mNetworkManager.getConnectionState().getWifiState();
 					                if (state == ConnectionState.CONNECTION_STATE_WIFI_IVY_CONNECTED
 					                        || state == ConnectionState.CONNECTION_STATE_WIFI_IVY_CONNECTING) {
-					                    ivyNetService.disconnectFromIvyNetwork();
+					                    mNetworkManager.disconnectFromIvyNetwork();
 					                }
 					                IvyMessages.sendNetworkStateChange(ConnectionState.CONNECTION_TYPE_HOTSPOT,
 					                		ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLING,
 					                		null);
-					                ivyNetService.createHotspot();
+					                mNetworkManager.createHotspot();
 					                IvyMessages.sendNetworkClearIvyRoom();
 					                UserTrace.addTrace(UserTrace.ACTION_CREATE_ROOM);
 					            }

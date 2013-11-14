@@ -4,8 +4,6 @@ import com.ivyshare.engin.im.Im.FileType;
 import com.ivyshare.engin.im.simpleimp.protocol.ImMessages;
 import com.ivyshare.engin.im.simpleimp.protocol.VersionControl;
 
-import android.util.Log;
-
 //fileID:filename:size:mtime:fileattr[:extend-attr=val1
 //[,val2...][:extend-attr2=...]]:\a:fileID...
 //(size, mtime, and fileattr describe hex format.

@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ivyshare.R;
-import com.ivyshare.constdefines.IvyMessages;
+import com.ivyshare.engin.constdefines.IvyMessages;
 import com.ivyshare.engin.control.PersonManager;
 import com.ivyshare.engin.data.Table_Message;
 import com.ivyshare.engin.im.Im.FileType;
@@ -45,8 +45,8 @@ public class ChatActivity extends AbstractChatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                if (mKeyString != null && mImService != null
-                        && mImService.getPerson(mKeyString) != null) {
+                if (mKeyString != null && mImManager != null
+                        && mImManager.getPerson(mKeyString) != null) {
                     intent.putExtra("chatpersonKey", mKeyString);
                     intent.setClass(ChatActivity.this, QuickPersonInfoActivity.class);
                     startActivity(intent);
@@ -80,10 +80,10 @@ public class ChatActivity extends AbstractChatActivity {
     }
 
     private boolean updatePersonState() {
-        if (mImService == null) {
+        if (mImManager == null) {
             return false;
         }
-        mPerson = mImService.getPerson(mKeyString);
+        mPerson = mImManager.getPerson(mKeyString);
         if (mPerson == null) {
             return false;
         }
@@ -108,9 +108,9 @@ public class ChatActivity extends AbstractChatActivity {
 
     @Override
     protected AdapterInterface createAdapter() {
-        mCursor = mImService.getPersonHistoryMessage(mPerson);
+        mCursor = mImManager.getPersonHistoryMessage(mPerson);
         mAdapter = new ChatAdapter(mPerson, ChatActivity.this, 
-                mCursor, mImService, mMapFileProcess, mSetExpandMessage, mListView);
+                mCursor, mImManager, mMapFileProcess, mSetExpandMessage, mListView);
         mListView.setAdapter(mAdapter);
         return mAdapter.getAdapterInterface();
     }
@@ -125,14 +125,14 @@ public class ChatActivity extends AbstractChatActivity {
 
     @Override
     protected void clearUnReadMessage() {
-        if (mImService != null && mPerson != null) {
-            mImService.clearUnReadMessage(mPerson);
+        if (mImManager != null && mPerson != null) {
+            mImManager.clearUnReadMessage(mPerson);
         }
     }
 
     @Override
     protected int SendMessage(FileType type, String content) {
-        if (mImService == null || mPerson == null) {
+        if (mImManager == null || mPerson == null) {
             return -1;
         }
         if (!mPerson.isOnline()) {
@@ -141,16 +141,16 @@ public class ChatActivity extends AbstractChatActivity {
         }
         UserTrace.addSendTrace(UserTrace.ACTION_SENDMESSAGE, type.ordinal(), UserTrace.ONE2ONE_CHAT);
         if (type == FileType.FileType_CommonMsg) {
-            mImService.sendMessage(mPerson, content);
+            mImManager.sendMessage(mPerson, content);
         } else {
-            mImService.sendFile(mPerson, "", content, type);
+            mImManager.sendFile(mPerson, "", content, type);
         }
         return 0;
     }
     
     @Override
     protected int SendMessage(FileType type, ArrayList<String> content) {
-        if (mImService == null || mPerson == null) {
+        if (mImManager == null || mPerson == null) {
             return -1;
         }
         if (!mPerson.isOnline()) {
@@ -159,7 +159,7 @@ public class ChatActivity extends AbstractChatActivity {
         }
 		for (int i = 0; i < content.size(); i++) {
 			UserTrace.addSendTrace(UserTrace.ACTION_SENDMESSAGE, type.ordinal(), UserTrace.ONE2ONE_CHAT);
-			mImService.sendFile(mPerson, "", content.get(i), type);
+			mImManager.sendFile(mPerson, "", content.get(i), type);
 		}
         return 0;
     }
@@ -189,14 +189,14 @@ public class ChatActivity extends AbstractChatActivity {
     @SuppressLint("NewApi")
     @Override
     protected void changeData() {
-        if (mImService == null) {
+        if (mImManager == null) {
             return;
         }
 
         if (mCursor != null) {
             mCursor.close();
         }
-        mCursor = mImService.getPersonHistoryMessage(mPerson);
+        mCursor = mImManager.getPersonHistoryMessage(mPerson);
         if (mSDKVersion < mMinSDK) {
             mAdapter.changeCursor(mCursor);
             mAdapter.notifyDataSetChanged();
@@ -212,16 +212,16 @@ public class ChatActivity extends AbstractChatActivity {
 
     @Override
     protected void recoverMessage() {
-        if (mImService != null && mPerson != null) {
-            mImService.recoverMessage(mPerson, mMessage.mType, mMessage.mContent, 
+        if (mImManager != null && mPerson != null) {
+            mImManager.recoverMessage(mPerson, mMessage.mType, mMessage.mContent, 
                     mMessage.mDirect == Table_Message.DIRECT_LOCALUSER, mMessage.mTime, mMessage.mState);
         }
     }
 
     @Override
     protected void deleteMesssages() {
-        if (mImService != null && mPerson != null) {
-            mImService.deleteMessage(mPerson);
+        if (mImManager != null && mPerson != null) {
+            mImManager.deleteMessage(mPerson);
             UserTrace.addTrace(UserTrace.ACTION_DELETE_CHAT);
         }
     }

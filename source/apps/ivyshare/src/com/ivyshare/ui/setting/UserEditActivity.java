@@ -14,11 +14,9 @@ import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
@@ -28,8 +26,6 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Profile;
 import android.provider.MediaStore;
@@ -52,8 +48,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ivyshare.R;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.constdefines.IvyMessages;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
 import com.ivyshare.engin.im.Person;
@@ -218,9 +212,9 @@ public class UserEditActivity extends IvyActivityBase implements OnClickListener
 			mLocalSetting.saveGroupName(groupName);
 			mLocalSetting.saveNickName(nickName);
 			mLocalSetting.saveSignContent(signature);
-			if (mImService != null) {
-                mImService.getDaemonNotifaction().startBackgroundNotificationIfNeed();
-                mImService.absence();
+			if (mImManager != null) {
+			    mImManager.getDaemonNotifaction().startBackgroundNotificationIfNeed();
+			    mImManager.absence();
             }
 		}
 	}
@@ -386,9 +380,9 @@ public class UserEditActivity extends IvyActivityBase implements OnClickListener
 
 						mImagePhoto.setImageBitmap(bitmap);
 						imageleft.setImageBitmap(bitmap);
-                        if (mImService != null) {
-                            mImService.absence();
-                            mImService.sendHeadIcon();
+                        if (mImManager != null) {
+                            mImManager.absence();
+                            mImManager.sendHeadIcon();
                         }
 					}
 				} else {
@@ -429,7 +423,7 @@ public class UserEditActivity extends IvyActivityBase implements OnClickListener
 		if (mIsInited) {
 			saveChanges();
 		} else {
-			mImService = null;
+			mImManager = null;
 			super.onBackPressed();
 		}
 	}
@@ -461,9 +455,9 @@ public class UserEditActivity extends IvyActivityBase implements OnClickListener
                 		}
 
                         mImagePhoto.setImageBitmap(bitmap);
-                        if (mImService != null) {
-                            mImService.absence();
-                            mImService.sendHeadIcon();
+                        if (mImManager != null) {
+                            mImManager.absence();
+                            mImManager.sendHeadIcon();
                         }
                     }
 				// if edittext is visible and modify photo, left button src don't change
@@ -483,9 +477,9 @@ public class UserEditActivity extends IvyActivityBase implements OnClickListener
                 	String content = data.getExtras().getString("EditResult");
                 	mTextNickName.setText(content);
                 	mLocalSetting.saveNickName(content);
-                	if (mImService != null) {
-                	    mImService.absence();
-                	    mImService.getDaemonNotifaction().startBackgroundNotificationIfNeed();
+                	if (mImManager != null) {
+                	    mImManager.absence();
+                	    mImManager.getDaemonNotifaction().startBackgroundNotificationIfNeed();
                 	}
                 	break;
                 }
@@ -493,8 +487,8 @@ public class UserEditActivity extends IvyActivityBase implements OnClickListener
                 	String content = data.getExtras().getString("EditResult");
                 	mTextGroupName.setText(content);
                 	mLocalSetting.saveGroupName(content);
-                	if (mImService != null) {
-                	    mImService.absence();
+                	if (mImManager != null) {
+                	    mImManager.absence();
                 	}
                 	break;
                 }
@@ -502,8 +496,8 @@ public class UserEditActivity extends IvyActivityBase implements OnClickListener
                 	String content = data.getExtras().getString("EditResult");
                 	mTextSign.setText(content);
                 	mLocalSetting.saveSignContent(content);
-                	if (mImService != null) {
-                	    mImService.absence();
+                	if (mImManager != null) {
+                	    mImManager.absence();
                 	}
                 	break;
                 }
@@ -594,9 +588,9 @@ public class UserEditActivity extends IvyActivityBase implements OnClickListener
 					mLocalSetting.saveImageName(mDefaultAvatars[arg2]);
 					CommonUtils.getPersonPhoto(imageleft, mDefaultAvatars[arg2]);
 					CommonUtils.getPersonPhoto(mImagePhoto, mDefaultAvatars[arg2]);
-					if (mImService != null) {
-						mImService.absence();
-						mImService.sendHeadIcon();
+					if (mImManager != null) {
+						mImManager.absence();
+						mImManager.sendHeadIcon();
 					}
 				}
 

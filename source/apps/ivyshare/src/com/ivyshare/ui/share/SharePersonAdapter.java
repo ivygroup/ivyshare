@@ -10,8 +10,8 @@ import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -19,10 +19,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ivyshare.R;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.control.PersonManager;
 import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
+import com.ivyshare.engin.control.PersonManager;
 import com.ivyshare.engin.im.Person;
 import com.ivyshare.ui.main.QuickPersonInfoActivity;
 import com.ivyshare.util.CommonUtils;
@@ -34,13 +34,13 @@ public class SharePersonAdapter extends BaseAdapter {
         private List<Person> mListPersons;
         private List<Person> mListSelectPersons = null;
         
-        private ImService mImService = null;
+        private ImManager mImManager = null;
 
-        public SharePersonAdapter(Context context, List<Person> listPersons, ImService imService) {
+        public SharePersonAdapter(Context context, List<Person> listPersons, ImManager imManager) {
             
             Log.d(TAG, "PersonAdapter construct");
             mContext = context;
-            mImService = imService;
+            mImManager = imManager;
 
             mListPersons = listPersons;
             
@@ -202,7 +202,7 @@ public class SharePersonAdapter extends BaseAdapter {
                 
                 key = PersonManager.getPersonKey((Person)mListPersons.get(position));
                 
-                if (key != null && mImService != null && mImService.getPerson(key) != null) {
+                if (key != null && mImManager != null && mImManager.getPerson(key) != null) {
                     intent.putExtra("chatpersonKey", key);
                     intent.setClass(mContext, QuickPersonInfoActivity.class);
                     mContext.startActivity(intent);

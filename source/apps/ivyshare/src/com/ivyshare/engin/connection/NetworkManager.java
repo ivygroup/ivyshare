@@ -1,4 +1,4 @@
-package com.ivyshare.connection;
+package com.ivyshare.engin.connection;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -7,43 +7,31 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.Binder;
-import android.os.IBinder;
 import android.util.Log;
 
 import com.ivyshare.MyApplication;
-import com.ivyshare.connection.implement.AccessPointInfo;
-import com.ivyshare.connection.implement.ConnectionManagement;
-import com.ivyshare.connection.implement.ConnectionStateListener;
-import com.ivyshare.constdefines.IvyMessages;
+import com.ivyshare.engin.connection.implement.AccessPointInfo;
+import com.ivyshare.engin.connection.implement.ConnectionManagement;
+import com.ivyshare.engin.connection.implement.ConnectionStateListener;
+import com.ivyshare.engin.constdefines.IvyMessages;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.engin.im.Person;
 import com.ivyshare.trace.UserTraceManager;
 
-public class IvyNetService extends Service implements ConnectionStateListener {
-    private static final String TAG = "IvyNetService";
+public class NetworkManager implements ConnectionStateListener {
+    private static final String TAG = "NetworkManager";
     private static final Boolean gIsOpenWifiP2p = false;
 
-    // This is the object that receives interactions from clients.    See
-    // RemoteService for a more complete example.
-    private final IBinder mBinder = new LocalBinder();
+    private ConnectionState mCurrentState;
+    private List<APInfo> mScanResult;
+    private List<PeerInfo> mDiscoveredPeers;
+    private ConnectionManagement mConnectionManagement;
+    private InetAddress mMySelfIpOfWifiP2p;
+    private int mMySelfNetMaskOfWifiP2p;
 
-    public class LocalBinder extends Binder {
-        public LocalBinder() {
-            Log.d(TAG, "LocalBinder construct");
-        }
 
-        public IvyNetService getService() {
-            Log.d(TAG, "get Service called.");
-            return IvyNetService.this;
-        }
-    }
-
-    @Override 
-    public void onCreate() {
-        Log.d(TAG, "onCreate");
+    public NetworkManager() {
+        Log.d(TAG, "NetworkManager");
         mCurrentState = new ConnectionState();
         mScanResult = new ArrayList<APInfo>();
         mDiscoveredPeers = new ArrayList<PeerInfo>();
@@ -54,7 +42,6 @@ public class IvyNetService extends Service implements ConnectionStateListener {
         }
         if (mConnectionManagement != null) {
             mConnectionManagement.registerListener(this, this);
-            IvyNetwork.getInstance().init(this);
 
             int state = mConnectionManagement.getConnectionInfo().getConnectionState();
             updateCurrentState(state);
@@ -67,12 +54,17 @@ public class IvyNetService extends Service implements ConnectionStateListener {
             List<AccessPointInfo> infos = mConnectionManagement.getScanResult();
             updateScanResult(infos, mScanResult);
         }
+        
+        if (mConnectionManagement != null) {
+            mConnectionManagement.startScan();
+            if (gIsOpenWifiP2p) {
+                mConnectionManagement.wifiP2pStartDiscovery();
+            }
+        }
     }
 
-    @Override 
-    public void onDestroy() {
-        Log.d(TAG, "onDestroy");
-        IvyNetwork.getInstance().uninit();
+    public void release() {
+        Log.d(TAG, "release");
 
         if (mConnectionManagement != null) {
             mConnectionManagement.disconnectFromIvyNetwork();
@@ -86,39 +78,6 @@ public class IvyNetService extends Service implements ConnectionStateListener {
             mConnectionManagement = null;
         }
     }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "onStartCommand");
-        if (mConnectionManagement != null) {
-            mConnectionManagement.startScan();
-            if (gIsOpenWifiP2p) {
-                mConnectionManagement.wifiP2pStartDiscovery();
-            }
-        }
-        return 0;
-    }
-    
-
-    @Override 
-    public IBinder onBind(Intent intent) {
-        Log.d(TAG, "onBind");
-        return mBinder; 
-    }
-
-    @Override
-    public boolean onUnbind(Intent intent) {
-        Log.d(TAG, "onUnBind");
-        return true;
-    }
-
-
-    private ConnectionState mCurrentState;
-    private List<APInfo> mScanResult;
-    private List<PeerInfo> mDiscoveredPeers;
-    private ConnectionManagement mConnectionManagement;
-    private InetAddress mMySelfIpOfWifiP2p;
-    private int mMySelfNetMaskOfWifiP2p;
 
 
 
@@ -521,7 +480,7 @@ public class IvyNetService extends Service implements ConnectionStateListener {
         mySelf.mMac = mConnectionManagement.getConnectionInfo().getMacAddress();
         LocalSetting.getInstance().setBroadCastAddress(mConnectionManagement.getBroadcastAddress());
 
-        UserTraceManager.getInstance().init(getBaseContext());
+        UserTraceManager.getInstance().init(MyApplication.getInstance());
         UserTraceManager.getInstance().startUploadTrace();
 
         new Thread(new Runnable(){

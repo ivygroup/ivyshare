@@ -84,20 +84,10 @@
         </activity>
 
         <service
-            android:name="com.ivyshare.engin.control.ImService"
+            android:name="com.ivyshare.engin.IvyService"
             android:exported="false" >
             <intent-filter>
-                <action android:name="com.ivyshare.IMSERVICE_START" />
-
-                <category android:name="android.intent.category.default" />
-            </intent-filter>
-        </service>
-        <service
-            android:name="com.ivyshare.connection.IvyNetService"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="com.ivyshare.IVYNETWORKSERVICE_START" />
-
+                <action android:name="com.ivyshare.IVYSERVICE_START" />
                 <category android:name="android.intent.category.default" />
             </intent-filter>
         </service>

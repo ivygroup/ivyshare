@@ -1,10 +1,8 @@
 package com.ivyshare.ui.main.contact;
 
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.util.List;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -19,10 +17,9 @@ import android.widget.TextView;
 
 import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.connection.IvyNetService;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.connection.PeerInfo;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.connection.NetworkManager;
+import com.ivyshare.engin.connection.PeerInfo;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
 import com.ivyshare.engin.control.PersonManager;
@@ -35,8 +32,8 @@ public class WifiP2pItem extends ContactDataBase {
     private PeerInfo mPeerInfo;
     private Person mPerson;
     
-    public WifiP2pItem(Context context, ImService imService, PeerInfo peerInfo) {
-        super(context, imService);
+    public WifiP2pItem(Context context, ImManager imManager, NetworkManager networkManager, PeerInfo peerInfo) {
+        super(context, imManager, networkManager);
         mPeerInfo = peerInfo;
         mPerson = null;
     }
@@ -233,9 +230,8 @@ public class WifiP2pItem extends ContactDataBase {
 
                     case CURRENT_STATUS_BUSY:
                     {
-                        IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-                        if (ivyNetService != null) {
-                            ivyNetService.cancelConnectWifiP2p();
+                        if (mNetworkManager != null) {
+                            mNetworkManager.cancelConnectWifiP2p();
                             deactive();
                         }
                         break;
@@ -265,9 +261,8 @@ public class WifiP2pItem extends ContactDataBase {
 
                     case CURRENT_STATUS_DEACTIVE:
                     {
-                        IvyNetService ivyNetService = IvyNetwork.getInstance().getIvyNetService();
-                        if (ivyNetService != null) {
-                            ivyNetService.connectToWifiP2pPeer(myitem.mWifiP2pItem.mPeerInfo.getID());
+                        if (mNetworkManager != null) {
+                            mNetworkManager.connectToWifiP2pPeer(myitem.mWifiP2pItem.mPeerInfo.getID());
                         }
                         break;
                     }
@@ -301,8 +296,8 @@ public class WifiP2pItem extends ContactDataBase {
     public void active(List<Person> persons) {
         super.active(persons);
 
-        InetAddress myselfIP = IvyNetwork.getInstance().getIvyNetService().getMySelfIpOfWifiP2p();
-        int myselfMask = IvyNetwork.getInstance().getIvyNetService().getNetMaskOfWifiP2p();
+        InetAddress myselfIP = mNetworkManager.getMySelfIpOfWifiP2p();
+        int myselfMask = mNetworkManager.getNetMaskOfWifiP2p();
 
         for (Person person : mListPersons) {
             if (isSameNetRange(myselfMask, myselfIP, person.mIP)) {

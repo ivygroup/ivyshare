@@ -1,4 +1,4 @@
-package com.ivyshare.connection;
+package com.ivyshare.engin.connection;
 
 public class ConnectionState {
 	public static final int CONNECTION_UNKNOWN = 0;

@@ -3,18 +3,6 @@ package com.ivyshare.ui.main;
 import java.sql.Date;
 import java.util.List;
 
-import com.ivyshare.R;
-import com.ivyshare.engin.control.ImService;
-import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.control.PersonManager;
-import com.ivyshare.engin.control.SessionMessages;
-import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
-import com.ivyshare.engin.control.SessionMessages.SessionMessage;
-import com.ivyshare.engin.im.Im.FileType;
-import com.ivyshare.ui.chat.chat.ChatActivity;
-import com.ivyshare.ui.chat.groupchat.GroupChatActivity;
-import com.ivyshare.util.CommonUtils;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -29,17 +17,29 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ivyshare.R;
+import com.ivyshare.engin.control.ImManager;
+import com.ivyshare.engin.control.LocalSetting;
+import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
+import com.ivyshare.engin.control.PersonManager;
+import com.ivyshare.engin.control.SessionMessages;
+import com.ivyshare.engin.control.SessionMessages.SessionMessage;
+import com.ivyshare.engin.im.Im.FileType;
+import com.ivyshare.ui.chat.chat.ChatActivity;
+import com.ivyshare.ui.chat.groupchat.GroupChatActivity;
+import com.ivyshare.util.CommonUtils;
+
 public class SessionAdapter extends BaseAdapter implements OnClickListener{
 	private static final String TAG = SessionAdapter.class.getSimpleName();
 
 	private Context mContext;
 	private List<SessionMessage> mListSessionMessages;
-	private ImService mImService = null;
+	private ImManager mImManager = null;
 
-	public SessionAdapter(Context context, List<SessionMessage> list, ImService imService) {
+	public SessionAdapter(Context context, List<SessionMessage> list, ImManager imManager) {
 		mContext = context;
 		mListSessionMessages = list;
-		mImService = imService;
+		mImManager = imManager;
 	}
 
 	public void ChangeList(List<SessionMessage> list) {
@@ -245,8 +245,8 @@ public class SessionAdapter extends BaseAdapter implements OnClickListener{
 		} else {
 			String key = PersonManager.getPersonKey(mListSessionMessages
 					.get(myClass.position).mPerson);
-			if (key != null && mImService != null
-					&& mImService.getPerson(key) != null) {
+			if (key != null && mImManager != null
+					&& mImManager.getPerson(key) != null) {
 				Intent intent = new Intent();
 				intent.putExtra("chatpersonKey", key);
 				intent.setClass(mContext,targetActivity);

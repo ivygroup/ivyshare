@@ -4,7 +4,6 @@ import java.util.Hashtable;
 import java.util.List;
 
 import android.app.Activity;
-import android.text.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,6 +13,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.ClipboardManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,16 +33,15 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.ivyshare.R;
-import com.ivyshare.connection.ConnectionState;
-import com.ivyshare.connection.IvyNetwork;
-import com.ivyshare.engin.control.ImService;
+import com.ivyshare.engin.connection.ConnectionState;
+import com.ivyshare.engin.connection.NetworkManager;
+import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.httpserver.HttpServer;
 import com.ivyshare.httpserver.HttpServerManager;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.ui.setting.BasePopMenuAdapter;
 import com.ivyshare.widget.SimplePopMenu;
-import com.ivyshare.widget.SimplePopMenu.OnPopMenuItemClickListener;
 
 public class ShareFragment extends Fragment implements OnClickListener, OnLongClickListener {
 	private static final String TAG = ShareFragment.class.getSimpleName();
@@ -62,7 +61,8 @@ public class ShareFragment extends Fragment implements OnClickListener, OnLongCl
     private LinearLayout mWlanLayout;
     
     private View mRootView = null;
-    private ImService mImService = null;
+    private ImManager mImManager = null;
+    private NetworkManager mNetworkManager = null;
     private SimplePopMenu mPopMenu;
     private ShareMenuAdapter mShareMenuAdapter;
     //private View mShareButton;
@@ -187,23 +187,27 @@ public class ShareFragment extends Fragment implements OnClickListener, OnLongCl
     	}
     }
     
-    public void setService(ImService service) {
-        mImService = service;
+    public void setImManager(ImManager imManager) {
+        mImManager = imManager;
         
         if( mShareFilePath != null && isSave == false ){
-            mImService.saveFreeShare( ShareType.getFileType(mShareFileType), mShareFilePath);
+            mImManager.saveFreeShare( ShareType.getFileType(mShareFileType), mShareFilePath);
             isSave = true;
         }
     }
     
+	public void setNetworkManager(NetworkManager networkManager) {
+    	mNetworkManager = networkManager;
+    }
+	
     public void setShareContent( String path, int type){
         
         mShareFileType = type;
         mShareFilePath = path;
         mShareFileDisplayName = mShareFilePath.substring(mShareFilePath.lastIndexOf('/'));
         
-        if( mImService != null && isSave == false ){
-            mImService.saveFreeShare( ShareType.getFileType(mShareFileType), mShareFilePath);
+        if( mImManager != null && isSave == false ){
+            mImManager.saveFreeShare( ShareType.getFileType(mShareFileType), mShareFilePath);
             isSave = true;
         }
         
@@ -221,7 +225,7 @@ public class ShareFragment extends Fragment implements OnClickListener, OnLongCl
     
     public void configNetworkDisplay(){
 
-        int networkStatus = IvyNetwork.getInstance().getIvyNetService().getConnectionState().getLastStateByFast();
+        int networkStatus = mNetworkManager.getConnectionState().getLastStateByFast();
         if( networkStatus == ConnectionState.CONNECTION_UNKNOWN ||
         		networkStatus == ConnectionState.CONNECTION_STATE_HOTSPOT_DISABLING ||
         				networkStatus == ConnectionState.CONNECTION_STATE_WIFI_DISCONNECTED)
@@ -234,15 +238,15 @@ public class ShareFragment extends Fragment implements OnClickListener, OnLongCl
             View viesWifiPassword = (View)mRootView.findViewById(R.id.layoutwifipassword);
             viesWifiPassword.setVisibility(View.VISIBLE);
 
-            String password = IvyNetwork.getInstance().getIvyNetService().getConnectionInfo().getIvyHotspotPassword();
+            String password = mNetworkManager.getConnectionInfo().getIvyHotspotPassword();
             if( password != null ){
                 TextView textWifiPassword = (TextView)mRootView.findViewById(R.id.wifi_password);
                 textWifiPassword.setText(password);
             }
             
         }
-        
-        String mSSID = IvyNetwork.getInstance().getIvyNetService().getConnectionInfo().getSSID(); 
+
+        String mSSID = mNetworkManager.getConnectionInfo().getSSID(); 
         if( mSSID != null ){
             TextView textWifiName = (TextView)mRootView.findViewById(R.id.wifi_name);
             textWifiName.setText(mSSID);
@@ -295,7 +299,7 @@ public class ShareFragment extends Fragment implements OnClickListener, OnLongCl
         /*if (!IvyNetwork.getInstance().getIvyNetService().getConnectionState().isConnected()) {
             return;
         }*/
-        if (mImService == null) {
+        if (mImManager == null) {
             return;
         }
         if (mListPath == null || mListType == null || mFileCount == 0) {
@@ -327,8 +331,8 @@ public class ShareFragment extends Fragment implements OnClickListener, OnLongCl
 
             for (int i=0; i<mFileCount; i++) {
                 UserTrace.addShareTrace(UserTrace.ACTION_FREESHARE, mListType, SendSelectActivity.mLoadSource);
-                if (mImService != null) {
-                	mImService.saveFreeShare(ShareType.getFileType(mListType), mListPath.get(i));
+                if (mImManager != null) {
+                	mImManager.saveFreeShare(ShareType.getFileType(mListType), mListPath.get(i));
                 }
             }
 
