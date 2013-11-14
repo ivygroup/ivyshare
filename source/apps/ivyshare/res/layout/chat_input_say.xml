@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/abs__ab_bottom_solid_inverse_holo"
+    android:gravity="center"
+    android:paddingBottom="4dp"
+    android:paddingTop="4dp" >
+
+    <com.ivyshare.widget.SimpleImageButton
+        android:id="@+id/chat_input_say_converttotext"
+        style="@style/chat_bottom_button_padding"
+        android:layout_width="@dimen/chat_buttom_image_button_width_height"
+        android:layout_height="@dimen/chat_buttom_image_button_width_height"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/chatting_setmode_keyboard_btn_normal" />
+
+    <com.ivyshare.widget.SimpleImageButton
+        android:id="@+id/chat_input_say_type_select"
+        style="@style/chat_bottom_button_padding"
+        android:layout_width="@dimen/chat_buttom_image_button_width_height"
+        android:layout_height="@dimen/chat_buttom_image_button_width_height"
+        android:layout_toRightOf="@id/chat_input_say_converttotext"
+        android:src="@drawable/type_select_btn_nor" />
+
+    <Button
+        android:id="@+id/chat_input_say_saybtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/chat_input_say_type_select"
+        android:text="@string/chat_say_send"
+        android:textSize="@dimen/button_main_textsize" />
+
+</RelativeLayout>

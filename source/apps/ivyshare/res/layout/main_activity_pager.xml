@@ -1,0 +1,101 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="46.0dip"
+        layout="@layout/sim_action_bar" />
+
+    <!-- tab title bar -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="34.5dip"
+        android:background="@color/image_button_on_focus" >
+
+        <LinearLayout
+            android:id="@+id/tab_title_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/cursor"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tab_text1"
+                style="@style/tab_title_bar_text"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="@string/tab_contacts" />
+			<RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+               <TextView
+                android:id="@+id/tab_text2"
+                style="@style/tab_title_bar_text"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/tab_session" />
+
+                <ImageView
+                    android:id="@+id/icon_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tab_text2"
+                    android:src="@drawable/tab_title_bar_message"
+                    android:visibility="gone" />
+            </RelativeLayout>
+            
+			<TextView
+			    android:id="@+id/tab_text3"
+			    style="@style/tab_title_bar_text"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:text="@string/tab_freeshare" />    
+			            
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/cursor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="2dp"
+            android:scaleType="matrix"
+            android:src="@drawable/tab_titlebar_cursor" />
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0dp" >
+
+        <!--
+    This title strip will display the currently visible page title, as well as the page
+    titles for adjacent pages.
+        -->
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pager_title_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@color/image_button_on_focus"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:textColor="#fff"
+            android:visibility="gone" />
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

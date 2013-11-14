@@ -1,0 +1,156 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView
+        android:id="@+id/no_wlan_connection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/wlan_unavailable"
+        android:visibility="gone"/>
+    
+	<LinearLayout
+    android:id="@+id/wlan_connect_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	<TextView		
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="10dp"
+		android:text="@string/wifi"
+		android:background="@drawable/list_section_divider_holo_custom"
+		style="@style/user_setting_textview" />
+
+    <RelativeLayout
+         android:id="@+id/layoutwifiname"
+         android:background="@drawable/listbar_middle_selector"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+
+         <TextView
+             android:id="@+id/wifi_name_tag"
+             style="@style/user_setting_textview"
+             android:layout_width="@dimen/free_share_textview_width"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginLeft="5dp"
+             android:text="@string/wifi_name" />
+
+         <TextView
+             android:id="@+id/wifi_name"
+             style="@style/user_setting_editview"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_toRightOf="@id/wifi_name_tag" />
+
+     </RelativeLayout>
+     
+     <RelativeLayout
+         android:id="@+id/layoutwifipassword"
+         android:background="@drawable/listbar_middle_selector"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+
+         <TextView
+             android:id="@+id/wifi_password_tag"
+             android:layout_width="@dimen/free_share_textview_width"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_marginLeft="5dp"
+             android:text="@string/wifi_password"
+             style="@style/user_setting_textview" />
+
+         <TextView
+             android:id="@+id/wifi_password"
+             style="@style/user_setting_editview"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_centerVertical="true"
+             android:layout_toRightOf="@id/wifi_password_tag" />
+
+	 </RelativeLayout>
+	 
+      <FrameLayout
+         android:background="@drawable/listbar_divider"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" />
+     
+     <RelativeLayout
+         android:id="@+id/layouturl"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/listbar_middle_selector"
+         android:gravity="center_vertical" >
+         
+         <TextView
+             android:id="@+id/url_tag"
+             style="@style/user_setting_textview"
+             android:layout_width="@dimen/free_share_textview_width"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_centerVertical="true"
+             android:layout_marginLeft="5dp"
+             android:text="@string/url" />
+
+        <TextView
+            android:id="@+id/address"
+            style="@style/user_setting_editview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/url_tag"
+            android:textColor="@color/listbar_secondray"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/listbar_secondray_textsize" />
+
+        <!--<ImageButton
+            android:id="@+id/share_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ic_share_uri"
+            android:clickable="true" />-->
+        <ImageButton
+            android:id="@+id/send_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/send_url_selector"
+            android:clickable="true" />
+        <ImageButton
+            android:id="@+id/copy_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/send_url"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/copy_url_selector"
+            android:clickable="true" />
+     </RelativeLayout>
+     
+     <FrameLayout
+         android:background="@drawable/listbar_divider"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" />
+    
+     <TextView
+        android:id="@+id/code_use_introduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" 
+        android:text="@string/code_use_introduce"/>
+          
+       <ImageView
+            android:id="@+id/td_code"
+            android:padding="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:scaleType="centerCrop"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal" 
+            android:clickable="true"/>
+    </LinearLayout>       
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+
+    <TextView
+        android:id="@+id/menuTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_popmenu_item"
+        android:drawablePadding="3.0dip"
+        android:gravity="center"
+        android:padding="2.0dip"
+        android:singleLine="true"
+        android:textColor="@color/popup_menu_text_color"
+        android:textSize="18.0sp" />
+
+</RelativeLayout>

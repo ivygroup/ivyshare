@@ -1,0 +1,238 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical" >
+
+    <include layout="@layout/sim_action_bar"/>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <LinearLayout
+       	android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_margin="@dimen/setting_margin"
+        android:orientation="vertical" >
+
+	    <RelativeLayout
+	        android:id="@+id/layoutphoto"
+	        android:background="@drawable/listbar_top_selector"
+		    android:layout_width="match_parent"
+			android:layout_height="@dimen/user_setting_layout_heigth"
+			android:gravity="center_vertical" >
+			<TextView
+			    android:id="@+id/photolabel"
+			    android:layout_width="@dimen/user_setting_textview_width"
+			    android:layout_height="match_parent"
+			    android:layout_marginLeft="10dp"
+			    android:layout_centerInParent="true"
+			    android:layout_alignParentLeft="true"
+			    android:text="@string/face_picture"
+			    style="@style/user_setting_textview" />
+			<FrameLayout
+	    		android:layout_width="50dp"
+	    		android:layout_height="50dp" 
+	  			android:layout_centerInParent="true"
+				android:layout_alignParentRight="true"
+				android:layout_centerVertical="true"
+				android:background="@drawable/menu_box_white_gray_normal">
+				
+				<ImageView
+				    android:id="@+id/photoimage"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent"
+				    android:src="@drawable/ic_contact_picture" />
+			</FrameLayout>
+		</RelativeLayout>
+		
+	    <FrameLayout
+	        android:background="@drawable/listbar_divider"
+		    android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+
+	    <RelativeLayout
+	        android:id="@+id/layoutnickname"
+	        android:background="@drawable/listbar_middle_selector"
+		    android:layout_width="match_parent"
+			android:layout_height="@dimen/user_setting_layout_heigth"
+			android:gravity="center_vertical" >
+			<TextView
+			    android:id="@+id/nicknamelabel"
+			    android:layout_width="@dimen/user_setting_textview_width"
+			    android:layout_height="match_parent"
+			    android:layout_centerInParent="true"
+			    android:layout_centerVertical="true"
+			    android:layout_alignParentLeft="true"
+			    android:layout_marginLeft="10dp"
+			    android:text="@string/nick_name"
+			    style="@style/user_setting_textview" />
+			<TextView
+			    android:id="@+id/nickname"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerInParent="true"
+			    android:layout_alignParentRight="true"
+			    android:layout_toRightOf="@id/nicknamelabel"
+			    android:layout_marginLeft="10dp"
+			    style="@style/user_setting_editview"/>
+			<EditText
+			    android:id="@+id/edit_nickname"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignParentRight="true"
+			    android:layout_centerVertical="true"
+			    android:layout_toRightOf="@id/nicknamelabel"
+			    android:layout_marginLeft="5dp"
+			    android:maxLength="30"
+			    android:visibility="gone"
+			    style="@style/user_setting_editview"/>
+
+		</RelativeLayout>
+		<FrameLayout
+	        android:background="@drawable/listbar_divider"
+		    android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:id="@+id/layoutsignname"
+            android:background="@drawable/listbar_bottom_selector"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/user_setting_layout_heigth"
+            android:gravity="center_vertical" >
+            <TextView
+			    android:id="@+id/signlabel"
+			    android:layout_width="@dimen/user_setting_textview_width"
+			    android:layout_height="match_parent"
+			    android:layout_centerInParent="true"
+			    android:layout_centerVertical="true"
+			    android:layout_alignParentLeft="true"
+			    android:layout_marginLeft="10dp"
+			    android:text="@string/signature"
+			    style="@style/user_setting_textview"  />
+			<TextView
+			    android:id="@+id/signname"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerInParent="true"
+			    android:layout_alignParentRight="true"
+			    android:layout_toRightOf="@id/signlabel"
+			    android:layout_marginLeft="10dp"
+			    style="@style/user_setting_editview"/>
+			<EditText
+			    android:id="@+id/edit_signname"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignParentRight="true"
+			    android:layout_centerVertical="true"
+			    android:layout_toRightOf="@id/signlabel"
+			    android:layout_marginLeft="5dp"
+			    android:visibility="gone"
+			    android:maxLength="36"
+			    style="@style/user_setting_editview"/>
+		</RelativeLayout>
+		
+	   	<RelativeLayout
+            android:id="@+id/layoutgroupname"
+	        android:background="@drawable/listbar_all_selector"
+		    android:layout_width="match_parent"
+			android:layout_height="@dimen/user_setting_layout_heigth"
+			android:layout_marginTop="@dimen/setting_items_margin_top"
+			android:gravity="center_vertical" >
+			<TextView
+			    android:id="@+id/groupnamelabel"
+			    android:layout_width="@dimen/user_setting_textview_width"
+			    android:layout_height="match_parent"
+			    android:layout_centerInParent="true"
+			    android:layout_alignParentLeft="true"
+			    android:layout_centerVertical="true"
+			    android:layout_marginLeft="10dp"
+			    android:text="@string/group_name"
+				style="@style/user_setting_textview"  />
+
+			<TextView
+			    android:id="@+id/groupname"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerInParent="true"
+			    android:layout_alignParentRight="true"
+			    android:layout_toRightOf="@id/groupnamelabel"
+			    android:layout_marginLeft="10dp"
+			    style="@style/user_setting_editview"/>
+
+            <EditText
+                android:id="@+id/edit_groupname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/groupnamelabel"
+                android:layout_marginLeft="5dp"
+                android:maxLength="20"
+                android:visibility="gone"
+				style="@style/user_setting_editview"/>
+		</RelativeLayout>
+		
+	   	<RelativeLayout
+			android:id="@+id/layoutline1number"
+	        android:background="@drawable/listbar_all_selector"
+		    android:layout_width="match_parent"
+			android:layout_height="@dimen/user_setting_layout_heigth"
+			android:layout_marginTop="@dimen/setting_items_margin_top"
+			android:gravity="center_vertical" >
+			<TextView
+			    android:id="@+id/line1numberlabel"
+			    android:layout_width="@dimen/user_setting_textview_width"
+			    android:layout_height="match_parent"
+			    android:layout_centerInParent="true"
+			    android:layout_alignParentLeft="true"
+			    android:layout_centerVertical="true"
+			    android:layout_marginLeft="10dp"
+			    android:text="@string/line1number"
+			    style="@style/user_setting_textview" />
+			<TextView
+			    android:id="@+id/line1number"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerInParent="true"
+			    android:layout_alignParentRight="true"
+			    android:layout_centerVertical="true"
+			    android:layout_toRightOf="@id/line1numberlabel"
+			    android:layout_marginLeft="10dp"
+			    style="@style/user_setting_editview"/>
+		</RelativeLayout>
+
+		<LinearLayout
+                android:id="@+id/layoutaccountlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="@dimen/setting_items_margin_top"
+                android:background="@drawable/listbar_all_selector" >
+
+                <TextView
+                    android:id="@+id/accountlabel"
+                    style="@style/user_setting_textview"
+                    android:layout_width="@dimen/user_setting_textview_width"
+                    android:layout_height="55dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/email_list" />
+
+                <LinearLayout
+                    android:id="@+id/account_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/accountlabel"
+                    android:layout_gravity="center"
+                    android:orientation="vertical" >
+                </LinearLayout>
+            </LinearLayout>
+
+	</LinearLayout>
+   </ScrollView>
+</LinearLayout>

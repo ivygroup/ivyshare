@@ -1,0 +1,123 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/sim_action_bar"/>
+
+    <ListView
+        android:id="@+id/listPerson"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:listSelector="@drawable/list_selector"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_margin="20dp"
+        android:background="@drawable/listbar_all_selector">
+
+        <FrameLayout
+	        android:layout_width="60dp"
+	        android:layout_height="60dp"
+	        android:padding="1dp"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginTop="5dp"
+	        android:layout_marginBottom="5dp"
+	        android:background="@drawable/menu_box_white_gray_normal" >
+	        <ImageView
+	            android:id="@+id/file_icon"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:src="@drawable/ic_file_type_other_file"
+	            android:cropToPadding="true"
+	            android:scaleType="centerCrop"
+	            android:gravity="left"
+	            android:clickable="true"
+	        />
+	        <ImageButton
+	            android:id="@+id/open_details"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:background="@drawable/list_selector" />
+	    </FrameLayout>
+	    
+        <TextView 
+            android:id="@+id/file_name"
+            android:layout_marginLeft="15dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/listbar_main"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/list_main_textsize"
+            android:layout_weight="1" />
+        
+        </LinearLayout>
+    
+        <LinearLayout
+            android:id="@+id/li_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal" 
+            android:gravity="center">
+               
+		    <Button
+		        android:id="@+id/PushPull"
+		        android:layout_width="150dp"
+		        android:layout_height="wrap_content"
+		        android:text="@string/Push"
+		        android:textColor="@color/listbar_main"
+		        android:textSize="@dimen/listbar_main_textsize"
+		        android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+        
+        <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:layout_alignParentBottom="true"
+	        android:background="@drawable/listbar_all_selector">
+	
+	        <FrameLayout
+	            android:layout_width="60dp"
+	            android:layout_height="60dp"
+	            android:padding="1dp"
+	            android:layout_marginLeft="5dp"
+	            android:layout_marginTop="5dp"
+	            android:layout_marginBottom="5dp"
+	            android:background="@drawable/menu_box_white_gray_normal" >
+	            <ImageView
+	                android:id="@+id/file_icon"
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"
+	                android:src="@drawable/ic_file_type_other_file"
+	                android:cropToPadding="true"
+	                android:scaleType="centerCrop"
+	                android:gravity="left"
+	                android:clickable="true"
+	            />
+	            <ImageButton
+	                android:id="@+id/open_details"
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"
+	                android:background="@drawable/list_selector" />
+	        </FrameLayout>
+	        
+	        <TextView 
+	            android:id="@+id/file_name"
+	            android:layout_marginLeft="15dp"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:textColor="@color/listbar_main"
+	            android:textIsSelectable="false"
+	            android:textSize="@dimen/list_main_textsize"
+	            android:layout_weight="1" />
+        
+        </LinearLayout>
+        
+</LinearLayout>

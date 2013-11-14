@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/sim_action_bar" />
+
+    <LinearLayout
+        android:id="@+id/wifi_information"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/setting_margin"
+        android:layout_marginRight="@dimen/setting_margin"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/wifi_name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/user_setting_layout_heigth"
+            android:background="@drawable/listbar_top_selector"
+            android:gravity="center_vertical" >
+
+            <TextView
+                style="@style/network_setting_left_textview"
+                android:layout_toLeftOf="@+id/wifi_name"
+                android:text="@string/wifi_name" />
+
+            <TextView
+                android:id="@+id/wifi_name"
+                style="@style/network_setting_right_textview"/>
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/wifi_name_divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/listbar_divider" />
+
+        <RelativeLayout
+            android:id="@+id/layoutwifipassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/user_setting_layout_heigth"
+            android:background="@drawable/listbar_middle_selector"
+            android:gravity="center_vertical" >
+
+            <TextView
+                style="@style/network_setting_left_textview"
+                android:layout_toLeftOf="@+id/wifi_password"
+                android:text="@string/wifi_password" />
+
+            <TextView
+                android:id="@+id/wifi_password"
+                style="@style/network_setting_right_textview" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/wifi_password_divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/listbar_divider" />
+
+        <RelativeLayout
+            android:id="@+id/wifi_address_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/user_setting_layout_heigth"
+            android:background="@drawable/listbar_bottom_selector"
+            android:gravity="center_vertical" >
+
+            <TextView
+                style="@style/network_setting_left_textview"
+                android:layout_toLeftOf="@+id/address"
+                android:text="@string/wifi_ip_address" />
+
+            <TextView
+                android:id="@+id/address"
+                style="@style/network_setting_right_textview"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="@dimen/setting_items_margin_top"
+            android:background="@drawable/listbar_all_selector"
+            android:gravity="center_vertical" >
+
+            <LinearLayout
+                android:id="@+id/wifi_switch_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+				android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/network_setting_wifi_btnset"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/user_setting_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wifi_setting" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/listbar_secondray"
+                    android:textSize="@dimen/list_secondray_textsize"
+                    android:singleLine="false"
+                    android:text="@string/wifi_setting_prompt" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/network_setting_wifi_btnset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="@string/network_setting_wifi_btnset"
+                android:textColor="@color/listbar_main"
+                android:textSize="@dimen/listbar_main_textsize" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

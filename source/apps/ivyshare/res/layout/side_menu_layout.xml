@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="left"
+    android:orientation="vertical">
+
+		<RelativeLayout
+            android:id="@+id/layout_user_setting"
+            android:layout_width="@dimen/side_menu_item_layout_width"
+            android:layout_height="@dimen/user_setting_layout_heigth"
+            style="@style/system_setting_layout_padding" >
+
+            <TextView
+                android:id="@+id/user_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:drawableLeft="@drawable/ic_side_user_setting"
+                android:text="@string/usersetting"
+                style="@style/user_setting_textview" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layout_system_setting"
+            android:layout_width="@dimen/side_menu_item_layout_width"
+            android:layout_height="@dimen/user_setting_layout_heigth"
+            style="@style/system_setting_layout_padding" >
+            <TextView
+                android:id="@+id/system_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:drawableLeft="@drawable/system_setting_disabled"
+                android:text="@string/systemsetting"
+                style="@style/user_setting_textview" />
+        </RelativeLayout>
+
+        <!-- <RelativeLayout
+            android:id="@+id/layout_update_version"
+            android:layout_width="@dimen/side_menu_item_layout_width"
+            android:layout_height="@dimen/user_setting_layout_heigth"
+            style="@style/system_setting_layout_padding">
+            <TextView
+                android:id="@+id/updateversion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:text="@string/update_version"
+                android:drawableLeft="@drawable/ic_side_sync_soft"
+                style="@style/user_setting_textview" />
+        </RelativeLayout> -->
+
+        <RelativeLayout
+            android:id="@+id/layout_about"
+            android:layout_width="@dimen/side_menu_item_layout_width"
+            android:layout_height="@dimen/user_setting_layout_heigth"
+            style="@style/system_setting_layout_padding" >
+            <TextView
+                android:id="@+id/aboutlabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:drawableLeft="@drawable/ic_side_about"
+                android:text="@string/about_name"
+                style="@style/user_setting_textview" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_exit"
+            android:layout_width="@dimen/side_menu_item_layout_width"
+            android:layout_height="@dimen/user_setting_layout_heigth"
+            android:layout_marginBottom="40dp"
+            style="@style/system_setting_layout_padding" >
+            <TextView
+                android:id="@+id/exitlabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:drawableLeft="@drawable/ic_side_exit"
+                android:text="@string/action_exit"
+                style="@style/user_setting_textview" />
+        </RelativeLayout>
+</LinearLayout>

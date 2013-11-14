@@ -1,0 +1,163 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="IvyTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:textColorPrimary">@color/primary_text_color</item>
+        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+    </style>
+
+    <!--
+    <style name="ContactsActionBarTabView" parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:background">@drawable/action_bar_tab</item>
+    </style>
+    
+    <style name="ContactsActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/ab_solid_custom_blue_inverse_holo</item>
+        <item name="android:backgroundStacked">@drawable/ab_solid_custom_blue_inverse_holo</item>
+        <item name="android:displayOptions"></item>
+    </style>
+    
+   	<style name="ContactsActionBarTheme" parent="@android:style/Theme.Holo">
+        <item name="android:textColorHint">#CCCCCC</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:popupMenuStyle">@android:style/Widget.Holo.Light.PopupMenu</item>
+        <item name="android:dropDownListViewStyle">@style/ListViewDropdownStyle</item>
+    </style>
+    
+    <style name="ListViewDropdownStyle" parent="@android:style/Widget.ListView.DropDown">
+        <item name="android:listSelector">?android:attr/listChoiceBackgroundIndicator</item>
+    </style>
+
+   	<style name="ContactsActionBarDropDownStyle" parent="@android:style/Widget.Holo.Light.Spinner">
+        <item name="android:background">@drawable/ab_dropdown_navigation_item_background</item>
+    </style>
+    
+   	<style name="ListViewStyle" parent="@android:style/Widget.Holo.Light.ListView">
+        <item name="android:overScrollMode">always</item>
+    </style>
+    -->
+
+    <style name="Theme.NoTitle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AlertDialogCustom" parent="@android:style/Theme.Dialog">
+        <item name="android:textColor">#FFFF00</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="chat_bottom_button_padding">
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:background">#00000000</item>
+    </style>
+
+    <style name="user_setting_textview">
+        <item name="android:gravity">left|center</item>
+        <item name="android:textSize">@dimen/listbar_main_textsize</item>
+        <item name="android:textColor">@color/listbar_main</item>
+    </style>
+    <style name="user_setting_editview">
+        <item name="android:gravity">left|center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/listbar_secondray_textsize</item>
+        <item name="android:textColor">@color/listbar_secondray</item>
+    </style>
+
+    <style name="system_setting_layout_padding">
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+    
+    <style name="tab_title_bar_text">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="quick_person_info_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">right|center</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:textSize">@dimen/listbar_secondray_textsize</item>
+        <item name="android:textColor">@color/listbar_secondray</item>
+    </style>
+
+    <style name="quick_person_relativelayout">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/quick_person_info_textview_height</item>
+    </style>
+
+    <style name="about_relativelayout">
+        <item name="android:gravity">left|center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/user_setting_layout_heigth</item>
+        <item name="android:background">@drawable/listbar_all_selector</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="chat_content_textview">
+        <item name="android:autoLink">none</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:textSize">@dimen/listbar_main_textsize</item>
+        <item name="android:textColor">@color/listbar_main</item>
+    </style>
+
+    <style name="network_setting_left_textview">
+        <item name="android:layout_width">@dimen/user_setting_textview_width</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/listbar_main_textsize</item>
+        <item name="android:textColor">@color/listbar_main</item>
+    </style>
+
+    <style name="network_setting_right_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/listbar_secondray_textsize</item>
+        <item name="android:textColor">@color/listbar_secondray</item>
+    </style>
+
+    <style name="popwin_anim_style">  
+       <item name="android:windowEnterAnimation">@anim/zoomin</item>  
+    </style> 
+</resources>

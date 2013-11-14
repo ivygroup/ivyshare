@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+
+	<string-array name="network_mode">
+        <item>Wifi</item>
+        <item>Hot</item>
+    </string-array>
+
+    <string-array name="wifi_setting_items">
+		<item>无线</item>
+		<item>爬山虎网络</item>
+		<item>爬山虎私密网络</item>
+    </string-array>
+
+	<string-array name="default_avatar">
+		<item>avatar1.png</item>
+		<item>avatar2.png</item>
+		<item>avatar3.png</item>
+		<item>avatar4.png</item>
+		<item>avatar5.png</item>
+		<item>avatar6.png</item>
+		<item>avatar7.png</item>
+		<item>avatar8.png</item>
+		<item>avatar9.png</item>
+	</string-array>
+
+	<string-array name="mTabTitles_string">
+        <item>@string/title_application</item>
+        <item>@string/title_contact</item>
+        <item>@string/title_picture</item>
+        <item>@string/title_music</item>
+        <item>@string/title_video</item>
+        <item>@string/title_files</item>
+    </string-array>
+
+    <integer-array name="mTabIcon_list">
+        <item>@drawable/ic_gv_apps</item>
+        <item>@drawable/ic_gv_contacts</item>
+        <item>@drawable/ic_gv_image</item>
+        <item>@drawable/ic_gv_music</item>
+        <item>@drawable/ic_gv_video</item>
+        <item>@drawable/ic_gv_document</item>
+    </integer-array>
+
+    <integer-array name="record_volumn">
+        <item>@drawable/amp1</item>
+        <item>@drawable/amp2</item>
+        <item>@drawable/amp3</item>
+        <item>@drawable/amp4</item>
+        <item>@drawable/amp5</item>
+        <item>@drawable/amp6</item>
+        <item>@drawable/amp7</item>
+    </integer-array>
+
+</resources>
+

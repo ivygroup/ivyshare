@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">爬山虎</string>
+    <string name="main_refresh">刷新</string>
+    <string name="main_connect">连接选项</string>
+    <string name="chat_return">返回</string>
+    <string name="chat_name">聊天者的名字</string>
+    <string name="chat_info">详情</string>
+    <string name="chat_text_send">发送</string>
+    <string name="chat_say_send">按住 说话</string>
+    <string name="chat_say_stop">松开 完成</string>
+    <string name="chat_say_moveup_to_cancel">手指上滑，取消发送</string>
+    <string name="chat_say_release_to_cancel">松开手指，取消发送</string>
+    <string name="could_not_send_message">%1$s不在线，消息发送失败。</string>
+    <string name="title_application">应用</string>
+    <string name="title_contact">联系人</string>
+    <string name="title_picture">图片</string>
+    <string name="title_music">音乐</string>
+    <string name="title_video">视频</string>
+    <string name="title_files">文件</string>
+    <string name="Push">发送</string>
+    <string name="share_to">请选择共享此文件的对象</string>
+    <string name="lansharing">共享</string>
+    <string name="usersetting">个人设置</string>
+    <string name="systemsetting">系统设置</string>
+    <string name="networksetting">网络设置</string>
+    <string name="fileselect">文件选择</string>
+    <string name="sendselect">发送选择</string>
+    <string name="face_picture">头像</string>
+    <string name="nick_name">昵称</string>
+    <string name="nick_name_empty">昵称不能为空！</string>
+    <string name="group_name">组名</string>
+    <string name="signature">个性签名</string>
+    <string name="ip_address">IP地址</string>
+    <string name="line1number">本机号码</string>
+    <string name="email_list">电子邮箱</string>
+    <string name="take_photo">拍照</string>
+    <string name="pick_photo">从图库选择</string>
+    <string name="choose_system_photo">选择系统头像</string>
+    <string name="on_line">刷新</string>
+    <string name="off_line">下线</string>
+    <string name="auto_network">自动组网</string>
+    <string name="system_setting_ring_text">收到新消息响铃</string>
+    <string name="system_setting_vibrate_text">收到新消息振动</string>
+    <string name="update_version">检查更新</string>
+    <string name="update_wait_check">正在检查更新，请稍候..</string>
+    <string name="update_check">检查更新</string>
+    <string name="download_file">文件下载</string>
+    <string name="download_file_progress">文件下载进度 : </string>
+    <string name="network_available_error">网络链接不可用</string>
+    <string name="download_file_fail">下载文件失败，请稍候重试！</string>
+    <string name="update_doing">更新正在进行中!</string>
+    <string name="latest_version">当前版本已经为最新版本</string>
+    <string name="about_name">关于爬山虎</string>
+    <string name="about">关于</string>
+    <string name="version_information">当前版本：%1$s</string>
+    <string name="weibo">官方微博：http://weibo.com/shareivy</string>
+    
+    <string name="on">开</string>
+    <string name="off">关</string>
+
+    <string name="wifi">无线</string>
+    <string name="wifi_hotspot">无线热点</string>
+    <string name="wifi_direct">无线直连</string>
+
+
+    <string name="wifi_in_airplane_mode">飞行模式开启</string>
+    <string name="wifi_sta_p2p_coex">关闭无线直连</string>
+    <string name="wifi_error">无线网络错误</string>
+    <string name="wifi_tether_turn_off_wifi">无线热点开启</string>
+    <string name="wifi_tether_alert_open_mode">以开放模式打开无线热点。</string>
+    <string name="wifi_tether_turn_off_wifi_hotspot">无线热点关闭</string>
+
+
+    <string name="status_error">状态错误</string>
+    <string name="status_enabling">正在激活</string>
+    <string name="status_disabling">正在注销</string>
+    <string name="status_enabled">激活</string>
+    <string name="status_disabled">注销</string>
+
+    <string name="connecton_info">%1$s : %2$s</string>
+
+    <string name="durationformatshort">%2$d:%5$02d</string>
+    <string name="durationformatlong">%1$d:%3$02d:%5$02d</string>
+    
+    <string name="title_send">多人共享</string>
+    <string name="title_share">自由分享</string>
+    <string name="fileshare">文件共享</string>
+    <string name="cancel">取消</string>
+    <string name="share_network_error">无线网络错误，请检查您的网络设置。</string>
+    <string name="btn_install">安装</string>
+    <string name="btn_update">更新</string>
+    <string name="btn_uninstall">卸载</string>
+    <string name="btn_reinstall">重新安装</string>
+    <string name="btn_delete">删除</string>
+    <string name="btn_import">导入</string>
+    <string name="btn_view">查看</string>
+	<string name="btn_play">播放</string>
+	<string name="btn_resend">重新发送</string>
+    <string name="feed_back">意见反馈</string>
+    <string name="send_message_complete">发送完成</string>
+    <string name="wait_send">等待发送</string>
+    <string name="ready_send">开始发送</string>
+    <string name="ready_receive">开始接收</string>
+    <string name="send_failed">发送失败</string>
+    <string name="send_timeout">发送超时</string>
+    <string name="receive_failed">接受失败</string>
+    <string name="receive_one_message_format">收到一条%1$s发来的消息</string>
+    <string name="receive_all_message_format">共有%2$s个联系人的%1$s条未读消息</string>
+    <string name="receive_some_message">您有一些未读消息</string>
+    <string name="clear_chathistory">清除聊天记录</string>
+    <string name="clear_title">删除</string>
+    <string name="makesure_clear">确定清除聊天记录？</string>
+    <string name="makesure_clearhistory">确定清除自由共享记录？</string>
+    <string name="create_title">创建我的房间</string>
+    <string name="makesure_create">爬山虎将通过便携式WLAN热点创建我的房间，届时无线网络会被关闭，您确定要继续吗？</string>
+    <string name="ok">确定</string>
+    
+    <string name="current_version">当前版本：</string>
+    <string name="found_version">发现新版本：</string>
+    <string name="update_content">更新内容：</string>
+    <string name="whether_update">是否更新？</string>
+    <string name="software_update">软件更新</string>
+    <string name="cancel_download">取消下载</string>
+    <string name="cancel_download_message">当前应用正在进行更新，如退出应用将停止更新，您确定要退出吗？</string>
+    <string name="update">更新</string>
+    <string name="not_update">暂不更新</string>
+    <string name="download_complete">下载完成</string>
+    <string name="install_application">是否安装新的应用</string>
+
+    <string name="action_usersetting">个人设置</string>
+    <string name="action_systemsetting">系统设置</string>
+    <string name="action_update">系统升级</string>
+    <string name="action_exit">退出</string>
+    <plurals name="running_background">
+        <item quantity="other">%1$s, 当前在线好友%2$d个</item>
+    </plurals>
+    <string name="running_background">%1$s, 当前在线好友%2$d个</string>
+
+    <string name="score_unrated">未评价</string>
+    <string name="score_poor">差劲</string>
+    <string name="score_below">不怎么样</string>
+    <string name="score_average">一般</string>
+    <string name="score_above">不错</string>
+    <string name="score_excellent">很棒</string>
+    <string name="comment_unrated">请您对本应用进行评价，谢谢！</string>    
+    <string name="thanks">发送成功。感谢您的支持，我们会更加努力！</string>
+    <string name="score_comment">评论</string>
+
+    <string name="tab_contacts">联系人</string>
+    <string name="tab_session">会话</string>
+    <string name="tab_freeshare">自由分享</string>
+    <string name="click_to_freeshare">点击分享</string>
+    <string name="online_person_format">在线</string>
+    <string name="offline_person_format">离线</string>
+    <string name="room_default">爬山虎网络</string>
+    <string name="all_person_format">所有</string>
+    <string name="group_chat_format">群聊</string>
+    <string name="group_chat_broadcastname">广播</string>
+
+    <string name="wifi_name">名称：</string>
+    <string name="wifi_password">密码：</string>
+    <string name="wifi_ip_address">IP地址:</string>
+    <string name="wifi_setting">无线网络设置</string>
+    <string name="wifi_setting_prompt">点击“设置”按钮进入系统无线设置</string>
+    <string name="wlan_unavailable">暂无可用无线网络，不能进行分享!</string>
+    <string name="code_use_introduce">扫描二维码下载文件</string>
+    
+    <string name="share_message_use">使用</string>
+    <string name="share_message_share">为您分享文件</string>
+    <string name="share_message_download">请点击以下地址下载：</string>
+    
+    <string name="url">地址：</string>
+
+    <string name="no_contacts">没有联系人。</string>
+    <string name="no_session">没有会话信息。</string>
+    <string name="no_freeshare">没有分享记录。</string>
+ 
+    <string name="default_nickname">神秘人</string>
+
+    <string name="dialog_title_switch_ap">信息</string>
+    <string name="dialog_msg_switch_ap">目前没有发现可用的爬山虎网络.\n 是否创建一个呢？\n</string>
+    <string name="dialog_msg_discover_ap">在附近发现一个爬山虎网络 %1$s.\n 是否连接？\n</string>
+
+    <string name="state_active">活跃</string>
+    <string name="state_offline">离线</string>
+    <string name="state_idle">空闲</string>
+    <string name="state_screen_off">屏幕关闭</string>
+    <string name="state_sleep">休眠</string>
+
+    <string name="state_wifip2p_unknown">未知</string>
+    <string name="state_wifip2p_inactive">不活跃</string>
+    <string name="state_wifip2p_busy">正在连接&#8230;</string>
+    <string name="state_wifip2p_activebutnoperson">离线</string>
+
+    <string name="network_setting_currentstate_title">您当前的连接状态是:</string>
+    <string name="network_setting_nowificonnected">没有可用的无线网络</string>
+    <string name="network_setting_cantgetwifiname">无法获得当前网络连接的名称</string>
+    <string name="network_setting_wifi_btnset">设置</string>
+    <string name="network_setting_noselfroom">创建自己的房间</string>
+    <string name="network_setting_roomname">%1$s的房间</string>
+    
+    <string name="input_user_name">请在此输入您的名字，方便朋友认出您</string>
+    <string name="choose_photo">选择头像</string>
+    <string name="set_photo_and_name">设置头像和名字</string>
+    <string name="next">下一步</string>
+    <string name="choose_account">选择一个账户作为您的昵称</string>
+    <string name="choose_title">选择</string>
+    <string name="choose_message">设置 " %1$s " 作为昵称.</string>
+
+    <string name="receive_one_group_message_format">接收到一条来自 %1$s的群消息</string>
+    <string name="receive_one_broadcast_message">接收到一条广播消息</string>
+    <string name="receive_group_message_format">共有%1$s条未读广播消息</string>
+
+    <string name="contact_listitem_hotspot_title">我的房间</string>
+    <string name="contact_listitem_hotspot_button_create">创建我的房间</string>
+    <string name="contact_listitem_hotspot_button_exit">退出我的房间</string>
+    <string name="contact_listitem_hotspot_button_creating">正在创建我的房间 &#8230;</string>
+    <string name="contact_listitem_hotspot_button_exiting">正在退出我的房间 &#8230;</string>
+    <string name="contact_listitem_hotspot_button_waitjoin">等待其它人加入 &#8230;</string>
+    <string name="contact_listitem_ivyroom_title">爬山虎网络</string>
+    <string name="contact_listitem_ivyroom_item">%1$s的房间</string>
+    <string name="contact_listitem_ivyroom_entry">进入%1$s的房间</string>
+    <string name="contact_listitem_ivyroom_entrying">正在进入 %1$s 的房间 &#8230;</string>
+    <string name="contact_listitem_ivyroom_nopersontext">没有联系人</string>
+    <string name="contact_listitem_wifip2p_title">无线直连房间</string>
+    <string name="contact_listitem_wifip2p_notivydevice_title">提示</string>
+    <string name="contact_listitem_wifip2p_notivydevice_message">请您的朋友打开爬山虎应用。</string>
+    <string name="contact_listitem_wifip2p_second_connect">邀请%1$s</string>
+    <string name="contact_listitem_wifip2p_second_connecting">已邀请%1$s, 等待对方接受&#8230;</string>
+    <string name="contact_listitem_wifip2p_second_disconnect">断开%1$s的连接</string>
+    <string name="contact_listitem_wifip2p_second_disconnecting">正在断开%1$s的连接&#8230;</string>
+    <string name="contact_listitem_hall_title">大厅</string>
+    <string name="contact_listitem_hall_entry">回到大厅</string>
+    <string name="contact_listitem_hall_entrying">正在进入大厅  &#8230;</string>
+    <string name="contact_listitem_hall_opennetworksetting">检查无线网络设置</string>
+
+    <string name="no_friends_title">提示</string>
+    <string name="no_friends_message">请打开电脑或其它终端设备上的爬山虎或飞鸽应用进行分享文件。</string>
+    <string name="record_hasbeen_delete">消息已被删除。</string>
+    <string name="record_delete_undo">撤销</string>
+
+    <string name="copy_to_clipboard">复制到剪贴板</string>
+    <string name="send_by_sms">通过短信发送</string>
+
+    <string name="copy_message_to_clipboard">已复制此消息到剪贴板。</string>
+    <string name="cannot_swipe_delete">传输过程中不能删除消息</string>
+    <string name="options">操作</string>
+
+    <string name="sharetrace_title">提示</string>
+    <string name="sharetrace_message">是否加入我们的用户体验改善计划？\n\n为向您提供更优良的爬山虎服务，在您使用爬山虎的过程中，您的操作过程与传输内容等可能与传输相关的信息将会被收集。但这些信息不会包含任何您的个人身份信息。我们保证这些信息只用于帮助改进爬山虎。\n\n爬山虎安装之后，您也可以随时在爬山虎的【系统设置】中关闭或打开该选项。\n\n如果您还有其他问题和建议，请联系我们。</string>
+    <string name="sharetrace_text">加入用户体验改善计划</string>
+    <string name="sharetrace_yes">是</string>
+    <string name="sharetrace_no">否</string>
+    <string name="no_file">没有文件。</string>
+    <string name="enable_sd_card">SD卡不可用</string>
+    <string name="share_file_content">共有%1$d个文件</string>
+	<string name="choose_files">请选择文件</string>
+	<string name="selected_files">%1$d</string>
+	
+	<string name="toast_send">发送</string>
+    <string name="toast_unselect">取消全部选择</string>
+</resources>

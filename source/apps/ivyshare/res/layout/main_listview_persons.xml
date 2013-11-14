@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listitem"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" 
+    android:clickable="true"
+    android:paddingRight="10dp"
+    android:background="@drawable/list_selector">
+
+    <TextView 
+        android:id="@+id/person_statistic"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:textColor="@color/list_secondray"
+        android:textSize="@dimen/listbar_secondray_textsize" />
+
+    <LinearLayout
+        android:id="@+id/main_persons_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_weight="1" >
+
+        <TextView android:id="@+id/main_persons_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="#FF000000"
+            android:textIsSelectable="false"
+            android:textSize="18sp"
+            android:layout_weight="1" />
+
+        <TextView android:id="@+id/main_persons_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="false"
+            android:textSize="13sp"
+            android:textColor="@color/listbar_secondray"
+            android:visibility="gone"/>
+
+        <TextView android:id="@+id/main_persons_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:gravity="right|bottom"
+            android:paddingRight="5dp"
+            android:textIsSelectable="false"
+            android:textSize="13sp"
+            android:textColor="@color/listbar_secondray" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_person_photo"
+        android:layout_width="60dip"
+        android:layout_height="60dip">
+
+		<FrameLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_gravity="center">
+
+		    <ImageView
+		        android:id="@+id/photo"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:src="@drawable/ic_contact_picture"
+		        android:cropToPadding="true"
+		        android:scaleType="fitCenter"
+		        android:gravity="right"
+		        android:clickable="true"
+		    />
+
+		    <ImageView
+		        android:id="@+id/photo_triangle_affordance"
+		        android:src="@drawable/account_spinner_icon"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="right|bottom" />
+		</FrameLayout>
+		
+		<FrameLayout
+		    android:id="@+id/layoutunread"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right|top"
+            android:background="@drawable/unread_bg"
+            android:visibility="gone" >
+
+            <TextView android:id="@+id/unreadnum"
+                android:layout_marginTop="-2dp"
+	            android:layout_width="12dp"
+	            android:layout_height="12dp"
+	            android:textSize="10sp"
+	            android:textColor="@color/list_unread"
+	            android:layout_gravity="center"
+	            android:gravity="center"
+	            android:textIsSelectable="false" />
+        </FrameLayout>
+	</FrameLayout>
+</LinearLayout>

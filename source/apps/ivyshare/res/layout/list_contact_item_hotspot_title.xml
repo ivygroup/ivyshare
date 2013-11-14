@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/listitem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="10dp"
+        android:paddingRight="10dp"
+        android:clickable="true"
+        android:background="@drawable/list_section_divider_holo_custom">
+
+        <TextView
+            android:id="@+id/room_hint_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical = "true"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/list_contact_item_hall_title_color"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/listbar_secondray_textsize" >
+           </TextView>
+       
+        <com.ivyshare.widget.SimpleImageButton
+            android:id="@+id/btn_right"
+            android:layout_width="@dimen/common_title_height"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical = "true"
+            android:clickable="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/boradcast_hall_title_right_btn" 
+            android:visibility="gone"/>
+</RelativeLayout>

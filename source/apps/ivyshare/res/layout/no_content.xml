@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/no_content_layout"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="0dp"
+	android:layout_weight="1"
+	android:layout_centerInParent="true"
+	android:gravity="center">
+
+	<TextView
+	    android:id="@+id/no_content_text"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:gravity="center"
+	    android:textColor="@color/list_main"
+	    android:textSize="@dimen/list_main_textsize" />
+
+</LinearLayout>
+

@@ -1,0 +1,33 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="280dp"
+	android:layout_height="wrap_content"
+	android:background="@drawable/background_holo_light"
+	android:orientation = "vertical" 
+	android:padding="20dp">
+
+    <include layout="@layout/choose_default_photo_gv" />
+
+    <Button
+        android:id="@+id/fromcamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_selector"
+        android:text="@string/take_photo"
+        android:padding="10dp"
+        android:textColor="@color/list_main"
+        android:textSize="@dimen/button_main_textsize"
+        android:gravity="center"/>
+    
+    <Button         
+        android:id="@+id/fromgallery"
+        android:background="@drawable/btn_selector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pick_photo"
+        android:padding="10dp"
+        android:textColor="@color/list_main"
+        android:textSize="@dimen/button_main_textsize"
+        android:gravity="center" />
+
+</LinearLayout>

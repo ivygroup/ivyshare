@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include layout="@layout/sim_action_bar"/>
+
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp" >
+
+        <ImageView
+            android:id="@+id/imageAbout"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:id="@+id/appname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/listbar_main"
+            android:textSize="@dimen/listbar_main_textsize" />
+    </FrameLayout>
+
+    <RelativeLayout
+        style="@style/about_relativelayout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp" >
+
+        <TextView
+            android:id="@+id/versioninformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/listbar_main"
+            android:textSize="@dimen/listbar_main_textsize" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/about_relativelayout"
+        android:layout_margin="10dp" >
+
+        <TextView
+            android:id="@+id/weibo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:textColor="@color/listbar_main"
+            android:textSize="@dimen/listbar_main_textsize" />
+    </RelativeLayout>
+</LinearLayout>

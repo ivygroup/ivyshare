@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b0000000"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="130dp"
+        android:background="@drawable/listbar_all_selector"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_section_divider_holo_custom"
+            android:gravity="left|top"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="20dp"
+            android:text="@string/options"
+            android:textColor="@color/list_contact_item_hall_title_color"
+            android:textSize="@dimen/list_contact_item_hall_title_textsize" />
+
+        <TextView
+            android:id="@+id/resend"
+            android:layout_width="260dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:gravity="left"
+            android:text="@string/btn_resend"
+            android:textColor="@color/listbar_main"
+            android:textSize="@dimen/listbar_main_textsize" />
+    </LinearLayout>
+
+</LinearLayout>

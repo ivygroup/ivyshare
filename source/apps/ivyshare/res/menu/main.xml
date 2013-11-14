@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/action_usersetting"
+        android:title="@string/action_usersetting"
+        android:icon="@drawable/ic_side_user_setting"
+        android:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/action_systemsetting"
+        android:title="@string/action_systemsetting"
+        android:icon="@drawable/system_setting_disabled"
+        android:showAsAction="ifRoom|withText" />
+    <!-- <item
+        android:id="@+id/action_update"
+        android:title="@string/action_update"
+        android:icon="@drawable/ic_side_sync_soft"
+        android:showAsAction="ifRoom|withText" /> -->
+    <item
+        android:id="@+id/action_quit"
+        android:title="@string/action_exit"
+        android:icon="@drawable/ic_side_exit"
+        android:showAsAction="ifRoom|withText" />
+</menu>

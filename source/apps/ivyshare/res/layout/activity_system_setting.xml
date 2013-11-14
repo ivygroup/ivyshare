@@ -1,0 +1,215 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/sim_action_bar" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/setting_margin"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/layoutnetwork"
+                style="@style/system_setting_layout_padding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/user_setting_layout_heigth"
+                android:background="@drawable/listbar_top_selector"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/networkset"
+                    style="@style/user_setting_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/auto_network" />
+
+                <CheckBox
+                    android:id="@+id/networkcheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/listbar_divider" />
+
+            <RelativeLayout
+                android:id="@+id/system_setting_ring"
+                style="@style/system_setting_layout_padding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/user_setting_layout_heigth"
+                android:background="@drawable/listbar_top_selector" >
+
+                <TextView
+                    android:id="@+id/system_setting_ring_text"
+                    style="@style/user_setting_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/system_setting_ring_text" />
+
+                <CheckBox
+                    android:id="@+id/system_setting_ring_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/listbar_divider" />
+
+            <RelativeLayout
+                android:id="@+id/system_setting_vibrate"
+                style="@style/system_setting_layout_padding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/user_setting_layout_heigth"
+                android:background="@drawable/listbar_middle_selector" >
+
+                <TextView
+                    android:id="@+id/system_setting_vibrate_text"
+                    style="@style/user_setting_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/system_setting_vibrate_text" />
+
+                <CheckBox
+                    android:id="@+id/system_setting_vibrate_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/listbar_divider" />
+
+            <RelativeLayout
+                android:id="@+id/system_setting_traceaction"
+                style="@style/system_setting_layout_padding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/user_setting_layout_heigth"
+                android:background="@drawable/listbar_bottom_selector" >
+
+                <TextView
+                    android:id="@+id/system_setting_traceaction_text"
+                    style="@style/user_setting_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/sharetrace_text" />
+
+                <CheckBox
+                    android:id="@+id/system_setting_traceaction_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_clear_history"
+                style="@style/system_setting_layout_padding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/user_setting_layout_heigth"
+                android:layout_marginTop="@dimen/setting_items_margin_top"
+                android:background="@drawable/listbar_all_selector" >
+
+                <TextView
+                    android:id="@+id/clearhistory"
+                    style="@style/user_setting_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/clear_chathistory" />
+            </RelativeLayout>
+
+            <!-- <RelativeLayout
+                android:id="@+id/layout_update_version"
+                style="@style/system_setting_layout_padding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/user_setting_layout_heigth"
+                android:layout_marginTop="@dimen/setting_items_margin_top"
+                android:background="@drawable/listbar_top_selector" >
+
+                <TextView
+                    android:id="@+id/updateversion"
+                    style="@style/user_setting_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/update_version" />
+            </RelativeLayout> -->
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/listbar_divider" />
+
+            <RelativeLayout
+                android:id="@+id/feed_back"
+                style="@style/system_setting_layout_padding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/user_setting_layout_heigth"
+                android:background="@drawable/listbar_middle_selector" >
+
+                <TextView
+                    android:id="@+id/feed_text"
+                    style="@style/user_setting_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/feed_back" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/listbar_divider" />
+
+            <RelativeLayout
+                android:id="@+id/layout_about"
+                style="@style/system_setting_layout_padding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/user_setting_layout_heigth"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/listbar_bottom_selector" >
+
+                <TextView
+                    android:id="@+id/aboutlabel"
+                    style="@style/user_setting_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/about_name" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+    
+    

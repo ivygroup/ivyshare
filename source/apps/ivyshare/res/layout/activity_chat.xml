@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/sim_action_bar" />
+
+    <com.ivyshare.ui.chat.abstractchat.ChatListView
+        android:id="@+id/lv_chat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clickable="false"
+        android:divider="#FFCC00"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:listSelector="#00000000"
+        android:transcriptMode="alwaysScroll" >
+    </com.ivyshare.ui.chat.abstractchat.ChatListView>
+
+    <GridView
+        android:id="@+id/fileSelect"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/abs__ab_bottom_solid_light_holo"
+        android:columnWidth="80dp"
+        android:numColumns="6"
+        android:listSelector="@drawable/list_selector"
+        android:stretchMode="columnWidth" />
+
+    <LinearLayout
+        android:id="@+id/chat_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="-6dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

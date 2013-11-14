@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ivy Share</string>
+    <string name="main_refresh">Refresh</string>
+    <string name="main_connect">Connect Option</string>
+    <string name="chat_return">Return</string>
+    <string name="chat_name">Name of Chatter</string>
+    <string name="chat_info">Detail</string>
+    <string name="chat_text_send">Send</string>
+    <string name="chat_say_send">Hold to speak</string>
+    <string name="chat_say_stop">Release to finish</string>
+    <string name="chat_say_moveup_to_cancel">Move up to cancel</string>
+    <string name="chat_say_release_to_cancel">Release to cancel</string>
+    <string name="could_not_send_message">%1$s is offline, a message is sent failed.</string>
+    <string name="title_application">App</string>
+    <string name="title_contact">Contact</string>
+    <string name="title_picture">Picture</string>
+    <string name="title_music">Music</string>
+    <string name="title_video">Video</string>
+    <string name="title_files">Files</string>
+    <string name="Push">Push</string>
+    <string name="share_to">Please select users that share this file.</string>
+    <string name="lansharing">Sharing</string>
+    <string name="usersetting">User Setting</string>
+    <string name="systemsetting">System Setting</string>
+    <string name="networksetting">Network Setting</string>
+    <string name="fileselect">File Select</string>
+    <string name="sendselect">Send Select</string>
+    <string name="face_picture">Face Picture</string>
+    <string name="nick_name">Nick Name</string>
+    <string name="nick_name_empty">A nickname can not be a null one.</string>
+    <string name="group_name">Group Name</string>
+    <string name="signature">Signature</string>
+    <string name="ip_address">IP Address</string>
+    <string name="line1number">Phone</string>
+    <string name="email_list">Emails</string>
+    <string name="auto_network">Auto network</string>
+    <string name="system_setting_ring_text">Ring when a message is coming</string>
+    <string name="system_setting_vibrate_text">Vibrate when a message is coming</string>
+    <string name="on_line">On line</string>
+    <string name="off_line">Off line</string>
+    
+    <string name="update_version">Update Version</string>
+    <string name="update_wait_check">Checking for update, please wait..</string>
+    <string name="update_check">Checking update</string>
+    <string name="download_file">Download file</string>
+    <string name="download_file_progress">Download file progress : </string>
+    <string name="download_file_fail">Download file failed, please try again later!</string>
+    <string name="network_available_error">Network connection is not available</string>
+    <string name="update_doing">Update is in progress!</string>
+    <string name="latest_version">Current version has the latest</string>
+
+    <string name="about_name">About IvyShare</string>
+    <string name="about">About</string>
+    <string name="version_information">Current version：%1$s</string>
+	<string name="weibo">Official blog: http://weibo.com/shareivy</string>
+
+    <string name="on">On</string>
+    <string name="off">Off</string>
+
+    <string name="wifi">Wi-Fi</string>
+    <string name="wifi_hotspot">Wifi Hotspot</string>
+    <string name="wifi_direct">Wifi Direct</string>
+
+
+    <string name="wifi_in_airplane_mode">In Airplane mode</string>
+    <string name="wifi_sta_p2p_coex">Wi-Fi direct is ON, Turning it OFF</string>
+    <string name="wifi_error">Error</string>
+    <string name="wifi_tether_turn_off_wifi">Wi-fi hotspot on</string>
+    <string name="wifi_tether_alert_open_mode">Turn on Wi-fi hotspot with open mode.</string>
+    <string name="wifi_tether_turn_off_wifi_hotspot">Wi-fi hotspot off</string>
+
+
+    <string name="status_error">Error</string>
+    <string name="status_enabling">Enabling</string>
+    <string name="status_disabling">Disabling</string>
+    <string name="status_enabled">Enabled</string>
+    <string name="status_disabled">Disabled</string>
+
+    <string name="connecton_info">%1$s : %2$s</string>
+
+    <string name="durationformatshort">%2$d:%5$02d</string>
+    <string name="durationformatlong">%1$d:%3$02d:%5$02d</string>
+    
+    <string name="take_photo">Take photo</string>
+    <string name="pick_photo">Choose photo from Gallery</string>
+    <string name="choose_system_photo">Choose system photo</string>
+    
+    <string name="title_send">Multi Share</string>
+    <string name="title_share">Free Share</string>
+    <string name="fileshare">File share</string>
+    <string name="cancel">Cancel</string>
+    <string name="share_network_error">Network connection failure. Please check your network connection setting.</string>
+
+
+    <string name="feed_back">Feedback</string>
+
+    <string name="btn_install">Install</string>
+    <string name="btn_update">Update</string>
+    <string name="btn_uninstall">Uninstall</string>
+    <string name="btn_reinstall">Reinstall</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_import">Import</string>
+    <string name="btn_view">View</string>
+    <string name="btn_play">Play</string>
+    <string name="btn_resend">Resend</string>
+
+    <string name="send_message_complete">Send the message complete</string>
+    <string name="wait_send">Wait for send</string>
+    <string name="ready_send">Ready to send</string>
+    <string name="ready_receive">Ready to receive</string>
+    <string name="send_failed">Send failed</string>
+    <string name="send_timeout">Send timeout</string>
+    <string name="receive_failed">Receive failed</string>
+
+    <string name="receive_one_group_message_format">Receive one group message from %1$s</string>
+    <string name="receive_one_broadcast_message">Receive one broadcast message</string>
+    <string name="receive_one_message_format">Receive one message from %1$s</string>
+    <string name="receive_all_message_format">You have received %1$s messages from %2$s users</string>
+    <string name="receive_group_message_format">You have received %1$s broadcast messages</string>
+    <string name="receive_some_message">You have received some messages</string>
+
+    <string name="clear_chathistory">Clear chat history</string>
+    <string name="clear_title">Delete</string>
+    <string name="makesure_clear">Make sure clear the chat history？</string>
+    <string name="makesure_clearhistory">Make sure clear the free share history？</string>
+    <string name="ok">OK</string>
+    
+    <string name="create_title">Create my room</string>
+    <string name="makesure_create">IvyShare will create my room by portable WLAN hotspot. It will disconnect the current WiFi connection. Do you want to continue?</string>
+    <string name="current_version">Current version:</string>
+    <string name="found_version">Found new version：</string>
+    <string name="update_content">Update content：</string>
+    <string name="whether_update">Whether update？</string>
+    <string name="software_update">Software update</string>
+    <string name="cancel_download">Cancel download</string>
+    <string name="cancel_download_message">Current application is being updated, exit application will stop updating, do you want to quit now? </string>
+    <string name="update">Update</string>
+    <string name="not_update">Not update</string>
+    <string name="download_complete">Download complete</string>
+    <string name="install_application">Install application</string>
+
+    <string name="score_unrated">Unrated</string>
+    <string name="score_poor">Poor</string>
+    <string name="score_below">Below average</string>
+    <string name="score_average">Average</string>
+    <string name="score_above">Above average</string>
+    <string name="score_excellent">Excellent</string>
+    <string name="comment_unrated">Please Ivy Share,Thanks!</string>    
+    <string name="thanks">Send completed.Thanks for your encouragement! We will do our best! </string>
+    <string name="score_comment">Comments</string>
+
+    <item type="id" name="tag_first"></item>
+    <item type="id" name="tag_second"></item>
+
+    <string name="action_usersetting">Personal Setting</string>
+    <string name="action_systemsetting">System Setting</string>
+    <string name="action_update">Update</string>
+    <string name="action_exit">Quit</string>
+
+    <plurals name="running_background">
+        <item quantity="one">%1$s, You have %2$d online friend</item>
+        <item quantity="other">%1$s, You have %2$d online friends</item>
+    </plurals>
+    <string name="running_background">%1$s, You have %2$d online friends</string>
+
+    <string name="tab_contacts">Contacts</string>
+    <string name="tab_session">Sessions</string>
+    <string name="tab_freeshare">Free Share</string>
+    <string name="click_to_freeshare">Click to free share</string>
+
+    <string name="online_person_format">Online</string>
+    <string name="offline_person_format">Offline</string>
+    <string name="room_default">IvyRoom</string>
+    <string name="all_person_format">All</string>
+    <string name="group_chat_format">Group chat</string>
+    <string name="group_chat_broadcastname">Broadcast</string>
+ 
+    <string name="wifi_name">Name:</string>
+    <string name="wifi_password">Password:</string>
+    <string name="wifi_ip_address">IP address:</string>
+    <string name="wifi_setting">WiFi network setting</string>
+    <string name="wifi_setting_prompt">Click &quot;Setting&quot; button and enter the WiFi Setting in system</string>
+	<string name="wlan_unavailable">There is no available wlan,could not freeshare!</string>
+    <string name="code_use_introduce">Scan QR code to download the file.</string>
+    
+    <string name="share_message_use">use</string>
+    <string name="share_message_share">share file for you</string>
+    <string name="share_message_download">Please click on the following address to download:</string>
+    
+    <string name="url">URL:</string>
+    
+    <string name="no_contacts">No contact.</string>
+    <string name="no_session">No session.</string>
+    <string name="no_freeshare">No shared record.</string>
+
+    <string name="default_nickname">mysterious</string>
+    
+    <string name="dialog_title_switch_ap">Information</string>
+    <string name="dialog_msg_switch_ap">There is no Ivy-Share network found.\n Would you
+         like to create one?\n</string>
+    <string name="dialog_msg_discover_ap">Discover an Ivy-Share network nearby called %1$s.\n 
+        Would you like to connect to it?\n</string>     
+
+    <string name="state_active">Active</string>
+    <string name="state_offline">Offline</string>
+    <string name="state_idle">Idle</string>
+    <string name="state_screen_off">Screen Off</string>
+    <string name="state_sleep">Sleeping</string>
+
+    <string name="state_wifip2p_unknown">Unknown</string>
+    <string name="state_wifip2p_inactive">In-Active</string>
+    <string name="state_wifip2p_busy">Connecting &#8230;</string>
+    <string name="state_wifip2p_activebutnoperson">Offline</string>
+
+    <string name="network_setting_currentstate_title">Your current state is:</string>
+    <string name="network_setting_nowificonnected">no available wireless network</string>
+    <string name="network_setting_cantgetwifiname">can not get current wifi name</string>
+    <string name="network_setting_wifi_btnset">Setting</string>
+    <string name="network_setting_noselfroom">Create myslef room</string>
+    <string name="network_setting_roomname">%1$s\'s room</string>
+    <string name="input_user_name">Enter recognizable names here</string>
+    <string name="choose_photo">Avatar</string>
+    <string name="set_photo_and_name">Set avatar and nickname</string>
+    <string name="next">Next</string>
+    <string name="choose_account">Choose an account</string>
+    <string name="choose_title">Choose</string>
+    <string name="choose_message">Set &quot;%1$s&quot; as nick name.</string>
+    
+    
+    <string name="contact_listitem_hotspot_title">My room</string>
+    <string name="contact_listitem_hotspot_button_create">Create my room</string>
+    <string name="contact_listitem_hotspot_button_exit">Exit my room</string>
+    <string name="contact_listitem_hotspot_button_creating">Creating  my room  &#8230;</string>
+    <string name="contact_listitem_hotspot_button_exiting">Exiting  my room  &#8230;</string>
+    <string name="contact_listitem_hotspot_button_waitjoin">Wait other people join &#8230;</string>
+    <string name="contact_listitem_ivyroom_title">Ivy room</string>
+    <string name="contact_listitem_ivyroom_item">%1$s\'s room</string>
+    <string name="contact_listitem_ivyroom_entry">Enter %1$s\'s room</string>
+    <string name="contact_listitem_ivyroom_entrying">Entering %1$s\'s room  &#8230;</string>
+    <string name="contact_listitem_ivyroom_nopersontext">No Friends</string>
+    <string name="contact_listitem_wifip2p_title">WiFi Direct Room</string>
+    <string name="contact_listitem_wifip2p_notivydevice_title">Information</string>
+    <string name="contact_listitem_wifip2p_notivydevice_message">Please ask your friend to launch IvyShare.</string>
+    <string name="contact_listitem_wifip2p_second_connect">Invite %1$s</string>
+    <string name="contact_listitem_wifip2p_second_connecting">%1$s is being invited and waiting his/her response &#8230;</string>
+    <string name="contact_listitem_wifip2p_second_disconnect">Disconnect from %1$s</string>
+    <string name="contact_listitem_wifip2p_second_disconnecting">%1$s is disconnecting &#8230;</string>
+    <string name="contact_listitem_hall_title">Hall</string>
+    <string name="contact_listitem_hall_entry">Back to hall</string>
+    <string name="contact_listitem_hall_entrying">Entering to hall  &#8230;</string>
+    <string name="contact_listitem_hall_opennetworksetting">Check the system network setting</string>
+
+    <string name="no_friends_title">Info</string>
+    <string name="no_friends_message">Please open IvyShare or IP Message in your PC or other devices, then share files.</string>
+    <string name="record_hasbeen_delete">A message is deleted.</string>
+    <string name="record_delete_undo">Undo</string>
+
+    <string name="copy_to_clipboard">Copy to clipboard</string>
+    <string name="send_by_sms">Send by message</string>
+    <string name="copy_message_to_clipboard">The message is copied to clipboard.</string>
+    <string name="cannot_swipe_delete">Cannot delete the message while transmitting it</string>
+    <string name="options">Options</string>
+
+    <string name="sharetrace_title">Info</string>
+    <string name="sharetrace_message">Would you like to join our User-Experience Improvement Project?\n\nIn order to provide you best IvyShare services, we will make collections of your operation procedures and informations related to transmissions. But the informations MUST NOT contain any of your personal informations. We make the promise that these informations will be only used for promotions of IvyShare.\n\nYou can enable or disable the function in system setting in IvyShare anytime after it is installed.\n\nPlease feel free to contact me if there is any question or proposal.</string>
+    <string name="sharetrace_text">Join User-Experience Improvement Project</string>
+    <string name="sharetrace_yes">Yes</string>
+    <string name="sharetrace_no">No</string>
+    <string name="no_file">No file.</string>
+    <string name="enable_sd_card">SD card is not available, please connect one</string>
+    <string name="choose_files">Please select files</string>
+	<string name="selected_files">%1$d</string>
+	<string name="share_file_content">%1$d files</string>
+	
+	<string name="toast_send">Send</string>
+    <string name="toast_unselect">Un-select all</string>
+</resources>
