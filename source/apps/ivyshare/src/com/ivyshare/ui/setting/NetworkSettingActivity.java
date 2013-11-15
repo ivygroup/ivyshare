@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -38,10 +39,14 @@ public class NetworkSettingActivity extends IvyActivityBase implements OnClickLi
         ((Button)findViewById(R.id.network_setting_wifi_btnset)).setOnClickListener(this);
 
 		init();
-		
-		int networkType = mNetworkManager.getConnectionState().getLastType();
-		int networkStatus = mNetworkManager.getConnectionState().getLastStateByFast();
-		onNetworkChanged(networkType, networkStatus);
+    }
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        super.onServiceConnected(name, service);
+        int networkType = mNetworkManager.getConnectionState().getLastType();
+        int networkStatus = mNetworkManager.getConnectionState().getLastStateByFast();
+        onNetworkChanged(networkType, networkStatus);
     }
 
 	@Override
@@ -54,9 +59,11 @@ public class NetworkSettingActivity extends IvyActivityBase implements OnClickLi
 	@Override
 	public void onResume() {
 		super.onResume();
-		int networkType = mNetworkManager.getConnectionState().getLastType();
-		int networkStatus = mNetworkManager.getConnectionState().getLastStateByFast();
-		onNetworkChanged(networkType, networkStatus);
+		if (mNetworkManager != null) {
+		    int networkType = mNetworkManager.getConnectionState().getLastType();
+		    int networkStatus = mNetworkManager.getConnectionState().getLastStateByFast();
+		    onNetworkChanged(networkType, networkStatus);
+		}
 	}
 
     private void initActionBar() {
