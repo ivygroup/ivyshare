@@ -188,7 +188,10 @@ public class SimpleIm extends Im {
     @Override
     public void changeUserState(int state) {
         LocalSetting.getInstance().getMySelf().mState = state;
-        mSender.upLine();
+        // notify my friend that My state has changed.
+        if (state != Im.State_OffLine) {
+            mSender.upLine();
+        }
     }
 
     @Override

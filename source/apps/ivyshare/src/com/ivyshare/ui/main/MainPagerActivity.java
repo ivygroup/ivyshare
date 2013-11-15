@@ -766,6 +766,7 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
         case R.id.layout_exit:
             if (mImManager != null) {
                 Log.d(TAG, "Call quit, and we will downline");
+                mImManager.destroyUserStateMonitor();
                 mImManager.downLine();
             }
             finish();
@@ -911,6 +912,7 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
 		case R.id.action_quit: {
 			if (mImManager != null) {
 				Log.d(TAG, "Call quit, and we will downline");
+				mImManager.destroyUserStateMonitor();
 				mImManager.downLine();
 			}
 			finish();
