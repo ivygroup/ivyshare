@@ -444,8 +444,8 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
 
                     @Override
                     public void onClick(View v) {
-                        // TODO Auto-generated method stub
-                        actionPopMenu.show(v);
+                        // actionPopMenu.show(v);
+                        actionPopMenu.showSingle(v);
                     }
                 });
 
