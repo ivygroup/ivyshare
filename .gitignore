@@ -8,6 +8,9 @@
 # Java class files
 *.class
 
+# vim bak file.
+*~
+
 # generated files
 bin/
 gen/
