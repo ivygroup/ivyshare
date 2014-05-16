@@ -1,4 +1,27 @@
 由于工程含有Native代码,所以需要用NDK进行编译.步骤如下(如有不懂, 自行google之)
 
 1. 下载NDK代码,并解压到自己的电脑上.
-2. 在
+2. 在~/.bashrc中添加路径.　export PATH=/home/zzq/software/android-ndk-r9d:$PATH
+3. 工程右键选择Build path->config Build path, 然后选择builders->new,  选择“Program”，然后点击“OK”
+4. 出现了添加界面，首先给编译配置起个名字，如：NDK_Builder或者是默认的New_Builder
+
+5. 在Main页面中配置如下信息：
+	1) 设置Location为NDK路径
+	2) 设置Working Directory为 ${workspace_loc:/TestNdk}（也可以点击“Browse Workspace”来选取TestNdk目录)
+
+6) 【Edit Configuration】对话框中，配置选项卡【Refresh】。
+      勾选“Refresh resources upon completion”，
+      勾选“The entire workspace”，
+      勾选“Recuresively include sub-folders”。
+ 
+7) 【Edit Configuration】对话框中，配置选项卡【Build options】。
+      勾选“After a “Clean””，
+      勾选“During manual builds”，
+      勾选“During auto builds”，
+      勾选“Specify working set of relevant resources”。
+ 
+      点击“Specify Resources…”
+      勾选TestNdk工程的“jni“目录，点击”finish“。 
+
+8) 点击“OK“，完成配置。
+
