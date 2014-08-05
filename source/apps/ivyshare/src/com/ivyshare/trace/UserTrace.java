@@ -11,7 +11,7 @@ import java.util.Date;
 
 import android.util.Log;
 
-import com.ivyshare.engin.control.LocalSetting;
+import com.ivy.ivyengine.control.LocalSetting;
 
 public class UserTrace {
 	private static final String TAG = UserTrace.class.getSimpleName();

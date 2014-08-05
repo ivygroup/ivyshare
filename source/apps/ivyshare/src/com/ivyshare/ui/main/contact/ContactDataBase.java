@@ -17,18 +17,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ivy.ivyengine.connection.NetworkManager;
+import com.ivy.ivyengine.control.ImManager;
+import com.ivy.ivyengine.control.LocalSetting;
+import com.ivy.ivyengine.control.LocalSetting.UserIconEnvironment;
+import com.ivy.ivyengine.control.PersonManager;
+import com.ivy.ivyengine.im.Person;
 import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.connection.NetworkManager;
-import com.ivyshare.engin.control.ImManager;
-import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
-import com.ivyshare.engin.control.PersonManager;
-import com.ivyshare.engin.im.Person;
 import com.ivyshare.ui.chat.chat.ChatActivity;
 import com.ivyshare.ui.chat.groupchat.GroupChatActivity;
 import com.ivyshare.ui.main.QuickPersonInfoActivity;
 import com.ivyshare.util.CommonUtils;
+import com.ivyshare.util.StringUtils;
 import com.ivyshare.widget.SimplePopMenu;
 
 
@@ -283,7 +284,7 @@ public abstract class ContactDataBase extends BaseAdapter implements AdapterStat
         }
 
         myClass.mState.setVisibility(View.VISIBLE);
-        myClass.mState.setText(person.getStateString());
+        myClass.mState.setText(StringUtils.getStateString(person.getState()));
 
         myClass.mFrameLayoutunread.setVisibility(View.GONE);
 

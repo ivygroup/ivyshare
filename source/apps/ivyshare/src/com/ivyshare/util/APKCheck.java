@@ -1,16 +1,16 @@
 package com.ivyshare.util;
 
-import com.ivyshare.MyApplication;
-import com.ivyshare.updatemanager.CurrentVersion;
-
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Handler;
+import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.os.Handler.Callback;
 import android.util.Log;
+
+import com.ivyshare.MyApplication;
+import com.ivyshare.updatemanager.CurrentVersion;
 
 public class APKCheck implements Callback{
 	private static final String TAG = APKCheck.class.getSimpleName();

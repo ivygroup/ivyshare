@@ -47,10 +47,11 @@ import android.widget.SimpleAdapter.ViewBinder;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ivy.ivyengine.control.DaemonNotifactionInterface;
+import com.ivy.ivyengine.control.LocalSetting;
+import com.ivy.ivyengine.control.LocalSetting.UserIconEnvironment;
+import com.ivy.ivyengine.im.Person;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
-import com.ivyshare.engin.im.Person;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.ui.main.MainPagerActivity;
 import com.ivyshare.util.CommonUtils;
@@ -213,7 +214,10 @@ public class UserEditActivity extends IvyActivityBase implements OnClickListener
 			mLocalSetting.saveNickName(nickName);
 			mLocalSetting.saveSignContent(signature);
 			if (mImManager != null) {
-			    mImManager.getDaemonNotifaction().startBackgroundNotificationIfNeed();
+			    DaemonNotifactionInterface daemon = mImManager.getDaemonNotifaction();
+			    if (daemon != null) {
+			        daemon.startBackgroundNotificationIfNeed();
+			    }
 			    mImManager.absence();
             }
 		}

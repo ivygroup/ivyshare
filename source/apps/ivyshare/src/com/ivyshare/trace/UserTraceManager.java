@@ -14,8 +14,8 @@ import android.os.Message;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.ivy.ivyengine.control.LocalSetting;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.util.CommonUtils;
 
 public class UserTraceManager {

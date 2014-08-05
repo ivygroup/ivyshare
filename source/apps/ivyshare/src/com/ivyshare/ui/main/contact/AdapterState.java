@@ -2,7 +2,7 @@ package com.ivyshare.ui.main.contact;
 
 import java.util.List;
 
-import com.ivyshare.engin.im.Person;
+import com.ivy.ivyengine.im.Person;
 
 public interface AdapterState {
     public static final int STATE_ACTIE = 0;

@@ -1,10 +1,5 @@
 package com.ivyshare.ui.setting;
 
-import com.ivyshare.R;
-import com.ivyshare.updatemanager.CurrentVersion;
-import com.ivyshare.util.IvyActivityBase;
-
-import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -12,6 +7,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.ivyshare.R;
+import com.ivyshare.updatemanager.CurrentVersion;
+import com.ivyshare.util.IvyActivityBase;
 
 public class AboutActivity extends IvyActivityBase {
 	

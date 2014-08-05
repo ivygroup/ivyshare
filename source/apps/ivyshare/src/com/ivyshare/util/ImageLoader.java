@@ -3,22 +3,20 @@ package com.ivyshare.util;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.ivyshare.MyApplication;
-import com.ivyshare.engin.im.Im.FileType;
-import com.ivyshare.updatemanager.CurrentVersion;
-
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.Handler.Callback;
+import android.os.HandlerThread;
 import android.os.Message;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.ivy.ivyengine.im.Im.FileType;
+import com.ivyshare.MyApplication;
 
 public class ImageLoader implements Callback{
 	private static final String TAG = ImageLoader.class.getSimpleName();

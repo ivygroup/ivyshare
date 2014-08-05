@@ -2,9 +2,6 @@ package com.ivyshare.ui.main;
 
 import java.util.List;
 
-import com.ivyshare.R;
-import com.ivyshare.ui.chat.abstractchat.AppsInfo;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -13,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.ivyshare.R;
+import com.ivyshare.ui.chat.abstractchat.AppsInfo;
 
 public class FreeShareAppAdapter extends BaseAdapter implements View.OnClickListener
 {

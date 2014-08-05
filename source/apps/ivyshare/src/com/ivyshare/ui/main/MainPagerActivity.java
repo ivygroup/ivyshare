@@ -35,11 +35,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.ivy.ivyengine.connection.ConnectionState;
+import com.ivy.ivyengine.constdefines.IvyMessages;
+import com.ivy.ivyengine.control.DaemonNotifactionInterface;
+import com.ivy.ivyengine.control.LocalSetting;
+import com.ivy.ivyengine.data.Table_Message;
 import com.ivyshare.R;
-import com.ivyshare.engin.connection.ConnectionState;
-import com.ivyshare.engin.constdefines.IvyMessages;
-import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.data.Table_Message;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.ui.chat.chat.ChatActivity;
 import com.ivyshare.ui.chat.groupchat.GroupChatActivity;
@@ -243,8 +244,6 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
             filter.addAction(IvyMessages.INTENT_NETWORK_DISCOVERYWIFIP2P);
             registerReceiver(mNetworkReceiver, filter);
         }
-		
-		startService(new Intent("com.ivyshare.IVYNETWORKSERVICE_START"));
 	}
 	
     private void updateTableColor() {
@@ -613,13 +612,16 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
         }
 
     	if (mImManager != null) {
-    		int state = mImManager.getDaemonNotifaction().getNotificationState();
-    		if (state == IvyMessages.NOTIFICATION_STATE_MESSAGE_ONE ||
-    			state == IvyMessages.NOTIFICATION_STATE_MESSAGE_GROUP ||
-    			state == IvyMessages.NOTIFICATION_STATE_MESSAGE_SOME ||
-    			state == IvyMessages.NOTIFICATION_STATE_NONE) {
-    			mImManager.getDaemonNotifaction().startBackgroundNotification();
-    		}
+    	    DaemonNotifactionInterface daemon = mImManager.getDaemonNotifaction();
+            if (daemon != null) {
+                int state = mImManager.getDaemonNotifaction().getNotificationState();
+                if (state == IvyMessages.NOTIFICATION_STATE_MESSAGE_ONE ||
+                    state == IvyMessages.NOTIFICATION_STATE_MESSAGE_GROUP ||
+                    state == IvyMessages.NOTIFICATION_STATE_MESSAGE_SOME ||
+                    state == IvyMessages.NOTIFICATION_STATE_NONE) {
+                    mImManager.getDaemonNotifaction().startBackgroundNotification();
+                }
+            }
 
 	    	if(!mMessageReceiverRegister) {
 				Log.d(TAG, "Register MessageReceiver and Init SessionFragment and FreeShareFragment");
@@ -846,7 +848,10 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
         	int messageState = intent.getIntExtra(IvyMessages.PARAMETER_MESSGAE_STATE, 0);
         	boolean blnLocalUser = intent.getBooleanExtra(IvyMessages.PARAMETER_MESSAGE_SELF, true);
         	if (!blnLocalUser && messageState == Table_Message.STATE_OK && mImManager != null) {
-        		mImManager.getDaemonNotifaction().addAndNotify(intent);
+                DaemonNotifactionInterface daemon = mImManager.getDaemonNotifaction();
+                if (daemon != null) {
+                    mImManager.getDaemonNotifaction().addAndNotify(intent);
+                }
         	}
 
         	if (mImManager != null && mSessionAdapter != null) {
@@ -868,7 +873,10 @@ public class MainPagerActivity extends IvyFragmentActivityBase implements OnClic
         	int messageState = intent.getIntExtra(IvyMessages.PARAMETER_GROUP_MESSAGE_STATE, 0);
         	boolean blnLocalUser = intent.getBooleanExtra(IvyMessages.PARAMETER_GROUP_MESSAGE_SELF, true);
         	if (!blnLocalUser && messageState == Table_Message.STATE_OK && mImManager != null) {
-        		mImManager.getDaemonNotifaction().addGroupAndNotify(intent);
+        	    DaemonNotifactionInterface daemon = mImManager.getDaemonNotifaction();
+                if (daemon != null) {
+                    mImManager.getDaemonNotifaction().addGroupAndNotify(intent);
+                }
         	}
 
         	if (mImManager != null && mSessionAdapter != null) {

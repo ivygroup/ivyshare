@@ -1,15 +1,7 @@
 package com.ivyshare.ui.main;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import com.ivyshare.R;
-import com.ivyshare.engin.im.Im.FileType;
-import com.ivyshare.ui.chat.abstractchat.AbstractChatActivity;
-import com.ivyshare.ui.chat.abstractchat.ApplicationActivity;
-import com.ivyshare.ui.chat.abstractchat.FileSelectActivity;
-import com.ivyshare.util.CommonUtils;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -25,12 +17,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+
+import com.ivyshare.R;
+import com.ivyshare.ui.chat.abstractchat.ApplicationActivity;
+import com.ivyshare.ui.chat.abstractchat.FileSelectActivity;
+import com.ivyshare.util.CommonUtils;
 
 public class FreeShareFragment extends Fragment {
 

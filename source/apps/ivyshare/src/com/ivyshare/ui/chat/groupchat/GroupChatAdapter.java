@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.ivyshare.engin.control.ChatMessage;
-import com.ivyshare.engin.control.GroupMessage;
-import com.ivyshare.engin.control.ImManager;
-import com.ivyshare.engin.im.Im.FileType;
-import com.ivyshare.engin.im.Person;
+import com.ivy.ivyengine.control.ChatMessage;
+import com.ivy.ivyengine.control.GroupMessage;
+import com.ivy.ivyengine.control.ImManager;
+import com.ivy.ivyengine.im.Im.FileType;
+import com.ivy.ivyengine.im.Person;
 import com.ivyshare.ui.chat.abstractchat.AdapterHelper;
 import com.ivyshare.ui.chat.abstractchat.AdapterInterface;
 

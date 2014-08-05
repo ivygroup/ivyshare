@@ -15,10 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ivy.ivyengine.connection.ConnectionState;
+import com.ivy.ivyengine.connection.NetworkManager;
+import com.ivy.ivyengine.control.ImManager;
 import com.ivyshare.R;
-import com.ivyshare.engin.connection.ConnectionState;
-import com.ivyshare.engin.connection.NetworkManager;
-import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.widget.SimpleImageButton;

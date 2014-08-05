@@ -13,12 +13,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.ivy.ivyengine.constdefines.IvyMessages;
+import com.ivy.ivyengine.control.PersonManager;
+import com.ivy.ivyengine.data.Table_Message;
+import com.ivy.ivyengine.im.Im.FileType;
+import com.ivy.ivyengine.im.Person;
 import com.ivyshare.R;
-import com.ivyshare.engin.constdefines.IvyMessages;
-import com.ivyshare.engin.control.PersonManager;
-import com.ivyshare.engin.data.Table_Message;
-import com.ivyshare.engin.im.Im.FileType;
-import com.ivyshare.engin.im.Person;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.ui.chat.abstractchat.AbstractChatActivity;
 import com.ivyshare.ui.chat.abstractchat.AdapterInterface;

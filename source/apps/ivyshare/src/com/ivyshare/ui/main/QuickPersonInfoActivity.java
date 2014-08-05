@@ -9,10 +9,10 @@ import android.os.Message;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ivy.ivyengine.control.LocalSetting;
+import com.ivy.ivyengine.control.LocalSetting.UserIconEnvironment;
+import com.ivy.ivyengine.im.Person;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
-import com.ivyshare.engin.im.Person;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.util.IvyActivityBase;
 

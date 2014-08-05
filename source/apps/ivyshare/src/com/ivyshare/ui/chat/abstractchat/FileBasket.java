@@ -6,8 +6,8 @@ import java.util.List;
 
 import android.graphics.drawable.Drawable;
 
-import com.ivyshare.engin.im.Im;
-import com.ivyshare.engin.im.Im.FileType;
+import com.ivy.ivyengine.im.Im;
+import com.ivy.ivyengine.im.Im.FileType;
 
 public class FileBasket {
     public static final String TAG = "FileBasket";

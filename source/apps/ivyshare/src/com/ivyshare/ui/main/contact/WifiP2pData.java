@@ -12,11 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ivy.ivyengine.connection.NetworkManager;
+import com.ivy.ivyengine.connection.PeerInfo;
+import com.ivy.ivyengine.control.ImManager;
+import com.ivy.ivyengine.im.Person;
 import com.ivyshare.R;
-import com.ivyshare.engin.connection.NetworkManager;
-import com.ivyshare.engin.connection.PeerInfo;
-import com.ivyshare.engin.control.ImManager;
-import com.ivyshare.engin.im.Person;
 import com.ivyshare.widget.SimpleImageButton;
 
 public class WifiP2pData extends ContactDataBase {

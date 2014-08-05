@@ -12,11 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ivy.ivyengine.connection.ConnectionState;
+import com.ivy.ivyengine.connection.NetworkManager;
+import com.ivy.ivyengine.constdefines.IvyMessages;
+import com.ivy.ivyengine.control.ImManager;
+import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.connection.ConnectionState;
-import com.ivyshare.engin.connection.NetworkManager;
-import com.ivyshare.engin.constdefines.IvyMessages;
-import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.widget.SimpleImageButton;
@@ -197,11 +198,11 @@ public class HotsPotData extends ContactDataBase {
 					                        || state == ConnectionState.CONNECTION_STATE_WIFI_IVY_CONNECTING) {
 					                    mNetworkManager.disconnectFromIvyNetwork();
 					                }
-					                IvyMessages.sendNetworkStateChange(ConnectionState.CONNECTION_TYPE_HOTSPOT,
+					                IvyMessages.sendNetworkStateChange(MyApplication.getInstance(), ConnectionState.CONNECTION_TYPE_HOTSPOT,
 					                		ConnectionState.CONNECTION_STATE_HOTSPOT_ENABLING,
 					                		null);
 					                mNetworkManager.createHotspot();
-					                IvyMessages.sendNetworkClearIvyRoom();
+					                IvyMessages.sendNetworkClearIvyRoom(MyApplication.getInstance());
 					                UserTrace.addTrace(UserTrace.ACTION_CREATE_ROOM);
 					            }
 							}

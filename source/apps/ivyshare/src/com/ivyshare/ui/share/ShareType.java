@@ -1,6 +1,6 @@
 package com.ivyshare.ui.share;
 
-import com.ivyshare.engin.im.Im.FileType;
+import com.ivy.ivyengine.im.Im.FileType;
 
 public class ShareType {
     

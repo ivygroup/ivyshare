@@ -5,14 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import com.ivyshare.R;
-import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.im.Im.FileType;
-import com.ivyshare.ui.setting.BasePopMenuAdapter;
-import com.ivyshare.util.IvyActivityBase;
-import com.ivyshare.widget.SimplePopMenu;
-import com.ivyshare.widget.SimplePopMenu.OnPopMenuItemClickListener;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -30,6 +22,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ivy.ivyengine.control.LocalSetting;
+import com.ivy.ivyengine.im.Im.FileType;
+import com.ivyshare.R;
+import com.ivyshare.ui.setting.BasePopMenuAdapter;
+import com.ivyshare.util.IvyActivityBase;
+import com.ivyshare.widget.SimplePopMenu;
+import com.ivyshare.widget.SimplePopMenu.OnPopMenuItemClickListener;
 
 public class FileSelectActivity extends IvyActivityBase 
 implements OnItemClickListener, OnClickListener, View.OnLongClickListener {

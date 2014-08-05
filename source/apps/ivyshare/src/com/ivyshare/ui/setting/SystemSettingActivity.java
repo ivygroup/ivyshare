@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ivy.ivyengine.control.LocalSetting;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.util.IvyActivityBase;

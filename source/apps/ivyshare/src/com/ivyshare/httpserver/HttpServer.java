@@ -31,15 +31,10 @@ d * $HeadURL$
 
 package com.ivyshare.httpserver;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.InterruptedIOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -48,7 +43,6 @@ import java.net.Socket;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Locale;
-import java.util.logging.Logger;
 
 import org.apache.http.ConnectionClosedException;
 import org.apache.http.Header;
@@ -68,11 +62,11 @@ import org.apache.http.impl.DefaultHttpResponseFactory;
 import org.apache.http.impl.DefaultHttpServerConnection;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.params.HttpParams;
 import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.BasicHttpProcessor;
 import org.apache.http.protocol.HttpContext;
-import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpRequestHandler;
 import org.apache.http.protocol.HttpRequestHandlerRegistry;
 import org.apache.http.protocol.HttpService;
@@ -80,12 +74,7 @@ import org.apache.http.protocol.ResponseConnControl;
 import org.apache.http.protocol.ResponseContent;
 import org.apache.http.protocol.ResponseDate;
 import org.apache.http.protocol.ResponseServer;
-import org.apache.http.util.EntityUtils;
 
-import com.ivyshare.R.string;
-
-import android.R.integer;
-import android.text.StaticLayout;
 import android.util.Log;
 
 /**

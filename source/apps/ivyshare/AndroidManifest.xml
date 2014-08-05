@@ -84,7 +84,7 @@
         </activity>
 
         <service
-            android:name="com.ivyshare.engin.IvyService"
+            android:name="com.ivy.ivyengine.IvyService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.ivyshare.IVYSERVICE_START" />

@@ -1,7 +1,5 @@
 package com.ivyshare.ui.main;
 
-import com.ivyshare.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.ivyshare.R;
 
 public class SessionFragment extends Fragment {
 	private static final String TAG = SessionFragment.class.getSimpleName();

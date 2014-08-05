@@ -16,10 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ivy.ivyengine.connection.NetworkManager;
+import com.ivy.ivyengine.connection.implement.AccessPointInfo;
+import com.ivy.ivyengine.control.ImManager;
 import com.ivyshare.R;
-import com.ivyshare.engin.connection.NetworkManager;
-import com.ivyshare.engin.connection.implement.AccessPointInfo;
-import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.widget.SimpleImageButton;
 
 

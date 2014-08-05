@@ -1,12 +1,5 @@
 package com.ivyshare.ui.main;
 
-import com.ivyshare.MyApplication;
-import com.ivyshare.R;
-import com.ivyshare.trace.UserTrace;
-import com.ivyshare.util.CommonUtils;
-import com.ivyshare.util.IvyActivityBase;
-
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
@@ -15,12 +8,16 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.ivyshare.R;
+import com.ivyshare.trace.UserTrace;
+import com.ivyshare.util.CommonUtils;
+import com.ivyshare.util.IvyActivityBase;
 
 public class FreeShareHistoryActivity extends IvyActivityBase {
 

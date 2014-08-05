@@ -8,7 +8,6 @@ import java.util.Set;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -33,8 +32,6 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
@@ -53,18 +50,16 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ivyshare.MyApplication;
+import com.ivy.ivyengine.control.ChatMessage;
+import com.ivy.ivyengine.control.TranslateFileControl;
+import com.ivy.ivyengine.im.Im.FileType;
+import com.ivy.ivyengine.im.Person;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.ChatMessage;
-import com.ivyshare.engin.control.TranslateFileControl;
-import com.ivyshare.engin.im.Im.FileType;
-import com.ivyshare.engin.im.Person;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.util.IvyActivityBase;
 
 @SuppressLint("HandlerLeak")
-public abstract class AbstractChatActivity extends IvyActivityBase implements OnClickListener,
-    OnTouchListener, TranslateFileControl.TransProcessListener{
+public abstract class AbstractChatActivity extends IvyActivityBase implements OnClickListener, OnTouchListener, TranslateFileControl.TransProcessListener{
     private static final String TAG = AbstractChatActivity.class.getSimpleName();
 
     public static final int mSDKVersion = Build.VERSION.SDK_INT;

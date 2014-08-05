@@ -22,13 +22,12 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.ivy.ivyengine.im.Im.FileType;
 import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.im.Im.FileType;
 import com.ivyshare.ui.chat.abstractchat.AppsInfo;
 import com.ivyshare.updatemanager.CurrentVersion;
 

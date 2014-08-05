@@ -17,17 +17,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ivy.ivyengine.control.ImManager;
+import com.ivy.ivyengine.control.LocalSetting;
+import com.ivy.ivyengine.control.LocalSetting.UserIconEnvironment;
+import com.ivy.ivyengine.control.PersonManager;
+import com.ivy.ivyengine.im.Person;
 import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.ImManager;
-import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
-import com.ivyshare.engin.control.PersonManager;
-import com.ivyshare.engin.im.Person;
 import com.ivyshare.ui.chat.chat.ChatActivity;
 import com.ivyshare.ui.chat.groupchat.GroupChatActivity;
 import com.ivyshare.ui.main.QuickPersonInfoActivity;
 import com.ivyshare.util.CommonUtils;
+import com.ivyshare.util.StringUtils;
 
 /**
  * 
@@ -287,7 +288,7 @@ public class ExpandablePersonAdapter extends BaseExpandableListAdapter
 		}
 
 		myClass.state.setVisibility(View.VISIBLE);
-		myClass.state.setText(person.getStateString());
+		myClass.state.setText(StringUtils.getStateString(person.getState()));
 
 		myClass.layoutunread.setVisibility(View.GONE);
 

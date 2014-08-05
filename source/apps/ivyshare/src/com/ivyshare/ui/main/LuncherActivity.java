@@ -1,11 +1,11 @@
 package com.ivyshare.ui.main;
 
-import com.ivyshare.ui.setting.UserEditActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import com.ivyshare.ui.setting.UserEditActivity;
 
 public class LuncherActivity extends Activity {
  

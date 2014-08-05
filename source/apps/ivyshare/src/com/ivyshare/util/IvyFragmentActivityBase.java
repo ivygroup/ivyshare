@@ -1,9 +1,5 @@
 package com.ivyshare.util;
 
-import com.ivyshare.engin.IvyService;
-import com.ivyshare.engin.connection.NetworkManager;
-import com.ivyshare.engin.control.ImManager;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +7,11 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
+
+import com.ivy.ivyengine.IvyService;
+import com.ivy.ivyengine.connection.NetworkManager;
+import com.ivy.ivyengine.control.ImManager;
+import com.ivyshare.ui.DaemonNotifaction;
 
 public class IvyFragmentActivityBase extends FragmentActivity implements ServiceConnection {
     private static final String TAG = "IvyFragmentActivityBase";
@@ -59,7 +59,13 @@ public class IvyFragmentActivityBase extends FragmentActivity implements Service
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         mIvyService = ((IvyService.LocalBinder)service).getService();
-        mImManager = mIvyService.getImManager();
+        ImManager imManager = mIvyService.getImManager();
+        if (imManager.getDaemonNotifaction() == null) {
+            DaemonNotifaction tmp = new DaemonNotifaction(this.getApplicationContext(),
+                    imManager.getImData(), imManager.getPersonMessage(), imManager.getGroupMessage());
+            imManager.setDaemonNotifaction(tmp);
+        }
+        mImManager = imManager;
         mNetworkManager = mIvyService.getNetworkManager();
     }
 

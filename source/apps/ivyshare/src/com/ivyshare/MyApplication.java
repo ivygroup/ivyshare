@@ -1,7 +1,8 @@
 package com.ivyshare;
 
+import com.ivy.ivyengine.IvyConfig;
+
 import android.app.Application;
-import android.content.Intent;
 
 public class MyApplication extends Application {
     private static MyApplication gInstance = null;
@@ -14,5 +15,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         gInstance = this;
+        IvyConfig.init(this, "ivyshare.db", "ivysetting.db", "IvyShare");
     }
 }

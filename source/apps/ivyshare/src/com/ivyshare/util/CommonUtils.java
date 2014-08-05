@@ -21,27 +21,21 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.ContactsContract;
-import android.provider.Settings;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
-import android.provider.MediaStore.Audio;
-import android.provider.MediaStore.Images;
-import android.provider.MediaStore.Video;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.ivy.ivyengine.control.LocalSetting;
+import com.ivy.ivyengine.control.LocalSetting.UserIconEnvironment;
+import com.ivy.ivyengine.im.Im.FileType;
 import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
-import com.ivyshare.engin.im.Im.FileType;
 
 public class CommonUtils {
 	private static final String TAG = CommonUtils.class.getSimpleName();
 
-	public static final String VIDEO_URI = Video.Media.getContentUri("external").toString();
-	public static final String IMAGE_URI = Images.Media.getContentUri("external").toString();
-	public static final String AUDIO_URI = Audio.Media.getContentUri("external").toString();
 	public static final String MIMETYPE_VCARD        = "text/x-vcard";
 	public static final String MIMETYPE_APPLICATION  = "application/vnd.android.package-archive";
 	public static final String MIMETYPE_ALLIMAGES  = "image/*";

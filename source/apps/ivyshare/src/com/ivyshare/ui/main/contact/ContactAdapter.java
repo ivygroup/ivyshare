@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.ivyshare.engin.connection.APInfo;
-import com.ivyshare.engin.connection.ConnectionState;
-import com.ivyshare.engin.connection.NetworkManager;
-import com.ivyshare.engin.connection.PeerInfo;
-import com.ivyshare.engin.control.ImManager;
-import com.ivyshare.engin.im.Person;
+import com.ivy.ivyengine.connection.APInfo;
+import com.ivy.ivyengine.connection.ConnectionState;
+import com.ivy.ivyengine.connection.NetworkManager;
+import com.ivy.ivyengine.connection.PeerInfo;
+import com.ivy.ivyengine.control.ImManager;
+import com.ivy.ivyengine.im.Person;
 
 public class ContactAdapter extends BaseAdapter {
     private static final String TAG = "ContactAdapter";

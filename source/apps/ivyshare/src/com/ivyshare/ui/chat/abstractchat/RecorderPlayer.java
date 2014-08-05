@@ -19,17 +19,17 @@ package com.ivyshare.ui.chat.abstractchat;
 import java.io.File;
 import java.io.IOException;
 
-import com.ivyshare.engin.control.LocalSetting;
-
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
+import android.media.MediaRecorder;
 import android.os.Handler;
 import android.text.format.DateFormat;
 import android.util.Log;
+
+import com.ivy.ivyengine.control.LocalSetting;
 
 public class RecorderPlayer implements OnCompletionListener, OnErrorListener {
     static final String SAMPLE_PREFIX = "recording";

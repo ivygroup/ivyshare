@@ -1,9 +1,9 @@
 package com.ivyshare.ui.chat.abstractchat;
 
-import com.ivyshare.engin.control.ChatMessage;
-
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.ivy.ivyengine.control.ChatMessage;
 
 public interface AdapterInterface {
     public void notifyProcessChanged();

@@ -40,11 +40,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ivy.ivyengine.constdefines.IvyMessages;
+import com.ivy.ivyengine.control.LocalSetting;
+import com.ivy.ivyengine.im.Person;
 import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.constdefines.IvyMessages;
-import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.im.Person;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.util.CommonUtils;
 import com.ivyshare.util.IvyFragmentActivityBase;
@@ -484,15 +484,15 @@ public class SendSelectActivity extends IvyFragmentActivityBase {
             String scheme = uri.getScheme();
 
             boolean wildcard = "*/*".equals(type);
-            if (type.startsWith("image/") || (wildcard && uri.toString().startsWith(CommonUtils.IMAGE_URI))) {
+            if (type.startsWith("image/") || (wildcard && uri.toString().startsWith(com.ivy.ivyengine.utils.CommonUtils.IMAGE_URI))) {
                 mShareFileType = ShareType.SHARE_TYPE_IMAGE;
                 doWithMediaUri(uri);
             } else if (type.startsWith("video/") ||
-                    (wildcard && uri.toString().startsWith(CommonUtils.VIDEO_URI))) {
+                    (wildcard && uri.toString().startsWith(com.ivy.ivyengine.utils.CommonUtils.VIDEO_URI))) {
                 mShareFileType = ShareType.SHARE_TYPE_VIDEO;
                 doWithMediaUri(uri);
             } else if (type.startsWith("audio/") ||
-                    (wildcard && uri.toString().startsWith(CommonUtils.AUDIO_URI))) {
+                    (wildcard && uri.toString().startsWith(com.ivy.ivyengine.utils.CommonUtils.AUDIO_URI))) {
                 mShareFileType = ShareType.SHARE_TYPE_AUDIO;
                 doWithMediaUri(uri);
             } else if (CommonUtils.MIMETYPE_VCARD.equalsIgnoreCase(type)) {

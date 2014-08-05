@@ -19,11 +19,11 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ivy.ivyengine.control.LocalSetting;
+import com.ivy.ivyengine.control.LocalSetting.UserIconEnvironment;
+import com.ivy.ivyengine.data.Table_Share;
+import com.ivy.ivyengine.im.Im.FileType;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.LocalSetting;
-import com.ivyshare.engin.control.LocalSetting.UserIconEnvironment;
-import com.ivyshare.engin.data.Table_Share;
-import com.ivyshare.engin.im.Im.FileType;
 import com.ivyshare.util.CommonUtils;
 
 class FreeShareAdapter extends CursorAdapter {

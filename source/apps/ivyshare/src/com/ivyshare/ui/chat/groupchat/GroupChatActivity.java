@@ -7,11 +7,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 
+import com.ivy.ivyengine.constdefines.IvyMessages;
+import com.ivy.ivyengine.control.GroupMessage;
+import com.ivy.ivyengine.data.Table_Message;
+import com.ivy.ivyengine.im.Im.FileType;
 import com.ivyshare.R;
-import com.ivyshare.engin.constdefines.IvyMessages;
-import com.ivyshare.engin.control.GroupMessage;
-import com.ivyshare.engin.data.Table_Message;
-import com.ivyshare.engin.im.Im.FileType;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.ui.chat.abstractchat.AbstractChatActivity;
 import com.ivyshare.ui.chat.abstractchat.AdapterInterface;

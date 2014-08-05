@@ -1,11 +1,9 @@
 package com.ivyshare.updatemanager;
 
 import java.io.File;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import com.ivyshare.R;
-import com.ivyshare.util.CommonUtils;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -22,6 +20,9 @@ import android.test.suitebuilder.annotation.Suppress;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.widget.Toast;
+
+import com.ivyshare.R;
+import com.ivyshare.util.CommonUtils;
 
 
 public class UpdateManager {

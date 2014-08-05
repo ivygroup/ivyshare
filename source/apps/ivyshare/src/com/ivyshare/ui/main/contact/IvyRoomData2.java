@@ -10,12 +10,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ivy.ivyengine.connection.APInfo;
+import com.ivy.ivyengine.connection.ConnectionState;
+import com.ivy.ivyengine.connection.NetworkManager;
+import com.ivy.ivyengine.constdefines.IvyMessages;
+import com.ivy.ivyengine.control.ImManager;
+import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.connection.APInfo;
-import com.ivyshare.engin.connection.ConnectionState;
-import com.ivyshare.engin.connection.NetworkManager;
-import com.ivyshare.engin.constdefines.IvyMessages;
-import com.ivyshare.engin.control.ImManager;
 import com.ivyshare.trace.UserTrace;
 import com.ivyshare.widget.SimpleImageButton;
 
@@ -210,7 +211,7 @@ public class IvyRoomData2 extends ContactDataBase {
                         }
 
                         mNetworkManager.connectIvyNetwork(myClass.mApInfo.getSSID());
-                        IvyMessages.sendNetworkStateChange(ConnectionState.CONNECTION_TYPE_WIFI,
+                        IvyMessages.sendNetworkStateChange(MyApplication.getInstance(), ConnectionState.CONNECTION_TYPE_WIFI,
                         		ConnectionState.CONNECTION_STATE_WIFI_IVY_CONNECTING,
                         		myClass.mApInfo.getSSID());
                         UserTrace.addTrace(UserTrace.ACTION_ENTER_ROOM);

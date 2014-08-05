@@ -1,21 +1,20 @@
 package com.ivyshare.ui.chat.abstractchat; 
  
 import android.animation.Animator;
- import android.animation.AnimatorListenerAdapter;
- import android.animation.ObjectAnimator;
- import android.animation.ValueAnimator;
- import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.annotation.SuppressLint;
 import android.content.Context;
- import android.graphics.RectF;
- import android.util.Log;
- import android.view.animation.LinearInterpolator;
+import android.graphics.RectF;
+import android.util.Log;
 import android.view.Gravity;
- import android.view.MotionEvent;
- import android.view.VelocityTracker;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
+import android.view.animation.LinearInterpolator;
 
 @SuppressLint("NewApi")
  public class SwipeHelper {

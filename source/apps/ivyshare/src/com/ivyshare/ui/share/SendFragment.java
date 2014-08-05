@@ -16,10 +16,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ivy.ivyengine.control.ImManager;
+import com.ivy.ivyengine.im.Person;
 import com.ivyshare.MyApplication;
 import com.ivyshare.R;
-import com.ivyshare.engin.control.ImManager;
-import com.ivyshare.engin.im.Person;
 import com.ivyshare.trace.UserTrace;
 
 public class SendFragment extends Fragment implements OnClickListener{

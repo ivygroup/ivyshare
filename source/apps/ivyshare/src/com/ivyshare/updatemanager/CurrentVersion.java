@@ -1,10 +1,10 @@
 package com.ivyshare.updatemanager;
 
-import com.ivyshare.R;
-
 import android.content.Context;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
+
+import com.ivyshare.R;
 
 public class CurrentVersion {
 	private static final String TAG = "UpdateManager";

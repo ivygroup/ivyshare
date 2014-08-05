@@ -17,10 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ivy.ivyengine.connection.ConnectionState;
+import com.ivy.ivyengine.constdefines.IvyMessages;
+import com.ivy.ivyengine.control.LocalSetting;
 import com.ivyshare.R;
-import com.ivyshare.engin.connection.ConnectionState;
-import com.ivyshare.engin.constdefines.IvyMessages;
-import com.ivyshare.engin.control.LocalSetting;
 import com.ivyshare.util.IvyActivityBase;
 
 public class NetworkSettingActivity extends IvyActivityBase implements OnClickListener {

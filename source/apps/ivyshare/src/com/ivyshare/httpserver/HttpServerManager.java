@@ -43,10 +43,9 @@ import org.apache.http.protocol.ResponseContent;
 import org.apache.http.protocol.ResponseDate;
 import org.apache.http.protocol.ResponseServer;
 
-
 import android.util.Log;
 
-import com.ivyshare.engin.control.LocalSetting;
+import com.ivy.ivyengine.control.LocalSetting;
 import com.ivyshare.util.CommonUtils;
 
 public class HttpServerManager implements HttpRequestHandler{
