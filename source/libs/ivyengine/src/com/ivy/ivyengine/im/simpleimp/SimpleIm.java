@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.util.Log;
 
+import com.ivy.ivyengine.IvyConfig;
 import com.ivy.ivyengine.control.LocalSetting;
 import com.ivy.ivyengine.control.PersonManager;
 import com.ivy.ivyengine.im.Im;
@@ -12,7 +13,6 @@ import com.ivy.ivyengine.im.simpleimp.filetranslate.FileSendQueue;
 import com.ivy.ivyengine.im.simpleimp.filetranslate.TcpFileServer;
 import com.ivy.ivyengine.im.simpleimp.protocol.Receiver;
 import com.ivy.ivyengine.im.simpleimp.protocol.Sender;
-import com.ivy.ivyengine.im.simpleimp.protocol.VersionControl;
 import com.ivy.ivyengine.im.simpleimp.util.KeepAlive;
 import com.ivy.ivyengine.im.simpleimp.util.NotifactionEngin;
 
@@ -39,8 +39,10 @@ public class SimpleIm extends Im {
         mNotifactionEngin = new NotifactionEngin();
         mSender = new Sender(mNotifactionEngin);
         mReceiver = new Receiver(mSender, mNotifactionEngin);
-        mKeepAlive = new KeepAlive(mSender, mNotifactionEngin);
-        mKeepAlive.start();
+        if (IvyConfig.getInstance().isUseKeepAlive()) {
+            mKeepAlive = new KeepAlive(mSender, mNotifactionEngin);
+            mKeepAlive.start();
+        }
         TcpFileServer.createInstance(LocalSetting.getInstance().getMySelf().mPort, mNotifactionEngin);
         LocalSetting.getInstance().getMySelf().mState = State_OffLine;
         FileSendQueue.createInstance(mSender);

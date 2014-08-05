@@ -15,6 +15,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         gInstance = this;
-        IvyConfig.init(this, "ivyshare.db", "ivysetting.db", "IvyShare");
+        IvyConfig.init(this, "ivyshare.db", "ivysetting.db", "IvyShare", false);
     }
 }

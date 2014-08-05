@@ -7,22 +7,25 @@ import android.content.Context;
 
 
 public class IvyConfig {
-    private static String IvyDataName = "ivyshare.db";
-    private static String IvySettingName = "ivysetting.db";
-    private static String IvyStoragePathName = "IvyShare";
+    private static String sIvyDataName = "ivyshare.db";
+    private static String sIvySettingName = "ivysetting.db";
+    private static String sIvyStoragePathName = "IvyShare";
+    private static boolean sIsUseKeepAlive = false;
 
-    public static void init(Context context, String dataName, String settingName, String storagePathName) {
+    public static void init(Context context, String dataName, String settingName, String storagePathName, boolean isUseKeepAlive) {
         if (dataName != null) {
-            IvyDataName = dataName;
+            sIvyDataName = dataName;
         }
 
         if (settingName != null) {
-            IvySettingName = settingName;
+            sIvySettingName = settingName;
         }
 
         if (storagePathName != null) {
-            IvyStoragePathName = storagePathName;
+            sIvyStoragePathName = storagePathName;
         }
+
+        sIsUseKeepAlive = isUseKeepAlive;
 
         LocalSetting.initInstance(context);
     }
@@ -39,14 +42,18 @@ public class IvyConfig {
     }
 
     public String getDataName() {
-        return IvyDataName;
+        return sIvyDataName;
     }
 
     public String getSettingName() {
-        return IvySettingName;
+        return sIvySettingName;
     }
 
     public String getStoragePathName() {
-        return "/" + IvyStoragePathName + "/";
+        return "/" + sIvyStoragePathName + "/";
+    }
+
+    public boolean isUseKeepAlive() {
+        return sIsUseKeepAlive;
     }
 }
